@@ -24,6 +24,8 @@ text-align: center;
 }
 p{
     color: grey;
+    max-width: 600px;
+    margin: auto;
 }
 /*End global */
 
@@ -130,3 +132,26 @@ form input[type="submit"]:hover{
 	text-align :left;
 	}
 }
+
+/* request-list */
+.repair-log{
+    padding: 20px;
+    background: teal;
+    border-bottom: 5px solid grey;
+    color: ghostwhite;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+.repair-log li{
+    padding: 10px;
+}
+.repair-log li span{
+    width: 150px;
+    display: inline-block;
+}
+.success{
+    color: greenyellow;
+}
+.pending{color:orange;}
+.critical{color:red;}
