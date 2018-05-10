@@ -65,6 +65,7 @@ p{
     margin: 30px auto;
     max-width: 500px;
     box-sizing: border-box;
+    display:none ;
 }
 
 forn label{
@@ -79,6 +80,7 @@ form input{
 form input:focus{
     border-radius: 5px;
     border: 2px solid greenyellow;
+    outline:none ;
 }
 form input[type="submit"]{
     display: inline-block;
