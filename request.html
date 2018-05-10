@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Maintenance Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+ 
+    <header>
+            <div class="container">
+            <div class="brand"><a href="index.html">MT</a></div>
+        <nav>
+           <ul>
+                <li><a href="#" id="request-list"> <span class="request-counter">3</span> Requests</a></li>
+                <li><a href="#" id="sign-out">Sign out</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Maintenance / Repair request</h1>
+        <div class="data-form">
+            <h2>Make a request for Maintenance / Repair</h2>
+        <form  action="#">
+                            
+            <label for="name">Name</label>
+            <input required  type="text" name="name" id="name" placeholder="FirstName LastName">
+            
+            <label for="email">Email</label>
+            <input type="email" required name="email" id="email" placeholder="you@abc.com">
+            
+           <select required name="request-type" id="request-type">
+               <option value="Resquest Type" disabled selected>Request Type</option>
+               <option value="maintenance">Maintenance</option>
+               <option value="repair">Repair</option>
+           </select>
+
+            <label for="description">Description</label><br>
+            <textarea required name="description" id="description" placeholder="Describe your request type"></textarea>
+
+            <input type="submit" value="Send Request">
+
+        </form>
+    </div>
+      
+    <script src="js/toggleForm.js"></script>
+</body>
+</html>

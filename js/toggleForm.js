@@ -25,5 +25,12 @@ dataForm[0]. style. display = "block" ;
 }
 }//End toggleForm 
 
+document.getElementById("request-list").addEventListener("click",requestNavigator);
+
+//request list event handler (navigate to request-list.html)
+function requestNavigator(){
+location.assign("request-list.html");
+}//End requestNavigator
+
 
 });
