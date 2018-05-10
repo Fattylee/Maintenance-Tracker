@@ -51,5 +51,8 @@ a:hover{
     margin: 0 auto;
 }
 h1{
-
+color: white;
+}
+p{
+    color: grey;
 }
