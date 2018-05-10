@@ -46,13 +46,54 @@ a:hover{
     border-bottom: 1px solid white;
 }
 .container{
-    text-align: center;
     max-width: 960px;
     margin: 0 auto;
 }
-h1{
+h1,p{
 color: white;
+text-align: center;
+
 }
 p{
     color: grey;
+}
+
+.data-form{
+    border-radius: 10px;
+    background: white;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+forn label{
+  padding:10px;
+}
+form input{
+    display: block;
+    padding: 10px;
+    width: 70%;
+    margin-bottom: 15px;
+}
+form input:focus{
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+}
+form input[type="submit"]{
+    display: inline-block;
+    width: auto;
+    padding: 10px 20px;
+    background: green;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+form input[type="submit"]:hover{
+    color: green;
+    background: white;
+    border: 1px solid green;
+    outline: none;
 }
