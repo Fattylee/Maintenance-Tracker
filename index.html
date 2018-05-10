@@ -6,15 +6,57 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Maintenance Tracker</title>
 </head>
+
 <body>
     <head>
         <nav>
-            <div class="brand"><a href="index.html">Home</a></div>
+            <div class="brand"><a href="index.html">MT</a></div>
             <ul>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Signup</a></li>
+                <li><a href="#">Sign in</a></li>
+                <li><a href="#">Sign up</a></li>
             </ul>
         </nav>
     </head>
+
+    <div class="container">
+        <h1>Maintenance Tracker</h1>
+        <p>
+                Maintenance Tracker App is an application that provides users with the ability to reach out to
+                operations or repairs department regarding repair or maintenance requests and monitor the
+                status of their request.
+        </p>
+        <div id="sign-up">
+            <h2>Sign up for Maintenance Tracker</h2>
+        <form id ="signup" action="#">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="FirstName LastName">
+            
+            <label for="email">Email</label>
+            <input type="email" required name="email" id="email" placeholder="you@abc.com">
+            
+            <label for="username">Username</label>
+            <input type="text" required name="username" id="username" placeholder="Pick a username">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="CReate a password">
+
+            <input type="submit" value="Sign up for MT">
+
+        </form>
+    </div>
+        <div id="sign-in">
+            <h2>Sign in to Maintenance Tracker</h2>
+                <form action="#">
+                        <label for="username">Username or email address</label>
+                        <input type="text" required name="username" id="username" placeholder="Pick a username">
+            
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="CReate a password">
+            
+                        <input type="submit" value="Sign in">
+            
+                </form>
+        </div>
+    </div>
 </body>
 </html>
