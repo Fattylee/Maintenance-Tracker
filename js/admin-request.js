@@ -24,9 +24,24 @@ for (let i = 1; i < 71; i++) {
    <li><span>Maintenance/Repair</span>: repair${i}</li>
    <li><span>Description</span>: fix problem${i}</li>
    <li><span>Date</span>: ${i}/${i}/197${i}</li>
-   <li><span>(Dis)approve</span>: ${true ? "approved":"disapproved"}</li>
+   <li><span>(Dis)approve</span>: <span class="success">approved</span></li>
    </ul>
    `; 
 }
 if(document.querySelector(".content-area-approve"))
 document.querySelector(".content-area-approve").innerHTML += markup;
+
+markup="";
+for (let i = 1; i < 31; i++) {
+   markup += `
+   <ul>
+   <li><span>Username</span>: yourname${i}</li>
+   <li><span>Maintenance/Repair</span>: repair${i}</li>
+   <li><span>Description</span>: fix problem${i}</li>
+   <li><span>Date</span>: ${i}/${i}/197${i}</li>
+   <li><span>(Dis)approve</span>: <span class="critical">disapproved</span></li>
+   </ul>
+   `; 
+}
+if(document.querySelector(".content-area-disapprove"))
+document.querySelector(".content-area-disapprove").innerHTML += markup;
