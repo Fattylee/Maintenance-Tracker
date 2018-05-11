@@ -118,10 +118,38 @@ section{
     color: white;
 }
 /*End side-nav bar */
-/* form input */
-/*End form input */
+
+/* all request */
+
+.content-area ul{
+    background: teal;
+    color: white;
+    margin:10px;
+    padding: 20px;
+    display: inline-block;
+    font-size: 80%;
+    width: 40%;
+}
+.content-area ul li{
+    padding-bottom: 5px;
+}
+.content-area ul span{
+    width: 150px;
+    display: inline-block;
+}
+/*End all request */
 
 /*mobile devices */
+@media only screen and (max-width:960px){
+    .content-area ul{
+        margin:10px 0;
+        padding: 10px;
+        box-sizing: border-box;
+        display: inline-block;
+        font-size: 100%;
+        width: 100%;
+    }
+}
 @media only  screen and (max-width:420px) {
 	
 
@@ -168,20 +196,6 @@ header .brand{
 /*End side-nav bar */
 }
 
-table{
-    width: 70%;
-    background: red;
-    border-collapse: collapse;
-    border: 1px solid black;
-    margin-top: 20px;
-}
-th,td{
-    border: 1px solid black;
-    padding: 5px 10px;
-}
-td{
-    font-size: 80%;
-}
 .success{
     color: greenyellow;
 }
