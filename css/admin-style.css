@@ -10,7 +10,6 @@ body{
 .container{
     max-width: 960px;
     margin: 0 auto;
-    background: green;
     position: relative;
 }
 /*End global */
@@ -95,7 +94,6 @@ section{
 }
 .service{
     text-align: center;
-    background: ;
     margin: 4%;
     padding: 20px;
     width: 40%;
@@ -121,28 +119,51 @@ section{
 /*mobile devices */
 @media only  screen and (max-width:420px) {
 	
-	.data-form h2{
-	text-align :left;
-	}
+
+/* side-nav bar */
+.side-nav{
+    position: static;
+    width: 80%;
+    margin: auto;
+    background: cadetblue;
+    height: auto;
+    padding-left: 0px;
+    text-align: center;
+}
+ul{
+    margin: 0;
+}
+section{
+    border-bottom: 3px solid white;
+    padding: 10px 0;
+    
+}
+.side-nav h3{
+    margin: 0;
+}
+.side-nav li a{
+    padding: 10px;
+    display: block;
+    margin: 0;
+
+}
+.content-area{
+    float: none;
+    background:white;
+    width: 80%;
+    padding: 30px 20px;
+    margin: auto;
+}
+.service{
+    width: 90%;
+}
+header .brand{
+    padding-bottom: 0;
+}
+/*End side-nav bar */
 }
 
-/* request-list */
-.repair-log{
-    padding: 20px;
-    background: teal;
-    border-bottom: 5px solid grey;
-    color: ghostwhite;
-    max-width: 500px;
-    margin: auto;
-    margin-bottom: 10px;
-}
-.repair-log li{
-    padding: 10px;
-}
-.repair-log li span{
-    width: 150px;
-    display: inline-block;
-}
+
 .success{
     color: greenyellow;
 }
