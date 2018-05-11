@@ -168,7 +168,20 @@ header .brand{
 /*End side-nav bar */
 }
 
-
+table{
+    width: 70%;
+    background: red;
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin-top: 20px;
+}
+th,td{
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+td{
+    font-size: 80%;
+}
 .success{
     color: greenyellow;
 }
