@@ -44,6 +44,16 @@ ul{
 nav li{
     float: left;
 }
+nav li input{
+    padding: 10px;
+    border: none;
+    width: auto;
+    margin-top:10px;
+    border-radius: 5px;
+}
+nav li input:focus{
+    border: 2px solid teal;
+}
 nav a{
     color: white;
     text-decoration: none;
@@ -79,6 +89,7 @@ section{
     margin: 0;
     margin-bottom: 10px;
 }
+
 .side-nav li a{
     color: white;
     margin-bottom: 10px;
@@ -155,7 +166,9 @@ section{
 }
 @media only  screen and (max-width:420px) {
 	
-
+    nav li input{
+        width: 100px;
+    }
 /* side-nav bar */
 .side-nav{
     position: static;
