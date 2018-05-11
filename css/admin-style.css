@@ -92,6 +92,11 @@ section{
     padding: 30px 20px;
     box-sizing: border-box;
 }
+.title{
+    margin: 0;
+    padding-left: 10px;
+    color: teal;
+}
 .service{
     text-align: center;
     margin: 4%;
