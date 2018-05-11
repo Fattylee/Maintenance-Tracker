@@ -75,3 +75,19 @@ for (let i = 1; i < 21; i++) {
 }
 if(document.querySelector(".content-area-pending"))
 document.querySelector(".content-area-pending").innerHTML += markup;
+
+
+markup="";
+for (let i = 1; i < 6; i++) {
+   markup += `
+   <ul>
+   <li><span>Username</span>: yourname${i}</li>
+   <li><span>Maintenance/Repair</span>: repair${i}</li>
+   <li><span>Description</span>: fix problem${i}</li>
+   <li><span>Date</span>: ${i}/${i}/197${i}</li>
+   <li><span>Status</span>: <span class="critical">unresolve</span></li>
+   </ul>
+   `; 
+}
+if(document.querySelector(".content-area-unresolve"))
+document.querySelector(".content-area-unresolve").innerHTML += markup;
