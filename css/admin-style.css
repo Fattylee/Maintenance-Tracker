@@ -137,6 +137,9 @@ section{
     width: 150px;
     display: inline-block;
 }
+.content-area ul button{
+    cursor: pointer;
+}
 /*End all request */
 
 /*mobile devices */
