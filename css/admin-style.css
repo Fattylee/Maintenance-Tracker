@@ -3,6 +3,7 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
+    background: #444444;
 }
 /* global */
 
@@ -47,7 +48,7 @@ nav li{
 nav a{
     color: white;
     text-decoration: none;
-    padding: 10px 0px;
+    padding: 20px 0px 5px;
     margin-left: 15px;
     display: inline-block;
 }
@@ -87,10 +88,31 @@ section{
 }
 .content-area{
     float: right;
-    background: steelblue;
+    background:white;
     width: 70%;
     padding: 30px 20px;
     box-sizing: border-box;
+}
+.service{
+    text-align: center;
+    background: ;
+    margin: 4%;
+    padding: 20px;
+    width: 40%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid  steelblue;
+    display: inline-block;
+}
+.service a{
+    color: steelblue;
+    text-decoration: none;
+}
+.service:hover{
+    background: steelblue;
+}
+.service:hover a{
+    color: white;
 }
 /*End side-nav bar */
 /* form input */
