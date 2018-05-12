@@ -153,9 +153,8 @@ section{
 }
 /*End all request */
 
-/*mobile devices */
-@media only screen and (max-width:520px){
-    /*
+/*medium screen size and mobile phone */
+@media only screen and (max-width:960px){
     .content-area ul{
         margin:10px 0;
         padding: 10px;
@@ -163,7 +162,11 @@ section{
         display: inline-block;
         font-size: 100%;
         width: 100%;
-    }*/
+    }
+}
+/*mobile devices */
+@media only screen and (max-width:520px){
+    
     header .brand{
         line-height: 60px;
         font-size: 1em;
