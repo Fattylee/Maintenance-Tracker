@@ -23,7 +23,7 @@ header{
 header .brand{
     float: left;
     line-height: 60px;
-    font-size: 2em;
+    font-size: 1.5em;
     letter-spacing: 5px;
     border-radius: 50%;
     background: #444444;
@@ -154,7 +154,8 @@ section{
 /*End all request */
 
 /*mobile devices */
-@media only screen and (max-width:960px){
+@media only screen and (max-width:520px){
+    /*
     .content-area ul{
         margin:10px 0;
         padding: 10px;
@@ -162,10 +163,22 @@ section{
         display: inline-block;
         font-size: 100%;
         width: 100%;
+    }*/
+    header .brand{
+        line-height: 60px;
+        font-size: 1em;
+        letter-spacing: 2px;
+        padding: 5px;
     }
 }
 @media only  screen and (max-width:420px) {
-	
+
+        header .brand{
+            line-height: 60px;
+            font-size: 0.5em;
+            letter-spacing: 2px;
+            padding: 5px;
+        }
     nav li input{
         width: 100px;
     }
