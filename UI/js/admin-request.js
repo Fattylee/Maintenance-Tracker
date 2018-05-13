@@ -24,7 +24,8 @@ for (let i = 1; i < 71; i++) {
    <li><span>Maintenance/Repair</span>: repair${i}</li>
    <li><span>Description</span>: fix problem${i}</li>
    <li><span>Date</span>: ${i}/${i}/197${i}</li>
-   <li><span>(Dis)approve</span>: <span class="success">approved</span></li>
+   <li><span>Action</span>: <button class="success">resolve</button> 
+   <button class="pending">pending</button> <button class="critical">unresolve</button></li>
    </ul>
    `; 
 }
