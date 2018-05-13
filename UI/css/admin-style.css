@@ -150,6 +150,15 @@ section{
 }
 .content-area ul button{
     cursor: pointer;
+    background: white;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.content-area ul button:active{
+    box-shadow: 0 0 10px white;;
+    
 }
 /*End all request */
 
