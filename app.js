@@ -11,6 +11,7 @@ app.listen(3000,()=>{
 });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use("/user",router);
 
 class Car{
@@ -23,3 +24,4 @@ class Car{
 }
 
 new Car("brown").print();
+new Car("red").print();
