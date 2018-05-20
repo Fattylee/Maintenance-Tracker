@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/requests",requestController.get);
 
+router.get("/requests/:id",requestController.getRequestId);
+
 module.exports = router;
