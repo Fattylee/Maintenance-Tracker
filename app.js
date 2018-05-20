@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const router = require("./routes/userRoute");
+const router = require("./server/routes/userRoute");
+//import router from "./server/routes/userRoute";
 
 const app = express();
 
@@ -11,3 +12,14 @@ app.listen(3000,()=>{
 
 app.use(bodyParser.json());
 app.use("/user",router);
+
+class Car{
+  constructor(color){
+    this.color = color;
+  }
+  print(){
+    console.log(`the color of my is ${this.color}`);
+  }
+}
+
+new Car("brown").print();

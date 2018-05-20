@@ -1,5 +1,5 @@
-const requests = require("./../dummyData/loggedinUsersRequest");
-
+const requests = require("./../../dummyData/loggedinUsersRequest");
+//import requests from './../../dummyData/loggedinUsersRequest';
 const get = (req,res)=>{
   res.send(requests);
 };
@@ -21,3 +21,4 @@ module.exports ={
   get,
   getRequestId
 };
+
