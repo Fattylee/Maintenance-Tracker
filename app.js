@@ -13,15 +13,3 @@ app.listen(3000,()=>{
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use("/user",router);
-
-class Car{
-  constructor(color){
-    this.color = color;
-  }
-  print(){
-    console.log(`the color of my is ${this.color}`);
-  }
-}
-
-new Car("brown").print();
-new Car("red").print();

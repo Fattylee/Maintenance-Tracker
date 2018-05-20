@@ -37,6 +37,21 @@ class UserRequestHandler{
       message: 'Success'
     })
   }
+
+  static modifyRequest(req,res) {
+    const request = requests.find(requestItem => requestItem.id === parseInt(req.params.id, 10));
+    if (request) {
+      request.username = req.body.username;
+      request.description = req.body.description;
+      request.requestType = req.body.requestType;
+      res.status(200)
+      .json({
+        request,
+        status: 'success',
+        message: 'modified successfully',
+      });
+    }
+  }
   
 
 }

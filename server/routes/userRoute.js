@@ -10,4 +10,6 @@ router.get("/requests/:id",requestController.getARequest);
 
 router.post("/requests",requestController.postARequest);
 
+router.put("/requests/:id",requestController.modifyRequest);
+
 module.exports = router;
