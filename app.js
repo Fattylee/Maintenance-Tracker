@@ -1,7 +1,6 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const router = require("./server/routes/userRoute");
-//import router from "./server/routes/userRoute";
+import express from "express";
+import bodyParser from "body-parser";
+import router from "./server/routes/userRoute";
 
 const app = express();
 
@@ -12,4 +11,4 @@ app.listen(3000,()=>{
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use("/user",router);
+app.use("/users",router);

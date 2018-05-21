@@ -1,5 +1,4 @@
-const requests = require("./../../dummyData/loggedinUsersRequest");
-//import requests from './../../dummyData/loggedinUsersRequest';
+import requests from "./../../dummyData/loggedinUsersRequest";
 
 
 class UserRequestHandler{
@@ -58,4 +57,4 @@ class UserRequestHandler{
 
 
 
-module.exports = UserRequestHandler;
+export default UserRequestHandler;
