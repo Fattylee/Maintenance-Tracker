@@ -4,17 +4,13 @@ import users from './../../dummyData/userAuth';
 class UserAuthHandler{
 
   static signupUser(req, res) {
-    const {
-      name, email,username, password
-    } = req.body;
-    const id = users.length + 1;
     const newUser = {
-      id,
-      name,
-      email:email.toLowerCase(),
-      username:username.toLowerCase(),
-      password
-    };
+      id: users.length + 1,
+      name: req.body.name,
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password,
+    }
     users.push(newUser);
     res.status(201)
     .json({
