@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: 'yourname1',
-    email:"abc@yahoo.com",
+    email:"abcs@yahoo.com",
     requestType: 'repair',
     description: 'fix problem1'
   },
