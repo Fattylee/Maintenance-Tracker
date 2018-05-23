@@ -27,7 +27,7 @@
   "scripts": {
     "babel-node": "babel-node --presets=es2015",
     "start": "nodemon --exec npm run babel-node -- ./app.js",
-    "test": "mocha server/tests/test.js --exit --compilers js:babel-core/register",
+    "test": "nyc --reporter=html --reporter=text mocha server/tests/test.js --exit --compilers js:babel-core/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
