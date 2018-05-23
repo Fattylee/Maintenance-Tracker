@@ -6,6 +6,7 @@
   "dependencies": {
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "coveralls": "^3.0.1",
     "express": "^4.16.3",
     "validator": "^10.2.0"
   },
