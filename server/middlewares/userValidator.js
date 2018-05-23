@@ -66,7 +66,7 @@ class userValidator{
       return res.status(409)
       .json({
         status: 'Conflict',
-        message: 'email already exist, use another email or login to your account',
+        message: 'email already exist, login or sign up with another email',
       });
     }
 

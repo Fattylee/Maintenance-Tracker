@@ -7,7 +7,7 @@ const { expect, should } = chai;
 
 chai.use(chaiHttp);
 
-describe('POST business', () => {
+describe('POST request', () => {
   it('Should return 201 for a sucessful post', (done) => {
     chai.request(app)
       .post('/api/v1/users/requests')
@@ -24,21 +24,22 @@ describe('POST business', () => {
         done();
       });
   });
-  it('Should return 400 for post with empty field', (done) => {
-    chai.request(app)
-      .post('/api/v1/users/requests')
-      .send({
-        id: 1,
-        name: 'Balogun Fatai',
-        email: 'abcd@gmail.com',
-        username: '',
-        password: '1234',
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(400);
-        expect(res.body.message).to.equal('Business name cannot be empty');
-        done();
-      });
-  });
 });
+//   it('Should return 404 for post with empty email field', (done) => {
+//     chai.request(app)
+//       .post('/api/v1/users/requests')
+//       .send({
+//         id: 1,
+//         name: 'Balogun Fatai',
+//         //email: 'abcd@gmail.com',
+//         username: 'tgyjgtgt',
+//         password: '1234',
+//       })
+//       .end((err, res) => {
+//         expect(res).to.have.status(404);
+//         expect(res.body.message).to.equal('No input was received for email');
+//         done();
+//       });
+//   });
+// });
 
