@@ -14,8 +14,8 @@ router.post("/requests", requestValidator.postARequest, requestController.postAR
 
 router.put("/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
 
-router.use("/auth/signup",userValidator.signupInput);
+//router.use("/auth/signup",userValidator.signupInput);
 
-router.post("/auth/signup", auth.signupUser);
+router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 
 export default router;
