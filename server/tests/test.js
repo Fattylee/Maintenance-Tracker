@@ -386,6 +386,23 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  it('Should return 400 for bad requestType', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'none sense',
+        description: 'hdjw bgvgvv bhbh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('requestType can only be maintenance / repair');
+        done();
+      });
+  });
+
 
 
 });
