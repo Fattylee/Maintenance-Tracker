@@ -438,5 +438,22 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  it('Should return 406 for invalid description', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: '2ewef'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+        done();
+      });
+  });
+
 
 });
