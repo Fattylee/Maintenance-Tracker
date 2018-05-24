@@ -26,7 +26,7 @@ describe('POST request', () => {
       });
   });
 
-  it('Should return 404 for post with empty name field', (done) => {
+  it('Should return 406 for post with empty name field', (done) => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
@@ -39,6 +39,23 @@ describe('POST request', () => {
       .end((err, res) => {
         expect(res).to.have.status(406);
         expect(res.body.message).to.equal('name cannot be empty');
+        done();
+      });
+  });
+  
+  it('Should return 406 for post with invalid name length', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        //id: 1,
+        name: 'tr',
+        //email: 'abcd@gmail.com',
+        //requestType: 'repair',
+        //description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name should be 3 to 30 characters long');
         done();
       });
   });
