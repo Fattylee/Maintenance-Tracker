@@ -301,4 +301,39 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  it('Should return 406 for invalid name character ', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: 'er',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'hdjw bgvgvv bhbh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name should be 3 to 30 characters long');
+        done();
+      });
+  });
+
+  it('Should return 404 for undefined email', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        //email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'hdjw bgvgvv bhbh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for email');
+        done();
+      });
+  });
+
+
 });
