@@ -63,6 +63,13 @@ class requestValidator{
         message: 'No input was received for email',
       });
     }
+    if (email === '' ){
+      return res.status(404)
+      .json({
+        status: 'Not found',
+        message: 'email cannot be empty',
+      });
+    }
     if (!validator.isEmail(email)) {
       return res.status(406)
         .json({
@@ -119,7 +126,7 @@ class requestValidator{
     
   
   static postARequest(req, res, next) {
-    let { name, email,requestType, description } = req.body;
+    let { name, email, requestType, description } = req.body;
 
     if (name === undefined ){
       return res.status(404)

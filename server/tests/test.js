@@ -13,11 +13,11 @@ describe('POST request', () => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
-        //id: 1,
+        id: 1,
         //name: 'Balogun Fatai',
-        //email: 'abcd@gmail.com',
-        //requestType: 'repair',
-        //description: 'fix problem1'
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'fix problem1'
       })
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -30,11 +30,11 @@ describe('POST request', () => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
-        //id: 1,
+        id: 1,
         name: '',
-        //email: 'abcd@gmail.com',
-        //requestType: 'repair',
-        //description: 'fix problem1'
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'fix problem1'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -47,11 +47,11 @@ describe('POST request', () => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
-        //id: 1,
+        id: 1,
         name: 'tr',
-        //email: 'abcd@gmail.com',
-        //requestType: 'repair',
-        //description: 'fix problem1'
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'fix problem1'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -64,7 +64,7 @@ describe('POST request', () => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
-        id: 1,
+        id: 1 ,
         name: 'Balogun Fatai',
         //email: '',
         requestType: 'repair',
@@ -111,7 +111,7 @@ describe('POST request', () => {
       });
   });
 
-  it('Should return 406 for invalid email', (done) => {
+  it('Should return 406 for invalid email length', (done) => {
     chai.request(app)
       .post('/api/v1/users/requests')
       .send({
@@ -124,6 +124,23 @@ describe('POST request', () => {
       .end((err, res) => {
         expect(res).to.have.status(406);
         expect(res.body.message).to.equal('email should be 10 to 50 characters long');
+        done();
+      });
+  });
+
+  it('Should return 404 for undefined requestType field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'hnn4n@hiji.com',
+        //requestType: 'repair',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for requestType');
         done();
       });
   });
