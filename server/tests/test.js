@@ -194,6 +194,24 @@ describe('POST request', () => {
             done();
           });
       });
+
+      it('Should return 404 for post with undefined decription field', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+            description: 'hdjw'
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(406);
+            expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+            done();
+          });
+      });
+      
   });
 
 
