@@ -18,6 +18,24 @@ describe('Test API', () => {
       });
   });
 
+  it('Should return 404 for routes not specified', (done) => {
+    chai.request(app)
+      .get('/another/undefined/route')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+  it('Undefined Routes Should Return 404', (done) => {
+    chai.request(app)
+      .post('/another/undefined/route')
+      .send({ random: 'random' })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+
 })
 describe('POST request', () => {
   
