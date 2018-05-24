@@ -503,4 +503,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for invalid character length', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Bi',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name should be 3 to 30 characters long');
+        done();
+      });
+  });
+
 })

@@ -25,7 +25,7 @@ class userValidator{
     if (!validator.isLength(name,{ min: 3, max: 30 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'name should be 3 to 30 characters long',
         });
     }
