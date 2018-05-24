@@ -7,17 +7,17 @@ const { expect, should } = chai;
 
 chai.use(chaiHttp);
 
-describe('Test API', () => {
-  it('Should return 200 for the default route', (done) => {
-    chai.request(app)
-      .get('/')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        done();
-      });
-  });
-  
-})
+// describe('Test API', () => {
+//   it('Should return 404 for all other route', (done) => {
+//     chai.request(app)
+//       .all('*')
+//       .end((err, res) => {
+//         expect(res.status).to.equal(404);
+//         done();
+//       });
+//   });
+
+// })
 describe('POST request', () => {
   
   it('Should return 404 for post with undefined name field', (done) => {
@@ -467,3 +467,24 @@ describe('MODIFY GET request', () => {
   });
 
 });
+
+describe('Test Signup', () => {
+  it('Should return 404 for undefined name', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          //name: 'Balogun Fatai',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for name');
+        done();
+      });
+
+  });
+
+})

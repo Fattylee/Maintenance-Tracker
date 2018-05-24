@@ -44,9 +44,10 @@ class UserRequestHandler {
           message: 'modified successfully',
         });
   }
-  static all(req,res,next){
+  static all(req, res, next){
+    
     return res.status(404)
-    .send("</h1>Oops!, The page you're looking for doesn't exist</h1>");
+    .send("<h1>Oops!, The page you're looking for doesn't exist</h1>");
   }
 
 }
