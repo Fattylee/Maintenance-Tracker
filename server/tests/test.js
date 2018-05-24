@@ -254,3 +254,17 @@ describe('GET request', () => {
   });
 
 });
+
+describe('MODIFY GET request', () => {
+  
+  it('Should return 404 for invalid id', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/84')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('Invalid request id');
+        done();
+      });
+  });
+
+});
