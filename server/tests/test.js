@@ -7,6 +7,17 @@ const { expect, should } = chai;
 
 chai.use(chaiHttp);
 
+describe('Test API', () => {
+  it('Should return 200 for the default route', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  
+})
 describe('POST request', () => {
   
   it('Should return 404 for post with undefined name field', (done) => {
@@ -454,6 +465,5 @@ describe('MODIFY GET request', () => {
         done();
       });
   });
-
 
 });

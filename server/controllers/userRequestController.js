@@ -3,6 +3,7 @@ import requests from './../../dummyData/loggedinUsersRequest';
 
 class UserRequestHandler {
 
+
   static getAllRequest(req, res) {
     res.send(requests);
   }
@@ -42,6 +43,10 @@ class UserRequestHandler {
           status: 'success',
           message: 'modified successfully',
         });
+  }
+  static all(req,res,next){
+    return res.status(404)
+    .send("</h1>Oops!, The page you're looking for doesn't exist</h1>");
   }
 
 }
