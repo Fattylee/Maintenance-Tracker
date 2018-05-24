@@ -145,5 +145,22 @@ describe('POST request', () => {
       });
   });
 
+  it('Should return 404 for undefined requestType field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'hnn4n@hiji.com',
+        requestType: 'repahdhdir',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('requestType can only be maintenance / repair');
+        done();
+      });
+  });
+
 });
 
