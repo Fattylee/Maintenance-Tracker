@@ -59,5 +59,39 @@ describe('POST request', () => {
         done();
       });
   });
+
+  it('Should return 404 for post with undefined email field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        //email: '',
+        requestType: 'repair',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for email');
+        done();
+      });
+  });
+  // it('Should return 404 for post with empty email field', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/users/requests')
+  //     .send({
+  //       id: 1,
+  //       name: 'Balogun Fatai',
+  //       email: '',
+  //       requestType: 'repair',
+  //       description: 'fix problem1'
+  //     })
+  //     .end((err, res) => {
+  //       expect(res).to.have.status(406);
+  //       expect(res.body.message).to.equal('email cannot be empty');
+  //       done();
+  //     });
+  // });
+
 });
 

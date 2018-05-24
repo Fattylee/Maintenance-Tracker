@@ -152,6 +152,13 @@ class requestValidator{
         message: 'No input was received for email',
       });
     }
+    if (validator.isEmpty(email)) {
+      return res.status(406)
+        .json({
+          status: 'Not acceptable',
+          message: 'email cannot be empty',
+        });
+    }
      email = validator.trim(email);
      email = email.toLowerCase();
 
