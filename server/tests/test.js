@@ -520,4 +520,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 400 for undefined email field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          //email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('No input was received for email');
+        done();
+      });
+  });
+
 })

@@ -30,9 +30,9 @@ class userValidator{
         });
     }
     if (email === undefined ){
-      return res.status(404)
+      return res.status(400)
       .json({
-        status: 'Not found',
+        status: 'Bad request',
         message: 'No input was received for email',
       });
     }
