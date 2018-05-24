@@ -97,7 +97,7 @@ class userValidator{
     if (validator.contains(username," ")) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'username should not contain whitespace',
         });
     }
