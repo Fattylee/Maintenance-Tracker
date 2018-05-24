@@ -690,4 +690,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for invalid password length', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          username: 'yournameh',
+          password: 'jh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('password should be 4 to 16 characters long');
+        done();
+      });
+  });
+
 })

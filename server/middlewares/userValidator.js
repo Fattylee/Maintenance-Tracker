@@ -129,7 +129,7 @@ class userValidator{
     if (!validator.isLength(password,{ min: 4, max: 16 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'password should be 4 to 16 characters long',
         });
     }
