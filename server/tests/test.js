@@ -111,5 +111,22 @@ describe('POST request', () => {
       });
   });
 
+  it('Should return 406 for invalid email', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'h@h.com',
+        requestType: 'repair',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('email should be 10 to 50 characters long');
+        done();
+      });
+  });
+
 });
 

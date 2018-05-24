@@ -162,12 +162,19 @@ class requestValidator{
 
      email = validator.trim(email);
      email = email.toLowerCase();
-     
+
      if (!validator.isEmail(email)) {
       return res.status(406)
         .json({
           status: 'Not accepted',
           message: 'please enter a valid email format',
+        });
+    }
+    if (!validator.isLength(email,{ min: 10, max: 50 })) {
+      return res.status(406)
+        .json({
+          status: 'Not accepted',
+          message: 'email should be 10 to 50 characters long',
         });
     }
     if (requestType === undefined ){
