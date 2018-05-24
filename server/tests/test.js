@@ -177,43 +177,57 @@ describe('POST request', () => {
         expect(res.body.message).to.equal('No input was received for description');
         done();
       });
+    })
 
-      it('Should return 404 for post with undefined decription field', (done) => {
-        chai.request(app)
-          .post('/api/v1/users/requests')
-          .send({
-            id: 1,
-            name: 'Balogun Fatai',
-            email: 'abcd@gmail.com',
-            requestType: 'repair',
-            description: ''
-          })
-          .end((err, res) => {
-            expect(res).to.have.status(404);
-            expect(res.body.message).to.equal('description cannot be empty');
-            done();
-          });
+    it('Should return 404 for post with undefined decription field', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/requests')
+        .send({
+          id: 1,
+          name: 'Balogun Fatai',
+          email: 'abcd@gmail.com',
+          requestType: 'repair',
+          description: ''
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(404);
+          expect(res.body.message).to.equal('description cannot be empty');
+          done();
+        });
       });
 
-      it('Should return 404 for post with undefined decription field', (done) => {
-        chai.request(app)
-          .post('/api/v1/users/requests')
-          .send({
-            id: 1,
-            name: 'Balogun Fatai',
-            email: 'abcd@gmail.com',
-            requestType: 'repair',
-            description: 'hdjw'
-          })
-          .end((err, res) => {
-            expect(res).to.have.status(406);
-            expect(res.body.message).to.equal('description should be 10 to 50 characters long');
-            done();
-          });
-      });
-      
-  });
+    it('Should return 406 for post with invalid decription character length', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/requests')
+        .send({
+          id: 1,
+          name: 'Balogun Fatai',
+          email: 'abcd@gmail.com',
+          requestType: 'repair',
+          description: 'hdjw'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(406);
+          expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+          done();
+        });
+    });
 
-
-});
+    it('Should return 201 if successful', (done) => {
+      chai.request(app)
+        .post('/api/v1/users/requests')
+        .send({
+          id: 1,
+          name: 'Balogun Fatai',
+          email: 'abcd@gmail.com',
+          requestType: 'repair',
+          description: 'hdjw bgvgvv bhbh'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(201);
+          expect(res.body.message).to.equal('Success');
+          done();
+        });
+    });
+})
 
