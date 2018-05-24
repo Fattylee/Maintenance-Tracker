@@ -136,7 +136,7 @@ class userValidator{
     if (validator.contains(password," ")) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'password should not contains whitespace',
         });
     }
