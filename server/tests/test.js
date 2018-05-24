@@ -537,4 +537,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for empty email field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('email cannot be empty');
+        done();
+      });
+  });
+
 })

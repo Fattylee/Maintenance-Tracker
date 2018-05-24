@@ -37,7 +37,7 @@ class userValidator{
       });
     }
     if (validator.isEmpty(email)) {
-      return res.status(404)
+      return res.status(406)
         .json({
           status: 'Not found',
           message: 'email cannot be empty',
@@ -46,7 +46,7 @@ class userValidator{
     if (!validator.isEmail(email)) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'please enter a valid email format',
         });
     }
