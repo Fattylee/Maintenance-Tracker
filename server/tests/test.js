@@ -267,4 +267,21 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  it('Should return 404 for undefined name', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        //name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'hdjw bgvgvv bhbh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for name');
+        done();
+      });
+  });
+
 });
