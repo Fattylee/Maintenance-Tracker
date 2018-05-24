@@ -707,4 +707,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 201 for successful signup', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"marcus@yahoo.com",
+          username: 'yournamehk',
+          password: 'jbjbj'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.message).to.equal('Success');
+        done();
+      });
+  });
+
 })
