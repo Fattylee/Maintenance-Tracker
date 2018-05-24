@@ -159,9 +159,17 @@ class requestValidator{
           message: 'email cannot be empty',
         });
     }
+
      email = validator.trim(email);
      email = email.toLowerCase();
-
+     
+     if (!validator.isEmail(email)) {
+      return res.status(406)
+        .json({
+          status: 'Not accepted',
+          message: 'please enter a valid email format',
+        });
+    }
     if (requestType === undefined ){
       return res.status(404)
       .json({
