@@ -129,9 +129,9 @@ class requestValidator{
       });
     }
     if (validator.isEmpty(name)) {
-      return res.status(404)
+      return res.status(406)
         .json({
-          status: 'Not found',
+          status: 'Not acceptable',
           message: 'name cannot be empty',
         });
     }
