@@ -12,7 +12,7 @@ router.get("/requests/:id", requestValidator.getARequest, requestController.getA
 
 router.post("/requests", requestValidator.postARequest, requestController.postARequest);
 
-router.put("/requests/:id",requestController.modifyRequest);
+router.put("/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
 
 router.use("/auth/signup",userValidator.signupInput);
 

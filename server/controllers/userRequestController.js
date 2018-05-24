@@ -26,21 +26,20 @@ class UserRequestHandler {
   }
 
   static modifyRequest(req, res) {
-    const request = requests.find(requestItem => requestItem.id === parseInt(req.params.id, 10));
-    if (request) {
+
+      const request = req.body.request;
       request.name = req.body.name;
       request.email = req.body.email;
-      request.description = req.body.description;
       request.requestType = req.body.requestType;
+      request.description = req.body.description;
+      
       res.status(200)
         .json({
           request,
           status: 'success',
           message: 'modified successfully',
         });
-    }
   }
-
 
 }
 
