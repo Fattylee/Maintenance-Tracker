@@ -56,7 +56,7 @@ class userValidator{
     if (!validator.isLength(email,{ min: 10, max: 50 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'email should be 10 to 50 characters long',
         });
     }
