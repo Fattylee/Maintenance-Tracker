@@ -9,7 +9,11 @@ class UserRequestHandler {
 
   static getARequest(req, res) {
     res.status(200)
-    .send(req.body.request);
+    .json({
+      request:req.body.request,
+      status: 'ok',
+      message: 'successful request'
+    });
   }
 
   static postARequest(req, res) {

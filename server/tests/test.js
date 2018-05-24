@@ -229,5 +229,19 @@ describe('POST request', () => {
           done();
         });
     });
-})
+});
 
+describe('GET request', () => {
+  
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests/1')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('successful request');
+        done();
+      });
+  });
+
+
+});
