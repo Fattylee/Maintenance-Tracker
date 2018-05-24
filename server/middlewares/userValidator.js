@@ -118,9 +118,9 @@ class userValidator{
       });
     }
     if (validator.isEmpty(password)) {
-      return res.status(404)
+      return res.status(406)
         .json({
-          status: 'Not found',
+          status: 'Not acceptable',
           message: 'password cannot be empty',
         });
     }
