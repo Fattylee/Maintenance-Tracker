@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/requests",requestController.getAllRequest);
 
-router.get("/requests/:id",requestController.getARequest);
+router.get("/requests/:id", requestValidator.getARequest, requestController.getARequest);
 
 router.post("/requests", requestValidator.postARequest, requestController.postARequest);
 

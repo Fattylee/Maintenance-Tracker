@@ -8,28 +8,15 @@ class UserRequestHandler {
   }
 
   static getARequest(req, res) {
-    const requestId = req.params.id;
-    const request = requests.find(request => request.id === parseInt(requestId));
-
-    if (!request) {
-      res.status(404);
-      res.send('Invalid request id');
-      return false;
-    }
-
-    res.send(request);
+    res.status(200)
+    .send(req.body.request);
   }
 
   static postARequest(req, res) {
     const { name,email, requestType, description } = req.body;
     const id = requests[requests.length - 1].id + 1;
-    const newRequest = {
-      id,
-      name,
-      email,
-      requestType,
-      description,
-    };
+
+    const newRequest = Object.assign({id},req.body);
     requests.push(newRequest);
     res.status(201)
       .json({

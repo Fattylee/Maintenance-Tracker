@@ -3,6 +3,20 @@ import users from './../../dummyData/loggedinUsersRequest';
 
 class requestValidator{
 
+  static getARequest(req,res,next){
+    const requestId = req.params.id;
+    const request = users.find(request => request.id === parseInt(requestId));
+
+    if (!request) {
+      return res.status(404)
+      .json({
+        status: "Not found",
+        message: 'Invalid request id',
+      });
+    }
+    req.body.request = request;
+    return next();
+  }
   static postARequest(req, res, next) {
     let { name, email,requestType, description } = req.body;
 
