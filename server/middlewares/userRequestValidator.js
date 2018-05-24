@@ -4,7 +4,7 @@ import users from './../../dummyData/loggedinUsersRequest';
 class requestValidator{
 
   static getARequest(req,res,next){
-    const requestId = req.params.id;
+    // const requestId = req.params.id;
     const request = users.find(request => request.id === parseInt(requestId));
 
     if (!request) {
