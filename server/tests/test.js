@@ -284,4 +284,21 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  it('Should return 404 for empty name field', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: '',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'hdjw bgvgvv bhbh'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('name cannot be empty');
+        done();
+      });
+  });
+
 });
