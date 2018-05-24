@@ -177,6 +177,23 @@ describe('POST request', () => {
         expect(res.body.message).to.equal('No input was received for description');
         done();
       });
+
+      it('Should return 404 for post with undefined decription field', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+            description: ''
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(404);
+            expect(res.body.message).to.equal('description cannot be empty');
+            done();
+          });
+      });
   });
 
 
