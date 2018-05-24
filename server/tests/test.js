@@ -94,6 +94,22 @@ describe('POST request', () => {
       });
   });
 
- 
+  it('Should return 406 for invalid email', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'hhhkllk',
+        requestType: 'repair',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('please enter a valid email format');
+        done();
+      });
+  });
+
 });
 
