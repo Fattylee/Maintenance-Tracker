@@ -480,11 +480,27 @@ describe('Test Signup', () => {
           password: '1234'
       })
       .end((err, res) => {
-        expect(res).to.have.status(404);
+        expect(res).to.have.status(400);
         expect(res.body.message).to.equal('No input was received for name');
         done();
       });
+  });
 
+  it('Should return 404 for empty name field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: '',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name cannot be empty');
+        done();
+      });
   });
 
 })

@@ -7,16 +7,16 @@ class userValidator{
     let { name, email, username, password } = req.body;
 
     if (name === undefined ){
-      return res.status(404)
+      return res.status(400)
       .json({
-        status: 'Not found',
+        status: 'Bad request',
         message: 'No input was received for name',
       });
     }
     if (validator.isEmpty(name)) {
-      return res.status(404)
+      return res.status(406)
         .json({
-          status: 'Not found',
+          status: 'Not acceptable',
           message: 'name cannot be empty',
         });
     }
