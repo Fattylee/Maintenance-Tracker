@@ -90,7 +90,7 @@ class userValidator{
     if (!validator.isLength(username,{ min: 2, max: 15 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
+          status: 'Not acceptable',
           message: 'username should be 2 to 15 characters long',
         });
     }
