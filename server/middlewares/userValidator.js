@@ -78,9 +78,9 @@ class userValidator{
       });
     }
     if (validator.isEmpty(username)) {
-      return res.status(404)
+      return res.status(406)
         .json({
-          status: 'Not found',
+          status: 'Not acceptable',
           message: 'username cannot be empty',
         });
     }
