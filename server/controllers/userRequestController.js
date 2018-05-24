@@ -44,11 +44,20 @@ class UserRequestHandler {
           message: 'modified successfully',
         });
   }
+
+  static home(req, res, next){
+    res.status(200)
+    .json({
+      status: 'success',
+      message: 'Welcome to fattylee Maintenance Tracker App. Have Fun!',
+    });
+  }
   static all(req, res, next){
     
     return res.status(404)
     .send("<h1>Oops!, The page you're looking for doesn't exist</h1>");
   }
+
 
 }
 

@@ -3,21 +3,22 @@ import chai from 'chai';
 import app from './../../app';
 
 
-const { expect, should } = chai;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
-// describe('Test API', () => {
-//   it('Should return 404 for all other route', (done) => {
-//     chai.request(app)
-//       .all('*')
-//       .end((err, res) => {
-//         expect(res.status).to.equal(404);
-//         done();
-//       });
-//   });
+describe('Test API', () => {
+  it('Should return 200 for home page', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('Welcome to fattylee Maintenance Tracker App. Have Fun!');
+        done();
+      });
+  });
 
-// })
+})
 describe('POST request', () => {
   
   it('Should return 404 for post with undefined name field', (done) => {
