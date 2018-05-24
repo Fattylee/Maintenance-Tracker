@@ -26,12 +26,11 @@ class UserRequestHandler {
   }
 
   static modifyRequest(req, res) {
-
-      const request = req.body.request;
-      request.name = req.body.name;
-      request.email = req.body.email;
-      request.requestType = req.body.requestType;
-      request.description = req.body.description;
+    const request = req.body.request;
+    request.name = req.body.name;
+    request.email = req.body.email;
+    request.requestType = req.body.requestType;
+    request.description = req.body.description;
       
       res.status(200)
         .json({
