@@ -5,7 +5,11 @@ class UserRequestHandler {
 
 
   static getAllRequest(req, res) {
-    res.send(requests);
+    res.status(200)
+    .json({
+      users: requests,
+      message: 'successful request'
+    });
   }
 
   static getARequest(req, res) {

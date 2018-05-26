@@ -36,7 +36,8 @@ describe('Test API', () => {
       });
   });
 
-})
+})// End Test API
+
 describe('POST request', () => {
   
   it('Should return 404 for post with undefined name field', (done) => {
@@ -255,9 +256,22 @@ describe('POST request', () => {
           done();
         });
     });
-});
+});//End POST request
 
-describe('GET request', () => {
+describe('GET all request', () => {
+  
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .get('/api/v1/users/requests')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.message).to.equal('successful request');
+        done();
+      });
+  });
+
+});//End GET all request
+describe('GET A request', () => {
   
   it('Should return 200 if successful', (done) => {
     chai.request(app)
@@ -279,7 +293,7 @@ describe('GET request', () => {
       });
   });
 
-});
+});//End GET A request
 
 describe('MODIFY GET request', () => {
   
@@ -749,4 +763,4 @@ describe('Test Signup', () => {
       });
   });
 
-})
+});//End Test Signup
