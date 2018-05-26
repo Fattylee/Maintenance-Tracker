@@ -375,6 +375,24 @@ describe('MODIFY GET request', () => {
       });
   });
 
+  
+  it('Should return 406 for non-alphanumeric characters name field', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+          id: 1,
+          name: '???@$%',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name can only contains alphanumeric characters');
+        done();
+      });
+  });
+
   it('Should return 404 for undefined email', (done) => {
     chai.request(app)
       .put('/api/v1/users/requests/1')
