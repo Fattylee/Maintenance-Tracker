@@ -44,7 +44,6 @@ describe('POST request', () => {
       .post('/api/v1/users/requests')
       .send({
         id: 1,
-        //name: 'Balogun Fatai',
         email: 'abcd@gmail.com',
         requestType: 'repair',
         description: 'fix problem1'
@@ -96,7 +95,6 @@ describe('POST request', () => {
       .send({
         id: 1 ,
         name: 'Balogun Fatai',
-        //email: '',
         requestType: 'repair',
         description: 'fix problem1'
       })
@@ -165,7 +163,6 @@ describe('POST request', () => {
         id: 1,
         name: 'Balogun Fatai',
         email: 'hnn4n@hiji.com',
-        //requestType: 'repair',
         description: 'fix problem1'
       })
       .end((err, res) => {
@@ -200,7 +197,6 @@ describe('POST request', () => {
         name: 'Balogun Fatai',
         email: 'abcd@gmail.com',
         requestType: 'repair',
-        //description: 'fix problem1'
       })
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -302,7 +298,6 @@ describe('MODIFY GET request', () => {
       .put('/api/v1/users/requests/1')
       .send({
         id: 1,
-        //name: 'Balogun Fatai',
         email: 'abcd@gmail.com',
         requestType: 'repair',
         description: 'hdjw bgvgvv bhbh'
@@ -354,7 +349,6 @@ describe('MODIFY GET request', () => {
       .send({
         id: 1,
         name: 'Balogun Fatai',
-        //email: 'abcd@gmail.com',
         requestType: 'repair',
         description: 'hdjw bgvgvv bhbh'
       })
@@ -406,7 +400,6 @@ describe('MODIFY GET request', () => {
         id: 1,
         name: 'Balogun Fatai',
         email: 'abcd@gmail.com',
-        //requestType: 'repair',
         description: 'hdjw bgvgvv bhbh'
       })
       .end((err, res) => {
@@ -441,7 +434,6 @@ describe('MODIFY GET request', () => {
         name: 'Balogun Fatai',
         email: 'abcd@gmail.com',
         requestType: 'repair',
-        //description: 'hdjw bgvgvv bhbh'
       })
       .end((err, res) => {
         expect(res).to.have.status(404);
@@ -493,7 +485,6 @@ describe('Test Signup', () => {
       .post('/api/v1/users/auth/signup')
       .send({
           id: 1,
-          //name: 'Balogun Fatai',
           email:"abcs@yahoo.com",
           username: 'yourname1',
           password: '1234'
@@ -545,7 +536,6 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          //email:"abcs@yahoo.com",
           username: 'yourname1',
           password: '1234'
       })
@@ -683,7 +673,6 @@ describe('Test Signup', () => {
           name: 'Fatai Balogun',
           email:"abckl@yahoo.com",
           username: 'yournameh',
-          //password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
