@@ -10,7 +10,6 @@ class requestValidator{
     if (!request) {
       return res.status(404)
       .json({
-        status: "Not found",
         message: 'Invalid request id',
       });
     }
@@ -25,7 +24,6 @@ class requestValidator{
     if (!request) {
       return res.status(404)
       .json({
-        status: "Not found",
         message: 'Invalid request id',
       });
     }
@@ -35,14 +33,12 @@ class requestValidator{
     if (name === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for name',
       });
     }
     if (validator.isEmpty(name)) {
       return res.status(404)
         .json({
-          status: 'Not found',
           message: 'name cannot be empty',
         });
     }
@@ -51,7 +47,6 @@ class requestValidator{
     if (!validator.isLength(name,{ min: 3, max: 30 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'name should be 3 to 30 characters long',
         });
     }
@@ -59,21 +54,18 @@ class requestValidator{
     if (email === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for email',
       });
     }
     if (email === '' ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'email cannot be empty',
       });
     }
     if (!validator.isEmail(email)) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'please enter a valid email format',
         });
     }
@@ -83,7 +75,6 @@ class requestValidator{
     if (requestType === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for requestType',
       });
     }
@@ -91,7 +82,6 @@ class requestValidator{
     if (requestType.toLowerCase() !== "maintenance" && requestType.toLowerCase() !== "repair") {
       return res.status(400)
         .json({
-          status: 'Bad request',
           message: 'requestType can only be maintenance / repair',
         });
     }
@@ -99,14 +89,12 @@ class requestValidator{
     if (description === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for description',
       });
     }
     if (validator.isEmpty(description)) {
       return res.status(404)
         .json({
-          status: 'Not found',
           message: 'description cannot be empty',
         });
     }
@@ -115,7 +103,6 @@ class requestValidator{
     if (!validator.isLength(description,{ min: 10, max: 50 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'description should be 10 to 50 characters long',
         });
     }
@@ -131,14 +118,12 @@ class requestValidator{
     if (name === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for name',
       });
     }
     if (validator.isEmpty(name)) {
       return res.status(406)
         .json({
-          status: 'Not acceptable',
           message: 'name cannot be empty',
         });
     }
@@ -147,7 +132,6 @@ class requestValidator{
     if (!validator.isLength(name,{ min: 3, max: 30 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'name should be 3 to 30 characters long',
         });
     }
@@ -155,14 +139,12 @@ class requestValidator{
     if (email === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for email',
       });
     }
     if (validator.isEmpty(email)) {
       return res.status(406)
         .json({
-          status: 'Not acceptable',
           message: 'email cannot be empty',
         });
     }
@@ -173,21 +155,18 @@ class requestValidator{
      if (!validator.isEmail(email)) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'please enter a valid email format',
         });
     }
     if (!validator.isLength(email,{ min: 10, max: 50 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'email should be 10 to 50 characters long',
         });
     }
     if (requestType === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for requestType',
       });
     }
@@ -195,7 +174,6 @@ class requestValidator{
     if (requestType.toLowerCase() !== "maintenance" && requestType.toLowerCase() !== "repair") {
       return res.status(400)
         .json({
-          status: 'Bad request',
           message: 'requestType can only be maintenance / repair',
         });
     }
@@ -203,14 +181,12 @@ class requestValidator{
     if (description === undefined ){
       return res.status(404)
       .json({
-        status: 'Not found',
         message: 'No input was received for description',
       });
     }
     if (validator.isEmpty(description)) {
       return res.status(404)
         .json({
-          status: 'Not found',
           message: 'description cannot be empty',
         });
     }
@@ -219,7 +195,6 @@ class requestValidator{
     if (!validator.isLength(description,{ min: 10, max: 50 })) {
       return res.status(406)
         .json({
-          status: 'Not accepted',
           message: 'description should be 10 to 50 characters long',
         });
     }
