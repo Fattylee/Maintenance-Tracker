@@ -645,6 +645,22 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for undefined username field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('no input was received for username');
+        done();
+      });
+  });
+
   it('Should return 406 for empty username field', (done) => {
     chai.request(app)
       .post('/api/v1/users/auth/signup')
