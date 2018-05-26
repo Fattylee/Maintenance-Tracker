@@ -17,7 +17,7 @@ class requestValidator{
     return next();
   }//End getARequest
   
-  static modifyRequest(req,res,next){
+  static modifyRequest(req, res, next){
     const requestId = req.params.id;
     const request = users.find(request => request.id === parseInt(requestId));
 

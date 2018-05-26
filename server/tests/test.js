@@ -477,7 +477,24 @@ describe('MODIFY GET request', () => {
       });
   });
 
-});
+  it('Should return 205 for succesful modification', (done) => {
+    chai.request(app)
+      .put('/api/v1/users/requests/1')
+      .send({
+        id: 1,
+        name: 'Ali BillGate',
+        email: 'abcbil@gmail.com',
+        requestType: 'repair',
+        description: 'broken screen'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(205);
+        expect(res.body.message).to.equal('modified successfully');
+        done();
+      });
+  });
+
+});//End MODIFY GET request
 
 describe('Test Signup', () => {
   it('Should return 404 for undefined name', (done) => {

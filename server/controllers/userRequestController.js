@@ -37,10 +37,9 @@ class UserRequestHandler {
     request.requestType = req.body.requestType;
     request.description = req.body.description;
       
-      res.status(200)
+      res.status(205)
         .json({
           request,
-          status: 'success',
           message: 'modified successfully',
         });
   }
