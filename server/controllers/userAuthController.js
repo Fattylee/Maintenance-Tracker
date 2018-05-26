@@ -4,6 +4,9 @@ import users from './../../dummyData/userAuth';
 class UserAuthHandler{
 
   static signupUser(req, res) {
+
+
+    
     const newUser = {
       id: users.length + 1,
       name: req.body.name,
