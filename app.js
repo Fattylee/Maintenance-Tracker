@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import router from './server/routes/userRoute';
 
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -13,5 +14,6 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log('server listening for request on port', port);
 });
+
 
 export default app;
