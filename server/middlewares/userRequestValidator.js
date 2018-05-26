@@ -135,6 +135,13 @@ class requestValidator{
           message: 'name should be 3 to 30 characters long',
         });
     }
+
+    if (!(validator.isAlpha(name) ||validator.contains(name,' '))) {
+      return res.status(406)
+        .json({
+          message: 'name can only contains alphanumeric characters',
+        });
+    }
     
     if (email === undefined ){
       return res.status(404)

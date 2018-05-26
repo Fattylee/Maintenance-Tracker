@@ -90,6 +90,24 @@ describe('POST request', () => {
       });
   });
 
+  
+  it('Should return 406 for non-alphanumeric characters name field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+          id: 1,
+          name: '???@$%',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name can only contains alphanumeric characters');
+        done();
+      });
+  });
+
   it('Should return 404 for post with undefined email field', (done) => {
     chai.request(app)
       .post('/api/v1/users/requests')
