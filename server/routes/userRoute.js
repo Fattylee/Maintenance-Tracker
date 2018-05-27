@@ -7,15 +7,16 @@ import requestValidator from './../middlewares/userRequestValidator';
 const router = express.Router();
 
 
-router.get("/users/requests",requestController.getAllRequest);
+// router.get("/users/requests",requestController.getAllRequest);
 
-router.get("/users/requests/:id", requestValidator.getARequest, requestController.getARequest);
+// router.get("/users/requests/:id", requestValidator.getARequest, requestController.getARequest);
 
-router.post("/users/requests", requestValidator.postARequest, requestController.postARequest);
+// router.post("/users/requests", requestValidator.postARequest, requestController.postARequest);
 
-router.put("/users/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
+// router.put("/users/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
 
-router.post("/users/auth/signup", userValidator.signupInput, auth.signupUser);
+// , userValidator.signupInput
+router.post("/auth/signup", auth.signupUser);
 
 router.get("/", requestController.home);
 
