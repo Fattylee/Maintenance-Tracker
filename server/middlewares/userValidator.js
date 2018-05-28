@@ -48,6 +48,13 @@ class userValidator{
           message: 'email cannot be empty',
         });
     }
+
+    if (!validator.isEmail(email)) {
+      return res.status(406)
+        .json({
+          message: 'please enter a valid email format',
+        });
+    }
     next();
   }
   
