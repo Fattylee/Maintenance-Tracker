@@ -55,6 +55,16 @@ class userValidator{
           message: 'please enter a valid email format',
         });
     }
+
+    email = validator.trim(email);
+     email = email.toLowerCase();
+
+    if (!validator.isLength(email,{ min: 10, max: 50 })) {
+      return res.status(406)
+        .json({
+          message: 'email should be 10 to 50 characters long',
+        });
+    }
     next();
   }
   
