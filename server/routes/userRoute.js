@@ -15,8 +15,7 @@ const router = express.Router();
 
 // router.put("/users/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
 
-// , userValidator.signupInput
-router.post("/auth/signup", auth.signupUser);
+router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 
 router.get("/", requestController.home);
 

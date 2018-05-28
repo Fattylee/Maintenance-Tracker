@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">17.65% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>3/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,16 +35,16 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">17.65% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>17/17</span>
+        <span class='fraction'>3/17</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line high'></div>
+  <div class='status-line low'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -121,7 +121,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,7 +129,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,27 +137,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,7 +189,7 @@ class UserRequestHandler {
 &nbsp;
 &nbsp;
   static getAllRequest(req, res) {
-    res.status(200)
+<span class="cstat-no" title="statement not covered" >    res.status(200)</span>
     .json({
       users: requests,
       message: 'successful request'
@@ -197,7 +197,7 @@ class UserRequestHandler {
   }
 &nbsp;
   static getARequest(req, res) {
-    res.status(200)
+<span class="cstat-no" title="statement not covered" >    res.status(200)</span>
     .json({
       request:req.body.request,
       status: 'ok',
@@ -205,13 +205,13 @@ class UserRequestHandler {
     });
   }
 &nbsp;
-  static postARequest(req, res) {
-    const { name,email, requestType, description } = req.body;
-    const id = requests[requests.length - 1].id + 1;
+  static postARequest(req, res) <span class="cstat-no" title="statement not covered" >{</span>
+    const { name,email, requestType, description } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+    const id = <span class="cstat-no" title="statement not covered" >requests[requests.length - 1].id + 1;</span>
 &nbsp;
-    const newRequest = Object.assign({id},req.body);
-    requests.push(newRequest);
-    res.status(201)
+    const newRequest = <span class="cstat-no" title="statement not covered" >Object.assign({id},req.body);</span>
+<span class="cstat-no" title="statement not covered" >    requests.push(newRequest);</span>
+<span class="cstat-no" title="statement not covered" >    res.status(201)</span>
       .json({
         status: 'created',
         message: 'Success'
@@ -219,13 +219,13 @@ class UserRequestHandler {
   }
 &nbsp;
   static modifyRequest(req, res) {
-    const request = req.body.request;
-    request.name = req.body.name;
-    request.email = req.body.email;
-    request.requestType = req.body.requestType;
-    request.description = req.body.description;
+    const request = <span class="cstat-no" title="statement not covered" >req.body.request;</span>
+<span class="cstat-no" title="statement not covered" >    request.name = req.body.name;</span>
+<span class="cstat-no" title="statement not covered" >    request.email = req.body.email;</span>
+<span class="cstat-no" title="statement not covered" >    request.requestType = req.body.requestType;</span>
+<span class="cstat-no" title="statement not covered" >    request.description = req.body.description;</span>
       
-      res.status(205)
+<span class="cstat-no" title="statement not covered" >      res.status(205)</span>
         .json({
           request,
           message: 'modified successfully',
@@ -256,7 +256,7 @@ export default UserRequestHandler;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat May 26 2018 10:55:19 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon May 28 2018 00:43:34 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
