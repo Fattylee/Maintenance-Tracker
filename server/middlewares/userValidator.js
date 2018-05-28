@@ -41,6 +41,13 @@ class userValidator{
         message: 'No input was received for email',
       });
     }
+
+    if (validator.isEmpty(email)) {
+      return res.status(406)
+        .json({
+          message: 'email cannot be empty',
+        });
+    }
     next();
   }
   
