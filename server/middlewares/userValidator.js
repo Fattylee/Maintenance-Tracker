@@ -13,6 +13,13 @@ class userValidator{
       });
     }
     
+    if (validator.isEmpty(name)) {
+      return res.status(406)
+        .json({
+          message: 'name cannot be empty',
+        });
+    }
+    next();
   }
   
 }
