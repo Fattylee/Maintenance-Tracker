@@ -35,6 +35,12 @@ class userValidator{
           message: 'name can only contains alphanumeric characters',
         });
     }
+    if (email === undefined ){
+      return res.status(400)
+      .json({
+        message: 'No input was received for email',
+      });
+    }
     next();
   }
   
