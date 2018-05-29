@@ -123,5 +123,41 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for empty email field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('email cannot be empty');
+        done();
+      });
+  });
+
+  it('Should return 406 for invalid email', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"nkfnk",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('please enter a valid email format');
+        done();
+      });
+  });
+
+
+
 
 });//End Test Signup
