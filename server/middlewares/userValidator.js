@@ -146,6 +146,17 @@ class userValidator{
               message: 'password should be 4 to 16 characters long',
             });
         }
+
+        if (validator.contains(password," ")) {
+          return res.status(406)
+            .json({
+              message: 'password should not contains whitespace',
+            });
+        }
+
+        req.body.username = username;
+        req.body.email = email;
+        
         next();
       })
         .catch((errror)=>{
