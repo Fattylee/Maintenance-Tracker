@@ -206,4 +206,39 @@ describe('Test Signup', () => {
         done();
       });
   });
+
+  it('Should return 406 for empty username field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          username: '',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('username cannot be empty');
+        done();
+      });
+  });
+
+  it('Should return 406 for invalid character username length', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          username: 'g',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('username should be 2 to 15 characters long');
+        done();
+      });
+  });
+
 });//End Test Signup
