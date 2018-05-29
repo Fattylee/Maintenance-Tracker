@@ -77,6 +77,13 @@ class userValidator{
           message: 'email already exist, login or sign up with another email',
         });
       }
+
+      if (username === undefined ){
+        return res.status(406)
+        .json({
+          message: 'no input was received for username',
+        });
+      }
       next();
     })    
     .catch((errror)=>{
