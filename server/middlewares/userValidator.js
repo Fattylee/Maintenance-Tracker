@@ -84,6 +84,12 @@ class userValidator{
           message: 'no input was received for username',
         });
       }
+      if (validator.isEmpty(username)) {
+        return res.status(406)
+          .json({
+            message: 'username cannot be empty',
+          });
+      }
       next();
     })    
     .catch((errror)=>{
