@@ -31,7 +31,7 @@ class userValidator{
         });
     }
 
-    if (!(validator.isAlpha(name) || validator.contains(name,' '))) {
+    if (!(/^[a-z\s]+$/gi.test(name))){
       return res.status(406)
         .json({
           message: 'name can only contains alphanumeric characters',
@@ -159,12 +159,15 @@ class userValidator{
         
         next();
       })//End username then
-        .catch((errror)=>{
-          console.log('Error',errror);
+        .catch((err)=>{
+          res.status(500);
         });      
     })//End email then    
-    .catch((errror)=>{
-      console.log('Error',errror);
+    .catch((err)=>{
+      res.status(500)
+      .json({
+        message: err.message
+      });
     });
 
   }

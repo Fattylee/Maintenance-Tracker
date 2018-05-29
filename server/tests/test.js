@@ -45,7 +45,7 @@ describe('Test Signup', () => {
       .post('/api/v1/auth/signup')
       .send({
           id: 1,
-          email:"abcs@yahoo.com",
+          email:"abc@yahoo.com",
           username: 'yourname1',
           password: '1234'
       })
@@ -62,7 +62,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: '',
-          email:"abcs@yahoo.com",
+          email:"abc@yahoo.com",
           username: 'yourname1',
           password: '1234'
       })
@@ -79,7 +79,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'n',
-          email:"abcs@yahoo.com",
+          email:"abc@yahoo.com",
           username: 'yourname1',
           password: '1234'
       })
@@ -90,13 +90,14 @@ describe('Test Signup', () => {
       });
   });
 
+
   it('Should return 406 for non-alphanumeric characters name field', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
           id: 1,
-          name: '???@$%',
-          email:"abcs@yahoo.com",
+          name: 'n@',
+          email:"abc@yahoo.com",
           username: 'yourname1',
           password: '1234'
       })
@@ -112,7 +113,7 @@ describe('Test Signup', () => {
       .post('/api/v1/auth/signup')
       .send({
           id: 1,
-          name: 'FataiBalogun',
+          name: 'Fatai Balogun',
           username: 'yourname1',
           password: '1234'
       })
@@ -197,7 +198,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
+          email:"fattylee.remod@gmail.com",
           password: '1234'
       })
       .end((err, res) => {
@@ -213,7 +214,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
+          email:"fattylee.remod@gmail.com",
           username: '',
           password: '1234'
       })
@@ -230,7 +231,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
+          email:"fattylee.remod@gmail.com",
           username: 'g',
           password: '1234'
       })
@@ -247,7 +248,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
+          email:"fattylee.remod@gmail.com",
           username: 'gh jkkd',
           password: '1234'
       })
@@ -264,7 +265,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
+          email:"fattylee.remod@gmail.com",
           username: 'gh@jkkd',
           password: '1234'
       })
@@ -281,8 +282,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzz1@yahoo.com",
-          username: 'fattylee',
+          email:"fattylee.remod@gmail.com",
+          username: 'yourname1',
           password: '1234'
       })
       .end((err, res) => {
@@ -298,8 +299,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zzzl@yahoo.com",
-          username: 'youryml',
+          email:"fattylee.remod@gmail.com",
+          username: 'yourname2',
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -314,8 +315,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zz1@yahoo.com",
-          username: 'yournyml',
+          email:"fattylee.remod@gmail.com",
+          username: 'yourname2',
           password: ''
       })
       .end((err, res) => {
@@ -331,8 +332,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zz1@yahoo.com",
-          username: 'yournyml',
+          email:"fattylee.remod@gmail.com",
+          username: 'yourname2',
           password: 'bf'
       })
       .end((err, res) => {
@@ -348,8 +349,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"zz1@yahoo.com",
-          username: 'yournyml',
+          email:"fattylee.remod@gmail.com",
+          username: 'yourname2',
           password: 'bhb bjb'
       })
       .end((err, res) => {
@@ -359,6 +360,41 @@ describe('Test Signup', () => {
       });
   });
 
+
+  it('Should return 201 for a successful signup', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Mark Zucker',
+          email:"mark.zuck@gmail.com",
+          username: 'yourname2',
+          password: '12345'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        expect(res.body.message).to.equal('Mark Zucker, your signup was successful');
+        done();
+      });
+  });
+
+  
+  // it('Should return 500 for a signup error', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //         id: 1,
+  //         //name: 'Mark Zuckerberge',
+  //         //email:"zz1@yahoo.com",
+  //         //username: 'yournyml',
+  //         //password: 'bhb73xb'
+  //     })
+  //     .end((err, res) => {
+  //       expect(err).to.have.status(500);
+  //       //expect(res).to.have.property.message;
+  //       done();
+  //     });
+  // });
 
 
 
