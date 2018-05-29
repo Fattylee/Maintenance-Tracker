@@ -197,7 +197,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
+          email:"zzz1@yahoo.com",
           password: '1234'
       })
       .end((err, res) => {
@@ -213,7 +213,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
+          email:"zzz1@yahoo.com",
           username: '',
           password: '1234'
       })
@@ -230,7 +230,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
+          email:"zzz1@yahoo.com",
           username: 'g',
           password: '1234'
       })
@@ -247,7 +247,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
+          email:"zzz1@yahoo.com",
           username: 'gh jkkd',
           password: '1234'
       })
@@ -264,7 +264,7 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
+          email:"zzz1@yahoo.com",
           username: 'gh@jkkd',
           password: '1234'
       })
@@ -281,8 +281,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
-          username: 'yourname1',
+          email:"zzz1@yahoo.com",
+          username: 'fattylee',
           password: '1234'
       })
       .end((err, res) => {
@@ -298,8 +298,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
-          username: 'yournameh',
+          email:"zzzl@yahoo.com",
+          username: 'youryml',
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -314,8 +314,8 @@ describe('Test Signup', () => {
       .send({
           id: 1,
           name: 'Fatai Balogun',
-          email:"abckl@yahoo.com",
-          username: 'yournameh',
+          email:"zz1@yahoo.com",
+          username: 'yournyml',
           password: ''
       })
       .end((err, res) => {
@@ -325,7 +325,40 @@ describe('Test Signup', () => {
       });
   });
 
-  
+  it('Should return 406 for invalid password length', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"zz1@yahoo.com",
+          username: 'yournyml',
+          password: 'bf'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('password should be 4 to 16 characters long');
+        done();
+      });
+  });
+
+  // it('Should return 406 if password contains whitespace', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //         id: 1,
+  //         name: 'Fatai Balogun',
+  //         email:"zz1@yahoo.com",
+  //         username: 'yournyml',
+  //         password: 'bhb bjb'
+  //     })
+  //     .end((err, res) => {
+  //       expect(res).to.have.status(406);
+  //       expect(res.body.message).to.equal('password should not contains whitespace');
+  //       done();
+  //     });
+  // });
+
 
 
 

@@ -58,7 +58,7 @@ class userValidator{
         });
     }
 
-    email = validator.trim(email);
+     email = validator.trim(email);
      email = email.toLowerCase();
 
     if (!validator.isLength(email,{ min: 10, max: 50 })) {
@@ -158,13 +158,11 @@ class userValidator{
         req.body.email = email;
         
         next();
-      })
+      })//End username then
         .catch((errror)=>{
           console.log('Error',errror);
-        });
-
-      
-    })    
+        });      
+    })//End email then    
     .catch((errror)=>{
       console.log('Error',errror);
     });
