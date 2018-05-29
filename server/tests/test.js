@@ -174,6 +174,25 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 409 for existing email', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"fatai4humility@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(409);
+        expect(res.body.message).to.equal('email already exist, login or sign up with another email');
+        done();
+      });
+  });
+
+  
+
 
 
 
