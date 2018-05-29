@@ -107,5 +107,21 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 400 for undefined email field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'FataiBalogun',
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('No input was received for email');
+        done();
+      });
+  });
+
 
 });//End Test Signup
