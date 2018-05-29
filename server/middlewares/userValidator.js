@@ -123,12 +123,19 @@ class userValidator{
             message: 'username already exist, login to your account',
           });
         }
-        
+
         if (password === undefined ){
           return res.status(406)
           .json({
             message: 'no input was received for password',
           });
+        }
+
+        if (validator.isEmpty(password)) {
+          return res.status(406)
+            .json({
+              message: 'password cannot be empty',
+            });
         }
         next();
       })
