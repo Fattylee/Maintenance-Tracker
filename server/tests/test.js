@@ -308,6 +308,25 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for empty password field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          username: 'yournameh',
+          password: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('password cannot be empty');
+        done();
+      });
+  });
+
+  
+
 
 
 
