@@ -157,6 +157,23 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for invalid email character length', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"n@h.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('email should be 10 to 50 characters long');
+        done();
+      });
+  });
+
 
 
 
