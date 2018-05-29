@@ -90,5 +90,22 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 406 for non-alphanumeric characters name field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: '???@$%',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name can only contains alphanumeric characters');
+        done();
+      });
+  });
+
 
 });//End Test Signup
