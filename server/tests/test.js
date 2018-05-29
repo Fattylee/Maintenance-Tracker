@@ -275,6 +275,23 @@ describe('Test Signup', () => {
       });
   });
 
+  it('Should return 409 for existing username', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"abckl@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(409);
+        expect(res.body.message).to.equal('username already exist, login to your account');
+        done();
+      });
+  });
+
 
 
 });//End Test Signup
