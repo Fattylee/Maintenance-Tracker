@@ -1,5 +1,5 @@
-//import users from './../../dummyData/userAuth';
 import pg from 'pg';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -33,6 +33,42 @@ class UserAuthHandler{
   });
 
   }//End signupUser
+
+  static signinUser(req, res) {
+
+    const Pool = pg.Pool;
+    const pool = new Pool();
+
+    
+    const sql = 'select * from users where username = $1 and password = $2';
+
+    const params = [req.body.username, req.body.password];
+
+    pool.query(sql, params)
+    .then((result)=>{
+      console.log('result?',result);
+      if (result.rowCount !== 0) {
+        const user = result.rows;
+        return jwt.sign({ user }, 'secreteKey', { expiresIn: '60s' }, (err, token) => {
+            res.json({
+              message: `Hello ${req.body.username}, your signin was successful`,
+              token
+          })
+        })
+      }
+      res.json({
+        message: 'Incorrect username or password'
+      })
+    })
+    .catch((error)=>{
+      res.json({
+        message: error.message
+      });
+    });
+  
+  
+    
+  }//End signinUser
  
 }
 

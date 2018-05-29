@@ -3,6 +3,7 @@ import requestController from "./../controllers/userRequestController";
 import auth from './../controllers/userAuthController';
 import userValidator from './../middlewares/userValidator';
 import requestValidator from './../middlewares/userRequestValidator';
+import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -16,6 +17,9 @@ const router = express.Router();
 // router.put("/users/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
 
 router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
+
+//userValidator.signupInput,
+router.post("/auth/signin", auth.signinUser);
 
 router.get("/", requestController.home);
 
