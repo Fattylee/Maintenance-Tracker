@@ -107,6 +107,14 @@ class userValidator{
             message: 'username should not contain whitespace',
           });
       }
+
+      if (!(validator.isAlphanumeric(username))) {
+        return res.status(406)
+          .json({
+            message: 'username can only contains a-zA-Z0-9',
+          });
+      }
+      
       next();
     })    
     .catch((errror)=>{
