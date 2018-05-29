@@ -100,6 +100,13 @@ class userValidator{
             message: 'username should be 2 to 15 characters long',
           });
       }
+
+      if (validator.contains(username," ")) {
+        return res.status(406)
+          .json({
+            message: 'username should not contain whitespace',
+          });
+      }
       next();
     })    
     .catch((errror)=>{
