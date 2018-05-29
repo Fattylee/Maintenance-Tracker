@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // User Data
+const data = {
+  ID:12,
+  Title: 'Fundamentals of Javascript',
+  Description: 'Brad Mark',
+  PublishDate: '2018-05-28T12:23:18.418Z '
+}
+
+// Create User
+post('https://fakerestapi.azurewebsites.net/api/Books', data)
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+
+   function  post(url, data) {
+    return new Promise((resolve, reject) => {
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(data => resolve(data))
+      .catch(err => reject(err));
+    });
+  }
+    
+    </script>
+</body>
+</html>

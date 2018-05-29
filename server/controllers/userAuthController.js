@@ -8,22 +8,17 @@ class UserAuthHandler{
 
   static signupUser(req, res) {
 
-  const Client = pg.Client;
-  const client = new Client();
+  const Pool = pg.Pool;
+  const pool = new Pool();
 
-  client.connect()
-  .then(()=>{
-  
-    const sql = 'insert into users (name, email, username, password) values ($1, $2, $3, $4)';
+  const sql = 'insert into users (name, email, username, password) values ($1, $2, $3, $4)';
     const params = [
       req.body.name,
-      req.body.email,
+      req.body.email, 
       req.body.username,
       req.body.password
     ];
-    
-    return client.query(sql, params);
-  })
+  pool.query(sql, params)
   .then((result)=>{
     res.status(201)
     .json({

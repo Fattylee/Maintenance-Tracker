@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>OOP | Animal</title>
+</head>
+<body>
+  <h1>OOP Implementation</h1>
+  <script>
+  //animal class definition
+  class Animal{
+    constructor(color, weight, nickName){
+      Object.assign(this, {color,weight,nickName});
+    }
+
+    eat(){
+      console.log(`${this.nickName} is eating`);
+    }
+    makeSound(){
+      return 'Animal makes sound';
+    }
+
+    static chase(animalOne, animalTwo){
+      console.log(`${animalOne.nickName} chases ${animalTwo.nickName}` );
+    }
+  }
+
+  class Cat extends Animal{
+    constructor(color, weight, isAggressive, nickName){
+      super(color,weight,nickName); //super class constructor
+      this.isAggressive = isAggressive;
+    }
+    makeSound(){
+      console.log(super.makeSound()); //call the superclass method
+      return 'Cat makes sound';
+    }
+  }
+
+  class Rat extends Animal{
+    constructor(color, weight, isFast, nickName){
+      super(color,weight,nickName);
+      this.isFast = isFast;
+    }
+  }
+
+  //animal instance 
+  const animal = new Animal('black', 20, 'goat');
+  animal.eat();
+  console.log(animal.makeSound());
+  console.log(`the ${animal.color} ${animal.nickName} weight is ${animal.weight}`);
+
+  //cat instance
+  const tom = new Cat('blue', 30, true, 'tom');
+  console.log(tom.makeSound());
+  tom.eat();
+
+  //rat instance
+  const jerry = new Rat('brown', 10, true, 'jerry');
+
+  //polymorphism concept
+  Animal.chase(tom, jerry);
+
+  console.log("all Cat is an instance of Animal:",tom instanceof Animal);
+  console.log('is rat(jerry) an instance of Cat?', jerry instanceof Cat);
+
+
+  </script>
+</body>
+</html>

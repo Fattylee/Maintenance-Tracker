@@ -1,5 +1,7 @@
 import validator from 'validator';
-import users from './../../dummyData/userAuth';
+import pg from 'pg';
+import dotenv from 'dotenv';
+dotenv.config();
 
 class userValidator{
 
@@ -65,7 +67,22 @@ class userValidator{
           message: 'email should be 10 to 50 characters long',
         });
     }
-    next();
+
+    const pool = new pg.Pool();
+    pool.query('select email from users where email = $1', [email.toLowerCase()])
+    .then((result)=>{
+      if (result.rowCount !== 0){
+        return res.status(409)
+        .json({
+          message: 'email already exist, login or sign up with another email',
+        });
+      }
+      next();
+    })    
+    .catch((errror)=>{
+      console.log('Error',errror);
+    });
+
   }
   
 }
