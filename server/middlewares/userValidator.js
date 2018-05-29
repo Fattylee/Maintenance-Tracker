@@ -137,6 +137,15 @@ class userValidator{
               message: 'password cannot be empty',
             });
         }
+
+        password = validator.trim(password);
+
+        if (!validator.isLength(password,{ min: 4, max: 16 })) {
+          return res.status(406)
+            .json({
+              message: 'password should be 4 to 16 characters long',
+            });
+        }
         next();
       })
         .catch((errror)=>{
