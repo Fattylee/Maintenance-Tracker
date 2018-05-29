@@ -123,6 +123,13 @@ class userValidator{
             message: 'username already exist, login to your account',
           });
         }
+        
+        if (password === undefined ){
+          return res.status(406)
+          .json({
+            message: 'no input was received for password',
+          });
+        }
         next();
       })
         .catch((errror)=>{
