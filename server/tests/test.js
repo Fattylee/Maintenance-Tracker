@@ -40,7 +40,7 @@ describe('Test API', () => {
 
 
 describe('Test Signup', () => {
-  it('Should return 404 for undefined name', (done) => {
+  it('Should return 400 for undefined name', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
@@ -55,5 +55,23 @@ describe('Test Signup', () => {
         done();
       });
   });
+
+  it('Should return 406 for empty name field', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: '',
+          email:"abcs@yahoo.com",
+          username: 'yourname1',
+          password: '1234'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('name cannot be empty');
+        done();
+      });
+  });
+
 
 });//End Test Signup
