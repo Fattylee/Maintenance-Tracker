@@ -115,7 +115,21 @@ class userValidator{
           });
       }
       
-      next();
+        pool.query('select username from users where username = $1', [username.toLowerCase()])
+      .then((result)=>{
+        if (result.rowCount !== 0){
+          return res.status(409)
+          .json({
+            message: 'username already exist, login to your account',
+          });
+        }
+        next();
+      })
+        .catch((errror)=>{
+          console.log('Error',errror);
+        });
+
+      
     })    
     .catch((errror)=>{
       console.log('Error',errror);
