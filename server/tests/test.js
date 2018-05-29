@@ -342,22 +342,22 @@ describe('Test Signup', () => {
       });
   });
 
-  // it('Should return 406 if password contains whitespace', (done) => {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signup')
-  //     .send({
-  //         id: 1,
-  //         name: 'Fatai Balogun',
-  //         email:"zz1@yahoo.com",
-  //         username: 'yournyml',
-  //         password: 'bhb bjb'
-  //     })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(406);
-  //       expect(res.body.message).to.equal('password should not contains whitespace');
-  //       done();
-  //     });
-  // });
+  it('Should return 406 if password contains whitespace', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+          id: 1,
+          name: 'Fatai Balogun',
+          email:"zz1@yahoo.com",
+          username: 'yournyml',
+          password: 'bhb bjb'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('password should not contains whitespace');
+        done();
+      });
+  });
 
 
 
