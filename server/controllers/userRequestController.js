@@ -1,15 +1,52 @@
-import requests from './../../dummyData/loggedinUsersRequest';
+// import requests from './../../dummyData/loggedinUsersRequest';
+import pg from 'pg';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
 
 
 class UserRequestHandler {
 
+  static testPost(req, res, next) {
+    jwt.verify(req.token, 'secreteKey', (err, authData) => {
+      if(err) {
+        res.sendStatus(403);
+      } else {
+          res.status(201)
+            .json({
+              message: 'request submitted!',
+              authData
+            })
+      }
+    })
+  }
+
+
+
+
 
   static getAllRequest(req, res) {
-    res.status(200)
-    .json({
-      users: requests,
-      message: 'successful request'
+
+    const Pool = pg.Pool;
+    const pool = new Pool();
+  
+    const sql = 'select * from requests';
+    pool.query(sql)
+    .then((result)=>{
+      userRequests = result.rows;
+      res.status(200)
+      .json({
+        userRequests,
+        message: 'all requests successfully served'
+      });
+    })
+    .catch((error)=>{
+      res.json({
+        message: error.message
+      });
     });
+
+
   }
 
   static getARequest(req, res) {
