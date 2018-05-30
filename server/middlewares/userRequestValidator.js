@@ -11,50 +11,50 @@ class requestValidator{
     // const requestId = req.params.id;
     // const request = users.find(request => request.id === parseInt(requestId));
 
-    jwt.verify(req.token, 'secreteKey', (err, authData) => {
+    // jwt.verify(req.token, 'secreteKey', (err, authData) => {
       
-      if(err) {
-        res.status(403)
-        .json({
-          message: 'invalid token'
-        });
-      } 
-      else {
+    //   if(err) {
+    //     res.status(403)
+    //     .json({
+    //       message: 'invalid token'
+    //     });
+    //   } 
+    //   else {
 
-        const Pool = pg.Pool;
-        const pool = new Pool();
+    //     const Pool = pg.Pool;
+    //     const pool = new Pool();
       
-        const sql = 'select * from requests where owner_id = $1';
-        const params = [authData.user[0].user_id]
-        pool.query(sql, params)
-        .then((result)=>{
-          const userRequests = result.rows;
+    //     const sql = 'select * from requests where owner_id = $1';
+    //     const params = [authData.user[0].user_id]
+    //     pool.query(sql, params)
+    //     .then((result)=>{
+    //       const userRequests = result.rows;
 
-          const requestId = req.params.id;
-          const request = userRequests.find(request => request.id === parseInt(requestId));
-          if(request){
-            res.status(200)
-            .json({
-              request,
-              message: 'all requests successfully served'
-            });
-          }
-          else{
-            res.status(404)
-            .json({
-              message: 'invalid request ID'
-            });
-        }
-        })
-        .catch((error)=>{
-          res.status(500)
-          .json({
-            message: error.message
-          });
-        });
-      }//end else
-    });
-    //return next();
+    //       const requestId = req.params.id;
+    //       const request = userRequests.find(request => request.id === parseInt(requestId));
+    //       if(request){
+    //         res.status(200)
+    //         .json({
+    //           request,
+    //           message: 'all requests successfully served'
+    //         });
+    //       }
+    //       else{
+    //         res.status(404)
+    //         .json({
+    //           message: 'invalid request ID'
+    //         });
+    //     }
+    //     })
+    //     .catch((error)=>{
+    //       res.status(500)
+    //       .json({
+    //         message: error.message
+    //       });
+    //     });
+    //   }//end else
+    // });
+    // //return next();
   }//End getARequest
   
   static modifyRequest(req, res, next){

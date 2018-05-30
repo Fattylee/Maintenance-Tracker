@@ -51,7 +51,7 @@ class UserAuthHandler{
       if (result.rowCount !== 0) {
         const user = result.rows;  //array of objects
         console.log(user);
-        return jwt.sign({ user }, 'secreteKey', { expiresIn: '60s' }, (err, token) => {
+        return jwt.sign({ user }, 'secreteKey', { expiresIn: '120s' }, (err, token) => {
             res.status(200)
             .json({
               message: `Hello ${req.body.username}, your signin was successful`,

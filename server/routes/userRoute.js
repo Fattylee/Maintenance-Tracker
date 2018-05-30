@@ -9,25 +9,23 @@ import verifyToken from './../middlewares/verification';
 const router = express.Router();
 
 
-
-
-
-
-// router.post("/users/requests", requestValidator.postARequest, requestController.postARequest);
-
-// router.put("/users/requests/:id", requestValidator.modifyRequest, requestController.modifyRequest);
-
 router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 
 //userValidator.signupInput,
 router.post("/auth/signin", auth.signinUser);
 
-//test protected route,
+//protected route
+router.get("/users/requests", verifyToken, requestController.getAllRequest);
+
+//, requestValidator.getARequest //protected route
+router.get("/users/requests/:id", verifyToken, requestController.getARequest);
+
+//protected route
 router.post("/users/requests", requestValidator.postARequest, verifyToken, requestController.postARequest);
 
-router.get("/users/requests", verifyToken, requestController.getAllRequest);
-//, requestValidator.getARequest
-router.get("/users/requests/:id", verifyToken, requestValidator.getARequest);
+//protected route  , requestValidator.modifyRequest
+router.put("/users/requests/:id", verifyToken, requestController.modifyRequest);
+
 
 router.get("/", requestController.home);
 
