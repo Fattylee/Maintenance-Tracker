@@ -43,20 +43,24 @@ class UserAuthHandler{
     const sql = 'select * from users where username = $1 and password = $2';
 
     const params = [req.body.username, req.body.password];
+    //console.log(req.body)
 
     pool.query(sql, params)
     .then((result)=>{
-      console.log('result?',result);
+     // console.log('result?',result);
       if (result.rowCount !== 0) {
-        const user = result.rows;
+        const user = result.rows;  //array of objects
+        console.log(user);
         return jwt.sign({ user }, 'secreteKey', { expiresIn: '60s' }, (err, token) => {
-            res.json({
+            res.status(200)
+            .json({
               message: `Hello ${req.body.username}, your signin was successful`,
               token
-          })
-        })
+          });
+        });
       }
-      res.json({
+      res.status(404)
+      .json({
         message: 'Incorrect username or password'
       })
     })
@@ -65,8 +69,6 @@ class UserAuthHandler{
         message: error.message
       });
     });
-  
-  
     
   }//End signinUser
  
