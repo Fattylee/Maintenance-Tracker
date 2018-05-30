@@ -182,25 +182,21 @@ class UserRequestHandler {
           const requestId = req.params.id;
           const request = userRequests.find(request => request.id === parseInt(requestId));
           if(request){
+          //console.log('ready to modify data');
           req.body.name = authData.user[0].name;
           req.body.email = authData.user[0].email;
           req.body.owner_id = authData.user[0].user_id;
 
-          const Pool = pg.Pool;
-          const pool = new Pool();
-          const sql = 'insert into requests (name, email, requesttype, description, owner_id) \
-          values ($1, $2, $3, $4, $5)';
-      
+          const sql = 'UPDATE requests SET requesttype = $1, description= $2 WHERE id = $3';
           const params = [
-            req.body.name, 
-            req.body.email, 
             req.body.requestType, 
             req.body.description, 
-            req.body.owner_id
+            requestId
           ];
       
           pool.query(sql, params)
           .then((result)=>{
+            console.log('from modified: result',result);
             res.status(201)
             .json({
               message:`${req.body.name}, your request was successfully modified!`
@@ -230,7 +226,8 @@ class UserRequestHandler {
           });
         });
       }//end else
-    });
+
+    });//end jwt.verify
     
 
   }//End modifyRequest
