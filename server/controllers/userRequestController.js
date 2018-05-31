@@ -20,6 +20,14 @@ class UserRequestHandler {
       }
       else {
 
+        const role = authData.user[0].role;
+        if(role !== 'admin'){
+          return res.status(406)
+          .json({
+            message: 'you are not an admin'
+          });
+        }
+
         const Pool = pg.Pool;
         const pool = new Pool();
 
@@ -29,7 +37,7 @@ class UserRequestHandler {
         pool.query(sql, params)
           .then((result) => {
             if (!result.rows.length) {
-              res.status(404)
+              return res.status(404)
                 .json({
                   message: 'invalid requestID'
                 });
@@ -41,22 +49,20 @@ class UserRequestHandler {
 
                 res.status(200)
                   .json({
-                    success
-
+                    message: 'request approved!'
                   });
-
               })
               .catch((error) => {
                 res.status(500)
                   .json({
-                    message: 'from approve catch ' + error.message
+                    message: error.message
                   });
               });//End inner Then
           })//End first Then
           .catch((error) => {
             res.status(500)
               .json({
-                message: 'from approve catch ' + error.message
+                message: error.message
               });
           });//End outter Then
       }//End else
@@ -79,7 +85,7 @@ class UserRequestHandler {
           return res.status(406)
           .json({
             message: 'you are not an admin'
-          })
+          });
         }
 
         const Pool = pg.Pool;
