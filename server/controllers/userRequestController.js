@@ -1,8 +1,6 @@
-// import requests from './../../dummyData/loggedinUsersRequest';
-import pg from 'pg';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-dotenv.config();
+import pool from './db';
+
 
 
 
@@ -26,9 +24,6 @@ class UserRequestHandler {
             message: 'you are not an admin'
           });
         }
-
-        const Pool = pg.Pool;
-        const pool = new Pool();
 
         let sql = 'select * from requests where request_id = $1';
         let params = [req.params.requestId];
@@ -96,9 +91,6 @@ class UserRequestHandler {
           });
         }
         
-        const Pool = pg.Pool;
-        const pool = new Pool();
-
         let sql = 'select * from requests where request_id = $1';
         let params = [req.params.requestId];
 
@@ -166,9 +158,6 @@ class UserRequestHandler {
           });
         }
 
-        const Pool = pg.Pool;
-        const pool = new Pool();
-
         let sql = 'select * from requests where request_id = $1';
         let params = [req.params.requestId];
 
@@ -225,10 +214,6 @@ class UserRequestHandler {
             message: 'you are not an admin'
           });
         }
-
-        const Pool = pg.Pool;
-        const pool = new Pool();
-
         const sql = 'select * from requests ';
         pool.query(sql)
           .then((result) => {
@@ -266,8 +251,6 @@ class UserRequestHandler {
         req.body.email = authData.user[0].email;
         req.body.owner_id = authData.user[0].user_id;
 
-        const Pool = pg.Pool;
-        const pool = new Pool();
         const sql = 'insert into requests (name, email, requesttype, description, owner_id) \
           values ($1, $2, $3, $4, $5)';
 
@@ -317,9 +300,6 @@ class UserRequestHandler {
       }
       else {
 
-        const Pool = pg.Pool;
-        const pool = new Pool();
-
         const sql = 'select * from requests where owner_id = $1';
         const params = [authData.user[0].user_id]
         pool.query(sql, params)
@@ -353,9 +333,6 @@ class UserRequestHandler {
           });
       }
       else {
-
-        const Pool = pg.Pool;
-        const pool = new Pool();
 
         const sql = 'select * from requests where owner_id = $1';
         const params = [authData.user[0].user_id]
@@ -402,9 +379,6 @@ class UserRequestHandler {
       }
       else {
 
-        const Pool = pg.Pool;
-        const pool = new Pool();
-
         const sql = 'select * from requests where owner_id = $1';
         const params = [authData.user[0].user_id]
         pool.query(sql, params)
@@ -422,9 +396,6 @@ class UserRequestHandler {
                   message: 'can\'t modify request at this stage, it\'s no longer pending'
                 });
               }
-             
-              const Pool = pg.Pool;
-              const pool = new Pool();
               const sql = 'update requests set  requesttype = $1, description = $2 where request_id = $3';
               const params = [
                 req.body.requestType,

@@ -1,7 +1,6 @@
 import validator from 'validator';
-import pg from 'pg';
-import dotenv from 'dotenv';
-dotenv.config();
+import jwt from 'jsonwebtoken';
+import pool from './../controllers/db';
 
 class userValidator {
 
@@ -68,7 +67,6 @@ class userValidator {
         });
     }
 
-    const pool = new pg.Pool();
     pool.query('select email from users where email = $1', [email.toLowerCase()])
       .then((result) => {
         if (result.rowCount !== 0) {

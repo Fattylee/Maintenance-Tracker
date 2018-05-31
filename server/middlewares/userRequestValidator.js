@@ -1,9 +1,4 @@
 import validator from 'validator';
-import users from './../../dummyData/loggedinUsersRequest';
-import pg from 'pg';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-dotenv.config();
 
 class requestValidator{
   
