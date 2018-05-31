@@ -24,7 +24,7 @@ describe('Test API', () => {
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done();
-      });404
+      }); 404
   });
   it('Undefined Routes Should Return 404', (done) => {
     chai.request(app)
@@ -44,10 +44,10 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          email:"abc@yahoo.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        email: "abc@yahoo.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -60,11 +60,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: '',
-          email:"abc@yahoo.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: '',
+        email: "abc@yahoo.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -77,11 +77,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'n',
-          email:"abc@yahoo.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'n',
+        email: "abc@yahoo.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -95,11 +95,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'n@',
-          email:"abc@yahoo.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'n@',
+        email: "abc@yahoo.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -112,10 +112,10 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -128,11 +128,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -145,11 +145,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"nkfnk",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nkfnk",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -162,11 +162,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"n@h.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "n@h.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -179,11 +179,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fatai4humility@yahoo.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "fatai4humility@yahoo.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
@@ -191,15 +191,15 @@ describe('Test Signup', () => {
         done();
       });
   });
-
+  //put non-existing valid email format here b4 beginning test
   it('Should return 406 for undefined username field', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -212,11 +212,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: '',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: '',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -229,11 +229,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'g',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'g',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -246,11 +246,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'gh jkkd',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'gh jkkd',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -263,11 +263,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'gh@jkkd',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'gh@jkkd',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -280,11 +280,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'yourname1',
-          password: '1234'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'yourname1',
+        password: '1234'
       })
       .end((err, res) => {
         expect(res).to.have.status(409);
@@ -292,15 +292,15 @@ describe('Test Signup', () => {
         done();
       });
   });
-
+  //put non-existing valid email format/non-existing username here b4 beginning test
   it('Should return 406 for undefined password', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'yourname2',
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'yourname3',
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -313,11 +313,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'yourname2',
-          password: ''
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'yourname3',
+        password: ''
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -330,11 +330,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'yourname2',
-          password: 'bf'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'yourname3',
+        password: 'bf'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -347,11 +347,11 @@ describe('Test Signup', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
-          id: 1,
-          name: 'Fatai Balogun',
-          email:"fattylee.remod@gmail.com",
-          username: 'yourname2',
-          password: 'bhb bjb'
+        id: 1,
+        name: 'Fatai Balogun',
+        email: "nonexisting@g.com",
+        username: 'yourname3',
+        password: 'bhb bjb'
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -361,24 +361,28 @@ describe('Test Signup', () => {
   });
 
 
-  it('Should return 201 for a successful signup', (done) => {
-    chai.request(app)
-      .post('/api/v1/auth/signup')
-      .send({
-          id: 1,
-          name: 'Mark Zucker',
-          email:"mark.zuck@gmail.com",
-          username: 'yourname2',
-          password: '12345'
-      })
-      .end((err, res) => {
-        expect(res).to.have.status(201);
-        expect(res.body.message).to.equal('Mark Zucker, your signup was successful');
-        done();
-      });
-  });
+  /*
+  @dev-note
+  once this is passed go and update existing email/username to non-existing one
+  */
+  // it('Should return 201 for a successful signup', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/auth/signup')
+  //     .send({
+  //         id: 1,
+  //         name: 'Mark Zucker',
+  //         email:"mark.zuck@gmail.com",
+  //         username: 'yourname2',
+  //         password: '12345'
+  //     })
+  //     .end((err, res) => {
+  //       expect(res).to.have.status(201);
+  //       expect(res.body.message).to.equal('Mark Zucker, your signup was successful');
+  //       done();
+  //     });
+  // });
 
-  
+
   // it('Should return 500 for a signup error', (done) => {
   //   chai.request(app)
   //     .post('/api/v1/auth/signup')
@@ -400,3 +404,233 @@ describe('Test Signup', () => {
 
 
 });//End Test Signup
+
+describe('POST request', () => {
+
+  it('Should return 404 for undefined requestType field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'hnn4n@hiji.com',
+        description: 'fix problem1'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for requestType');
+        done();
+      });
+  });
+
+  it('Should return 400 for post with invalid request type', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'novalid',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        expect(res.body.message).to.equal('requestType can only be maintenance / repair');
+        done();
+      });
+  });
+
+
+  it('Should return 404 for post with undefined decription field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('No input was received for description');
+        done();
+      });
+  });
+
+  it('Should return 404 for post with empty decription field', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        expect(res.body.message).to.equal('description cannot be empty');
+        done();
+      });
+  });
+
+  it('Should return 406 for post with invalid decription character length', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'hdjw'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(406);
+        expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+        done();
+      });
+  });
+
+  it('Should return 403 for invalid token', (done) => {
+    chai.request(app)
+      .post('/api/v1/users/requests')
+      .send({
+        id: 1,
+        name: 'Balogun Fatai',
+        email: 'abcd@gmail.com',
+        requestType: 'repair',
+        description: 'please fix my bugs'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(403);
+        //expect(res.message).to.equal('invalid token');
+        done();
+      });
+  });
+
+  // it('Should return 403 for invalid token', (done) => {
+  //   chai.request(app)
+  //     .post('/api/v1/users/requests')
+  //     .send({
+  //       id: 1,
+  //       name: 'Balogun Fatai',
+  //       email: 'abcd@gmail.com',
+  //       requestType: 'repair',
+  //       description: 'please fix my bugs'
+  //     })
+  //     .end((err, res) => {
+  //       expect(res).to.have.status(201);
+  //       //expect(res.message).to.equal('invalid token');
+  //       done();
+  //     });
+  // });
+
+
+});//End POST request
+
+describe('MODIFY GET request', () => {
+  
+  it('Should return 404 for undefined requestType', (done) => {
+        chai.request(app)
+          .put('/api/v1/users/requests/1')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            description: 'hdjw bgvgvv bhbh'
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(404);
+            expect(res.body.message).to.equal('No input was received for requestType');
+            done();
+          });
+      });
+
+      it('Should return 400 for post with invalid request type', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'novalid',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(400);
+            expect(res.body.message).to.equal('requestType can only be maintenance / repair');
+            done();
+          });
+      });
+      it('Should return 404 for post with undefined decription field', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(404);
+            expect(res.body.message).to.equal('No input was received for description');
+            done();
+          });
+      });
+    
+      it('Should return 404 for post with empty decription field', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+            description: ''
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(404);
+            expect(res.body.message).to.equal('description cannot be empty');
+            done();
+          });
+      });
+    
+      it('Should return 406 for post with invalid decription character length', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+            description: 'hdjw'
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(406);
+            expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+            done();
+          });
+      });
+    
+      it('Should return 403 for invalid token', (done) => {
+        chai.request(app)
+          .post('/api/v1/users/requests')
+          .send({
+            id: 1,
+            name: 'Balogun Fatai',
+            email: 'abcd@gmail.com',
+            requestType: 'repair',
+            description: 'please fix my bugs'
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(403);
+            //expect(res.message).to.equal('invalid token');
+            done();
+          });
+      });
+    
+
+  });//Modify get request
+  
+
+
+
+

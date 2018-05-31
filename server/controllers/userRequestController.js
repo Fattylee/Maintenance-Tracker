@@ -95,7 +95,7 @@ class UserRequestHandler {
             message: 'you are not an admin'
           });
         }
-
+        
         const Pool = pg.Pool;
         const pool = new Pool();
 
@@ -110,6 +110,14 @@ class UserRequestHandler {
                   message: 'invalid requestID'
                 });
             }
+
+            if(result.rows[0].status ==='resolved'){
+              return res.status(406)
+                .json({
+                  message: 'can not disapprove a resolved request'
+                });
+            }
+           
             sql = 'update requests set status = $1 where request_id = $2';
             params = ['disapproved', req.params.requestId];
             pool.query(sql, params)

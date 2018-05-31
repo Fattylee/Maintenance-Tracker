@@ -50,7 +50,7 @@ class requestValidator{
     
   
   static postARequest(req, res, next) {
-    let { name, email, requestType, description } = req.body;
+    let { requestType, description } = req.body;
 
     if (requestType === undefined ){
       return res.status(404)
