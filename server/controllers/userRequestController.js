@@ -74,15 +74,20 @@ class UserRequestHandler {
           });
       }
       else {
+        const role = authData.user[0].role;
+        if(role !== 'admin'){
+          return res.status(406)
+          .json({
+            message: 'you are not an admin'
+          })
+        }
 
         const Pool = pg.Pool;
         const pool = new Pool();
 
         const sql = 'select * from requests ';
-        //const params = [authData.user[0].user_id]
         pool.query(sql)
           .then((result) => {
-            //console.log(result);
             const userRequests = result.rows;
             res.status(200)
               .json({
