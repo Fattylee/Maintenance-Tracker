@@ -58,6 +58,7 @@ class requestValidator{
   }//End getARequest
   
   static modifyRequest(req, res, next){
+    /*
     const requestId = req.params.id;
     const request = users.find(request => request.id === parseInt(requestId));
 
@@ -118,7 +119,8 @@ class requestValidator{
     }
      email = validator.trim(email);
      email = email.toLowerCase();
-
+*/
+    let { requestType, description } = req.body;
     if (requestType === undefined ){
       return res.status(404)
       .json({
@@ -153,9 +155,8 @@ class requestValidator{
           message: 'description should be 10 to 50 characters long',
         });
     }
-
-    req.body.request = request;
-    return next();
+    
+    next();
   }//End modifyRequest
     
   

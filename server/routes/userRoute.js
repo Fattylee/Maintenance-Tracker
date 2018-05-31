@@ -24,8 +24,13 @@ router.get("/users/requests/:id", verifyToken, requestController.getARequest);
 router.post("/users/requests", requestValidator.postARequest, verifyToken, requestController.postARequest);
 
 //protected route  , requestValidator.modifyRequest
-router.put("/users/requests/:id", verifyToken, requestController.modifyRequest);
+router.put("/users/requests/:id",requestValidator.modifyRequest, verifyToken, requestController.modifyRequest);
 
+//admin fetch all users 
+router.get("/requests", verifyToken, requestController.getAllRequestAdmin);
+
+///requests/<requestId>/approve
+router.put("/requests/:requestId/approve", verifyToken, requestController.modifyRequestAdmin);
 
 router.get("/", requestController.home);
 
