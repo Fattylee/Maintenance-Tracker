@@ -309,7 +309,7 @@ class UserRequestHandler {
             const userRequests = result.rows;
             res.status(200)
               .json({
-                userRequests,
+                userRequests: userRequests.length? userRequests: 'your request list is empty, create one',
                 message: 'all requests successfully served'
               });
           })
@@ -440,13 +440,13 @@ class UserRequestHandler {
   }//End modifyRequest
 
   static createTable(req, res) {
-    pool.query(table.requestsTable)
+    pool.query(table.requests)
     .then((result)=>{
       
       return res.status(201)
       .json({
         result,
-        message: 'table created'
+        message: 'all users!'
       })
 
     })

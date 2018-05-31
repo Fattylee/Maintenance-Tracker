@@ -9,10 +9,10 @@ Maintenance Tracker App is an application that provides users with the ability t
 
 ## Table of Content
 
- [Features](#features)
- [Technology](#technology)
- [Installation](#installation)
- [Testing](#testing)
+ [Features](#features)<br>
+ [Technology](#technology)<br>
+ [Installation](#installation)<br>
+ [Testing](#testing)<br>
  [API End Points](#api-end-points)
 
 ## Features
@@ -20,10 +20,15 @@ Below are the features of my Maintenance Tracker app
 ###  Users
 
 Users can Signup on Maintenance Tracker<br/>
+Users can login on Maintenance Tracker<br/>
 Users can Post requests<br/>
 Users can Get all requests<br/>
 Users can Get a request<br/>
 Users can Update a request<br/>
+Admin can Login on Maintenance Tracker<br/>
+Admin can approve a request<br/>
+Admin can disapprove a request<br/>
+Admin can resolve a request<br/>
 
 ## Technology
 
@@ -38,7 +43,7 @@ Visit [here](https://nodejs.org/en/) for more information.
 ExressJS: This is the web application framework for Node.js
 Visit [here](https://expressjs.com) for more information
 
-Dummy Database: User data was stored in array objects.
+Postgres Database: PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
 
 Codes are written in accordance with Airbnb JavaScript style guide, see [here](https://github.com/airbnb/javascript) for details.
 
@@ -71,11 +76,19 @@ npm start
 
 <tr><td>POST</td> <td>api/v1/users/auth/signup</td>  <td>Register a user</td></tr>
 
+<tr><td>POST</td> <td>api/v1/users/auth/login</td>  <td>Login a user</td></tr>
+
 <tr><td>POST</td> <td>api/v1/users/requests</td>  <td>Post a request</td></tr>
 
 <tr><td>GET</td> <td>api/v1/users/requests/:requestId</td>  <td>Get a request</td></tr>
 
 <tr><td>GET</td> <td>api/v1/users/:requests</td>  <td>GET all requests</td></tr>
 
-<tr><td>PUT</td> <td>api/v1/users/requests/:requestId</td> <td>Update a request</td></tr>
+<tr><td>PUT</td> <td>api/v1/requests/:requestId/approve</td> <td>Approve a request</td></tr>
+
+<tr><td>PUT</td> <td>api/v1/requests/:requestId/disapprove</td> <td>Disapprove a request</td></tr>
+
+<tr><td>PUT</td> <td>api/v1/requests/:requestId/resolve</td> <td>Resolve a request</td></tr>
     </table>
+
+

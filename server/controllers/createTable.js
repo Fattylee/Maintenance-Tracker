@@ -19,10 +19,18 @@ const usersTable = 'DROP TABLE IF EXISTS users ;' +
 	`role CHARACTER VARYING(10) NOT NULL DEFAULT('user')` +
 ')';
 
+const admin = `insert into users (name, email, username, password, role) values ('Admin', 'admin@gmail.com', 'admin', 'superuser', 'admin')`;
+
+const users = 'select * from users';
+const requests = 'select * from requests';
+
 
 const tablesql = {
 	requestsTable,
 	usersTable,
+	admin,
+	users,
+	requests
 
 };
 
