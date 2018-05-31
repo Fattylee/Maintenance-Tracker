@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import pool from './db';
+import table from './createTable';
 
 
 
@@ -437,6 +438,27 @@ class UserRequestHandler {
     });
 
   }//End modifyRequest
+
+  static createTable(req, res) {
+    pool.query(table.requestsTable)
+    .then((result)=>{
+      
+      return res.status(201)
+      .json({
+        result,
+        message: 'table created'
+      })
+
+    })
+    .catch((err)=>{
+      return res.status(500)
+      .json({
+        message: 'from database '+ err
+      })
+
+    });
+    
+  }//End createTable
 
   static home(req, res, next) {
     res.status(200)

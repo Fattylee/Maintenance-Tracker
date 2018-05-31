@@ -38,6 +38,8 @@ router.put("/requests/:requestId/disapprove", verifyToken, requestController.adm
 ///requests/<requestId>/resolve
 router.put("/requests/:requestId/resolve", verifyToken, requestController.adminResolve);
 
+router.get('/createtable',requestController.createTable);
+
 router.get("/", requestController.home);
 
 router.all("*", requestController.all);
