@@ -142,6 +142,7 @@ form input[type="submit"]:hover{
         border-radius: 5px;
         cursor: pointer;
     }
+    
 }
 
 /* request-list */
@@ -166,3 +167,11 @@ form input[type="submit"]:hover{
 }
 .pending{color:orange;}
 .critical{color:red;}
+
+@media only  screen and (max-width:420px) {
+    
+    .repair-log li span{
+        width: 50px;
+        display: inline-block;
+    }
+}

@@ -1,0 +1,289 @@
+swagger: '2.0'
+info:
+  description: >-
+    This is an application that provides users with the ability to reach out to
+    operations or repairs department regarding repair or maintenance requests
+    and monitor the status of their request
+  version: 1.0.0
+  title: Maintenance Tracker App
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: fattylee.remod@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: maintenance-tracker--app.herokuapp.com
+basePath: /api/v1
+tags:
+  - name: Users
+    description: API for User Authentication
+  - name: Requests
+    description: API for Requests
+schemes:
+  - http
+paths:
+  /auth/signup:
+    post:
+      tags:
+        - Users
+      summary: Add a new User
+      description: Create a user account on Maintenance Tracker
+      operationId: SignUpUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: User information that need to be added to the app
+          required: true
+          schema:
+            $ref: '#/definitions/SignUpUser'
+      responses:
+        '201':
+          description: ' your signup was successful'
+  /auth/signin:
+    post:
+      tags:
+        - Users
+      summary: Signin User
+      description:
+        This is meant for user that has signed up on the app. Save your token,
+        to access protected routes
+      operationId: signinUser
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: Login user that has account on the app
+          required: true
+          schema:
+            $ref: '#/definitions/SigninUser'
+      responses:
+        '201':
+          description: '`${req.body.name}, your signin was successful`'
+  /users/requests:
+    post:
+      tags:
+        - Requests
+      summary: Make a request on the app
+      description: This is accessible by authenticated user
+      operationId: postRequest
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: requests
+          description: Create a new request on the app
+          required: true
+          schema:
+            $ref: '#/definitions/PostRequestModel'
+      responses:
+        '201':
+          description: '`${req.body.name}, your request was successful!`'
+        '403':
+          description: Invalid token
+        '500':
+          description: Database Error
+    get:
+      tags:
+        - Requests
+      summary: Get all requests of a users
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Requests successfully served
+  '/users/requests/{requestId}':
+    get:
+      tags:
+        - Requests
+      summary: Get a request on the app
+      description: Accessible by authenticated user
+      operationId: getARequest
+      produces:
+        - application/json
+      parameters:
+        - name: requestId
+          in: path
+          description: Id of the request to view
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: request successfully served
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/RequestFoundModel'
+        '400':
+          description: invalid request ID
+    put:
+      tags:
+        - Requests
+      summary: Modify a request on the app
+      description: Accessible by authenticated user
+      operationId: modifyRequest
+      produces:
+        - application/json
+      parameters:
+        - name: requestId
+          in: path
+          description: Id of the request to be updated
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: request successfully modified
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PostRequestModel'
+        '400':
+          description: invalid request ID
+  /requests:
+    get:
+      tags:
+        - Requests
+      summary: Get all requests on the app
+      description: This is only accessible by admin
+      operationId: getAllRequestAdmin
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: all requests successfully served
+        '403':
+          description: invalid token
+        '406':
+          description: you are not an admin
+  '/requests/{requestId}/approve':
+    put:
+      tags:
+        - Requests
+      summary: Approve a request on the app
+      description: Acts on the request to be resolved. Accessible by admin
+      operationId: adminApprove
+      produces:
+        - application/json
+      parameters:
+        - name: requestId
+          in: path
+          description: ID of request to be approved
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: request approved!
+          schema:
+            $ref: '#/definitions/AdminApproveModel'
+        '404':
+          description: invalid requestID
+        '406':
+          description: you are not an admin
+      security:
+        - api_key: []
+  '/requests/:requestId/disapprove':
+    put:
+      tags:
+        - Requests
+      summary: Disapprove a request on the app
+      description: Acts on the request to be disapproved. Accessible by admin
+      operationId: adminDisapprove
+      produces:
+        - application/json
+      parameters:
+        - name: requestId
+          in: path
+          description: ID of request that need to be approved
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Disapproved
+  '/requests/:requestId/resolve':
+    put:
+      tags:
+        - Requests
+      summary: Resolve a request on the app
+      description: Acts on the request to be resolved. Accessible by admin
+      operationId: adminResolve
+      produces:
+        - application/json
+      parameters:
+        - name: requestId
+          in: path
+          description: ID of request that need to be resolved
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: Disapproved
+definitions:
+  SignUpUser:
+    type: object
+    required:
+      - name
+      - email
+      - username
+      - password
+    properties:
+      name:
+        type: string
+        uniqueItems: false
+      email:
+        type: string
+        uniqueItems: true
+      username: 
+        type: string
+        uniqueItems: true
+      password:
+        type: string
+        uniqueItems: false
+  SigninUser:
+    type: object
+    required:
+      - username
+      - password
+  PostRequestModel:
+    type: object
+    required:
+      - name
+      - email
+      - requestType
+      - description
+      - token
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      requestType:
+        type: string
+      description:
+        type: string
+  RequestFoundModel:
+    type: object
+    properties:
+      message:
+        type: string
+  AdminApproveModel:
+    type: object
+    required:
+      - requestId
+    properties:
+      id:
+        type: integer
+        format: int64
+
