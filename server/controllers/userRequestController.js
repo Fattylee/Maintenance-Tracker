@@ -7,8 +7,69 @@ dotenv.config();
 
 
 class UserRequestHandler {
+  
+  static adminDisapprove(req, res){
+    jwt.verify(req.token, 'secreteKey', (err, authData) => {
 
-  static modifyRequestAdmin(req, res) {
+      if (err) {
+        res.status(403)
+          .json({
+            message: 'invalid token'
+          });
+      }
+      else {
+
+        const role = authData.user[0].role;
+        if(role !== 'admin'){
+          return res.status(406)
+          .json({
+            message: 'you are not an admin'
+          });
+        }
+
+        const Pool = pg.Pool;
+        const pool = new Pool();
+
+        let sql = 'select * from requests where request_id = $1';
+        let params = [req.params.requestId];
+
+        pool.query(sql, params)
+          .then((result) => {
+            if (!result.rows.length) {
+              return res.status(404)
+                .json({
+                  message: 'invalid requestID'
+                });
+            }
+            sql = 'update requests set status = $1 where request_id = $2';
+            params = ['disapproved', req.params.requestId];
+            pool.query(sql, params)
+              .then((success) => {
+
+                res.status(200)
+                  .json({
+                    message: 'request dispproved!'
+                  });
+              })
+              .catch((error) => {
+                res.status(500)
+                  .json({
+                    message: error.message
+                  });
+              });//End inner Then
+          })//End first Then
+          .catch((error) => {
+            res.status(500)
+              .json({
+                message: error.message
+              });
+          });//End outter Then
+      }//End else
+    }); //End verify   
+
+  }//End adminDisapprove
+
+  static adminApprove(req, res) {
 
     jwt.verify(req.token, 'secreteKey', (err, authData) => {
 
@@ -68,7 +129,7 @@ class UserRequestHandler {
       }//End else
     }); //End verify   
 
-  }//End modifyRequestAdmin
+  }//End adminApprove
 
   static getAllRequestAdmin(req, res) {
     jwt.verify(req.token, 'secreteKey', (err, authData) => {

@@ -30,7 +30,10 @@ router.put("/users/requests/:id",requestValidator.modifyRequest, verifyToken, re
 router.get("/requests", verifyToken, requestController.getAllRequestAdmin);
 
 ///requests/<requestId>/approve
-router.put("/requests/:requestId/approve", verifyToken, requestController.modifyRequestAdmin);
+router.put("/requests/:requestId/approve", verifyToken, requestController.adminApprove);
+
+///requests/<requestId>/disapprove
+router.put("/requests/:requestId/disapprove", verifyToken, requestController.adminDisapprove);
 
 router.get("/", requestController.home);
 
