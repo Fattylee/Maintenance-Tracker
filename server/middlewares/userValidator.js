@@ -168,7 +168,61 @@ class userValidator {
           });
       });
 
-  }
+  }//End signupInput
+
+  static signinInput(req, res, next){
+    let { username, password } = req.body;
+    if (username === undefined) {
+      return res.status(406)
+        .json({
+          message: 'no input was received for username',
+        });
+    }
+    if (validator.isEmpty(username)) {
+      return res.status(406)
+        .json({
+          message: 'username cannot be empty',
+        });
+    }
+
+    username = validator.trim(username);
+    username = username.toLowerCase();
+
+    
+    pool.query('select username from users where username = $1', [username.toLowerCase()])
+      .then((result) => {
+        if (result.rowCount === 0) {
+          return res.status(404)
+            .json({
+              message: 'username does NOT exist, signup for a new account',
+            });
+        }
+
+        if (password === undefined) {
+          return res.status(406)
+            .json({
+              message: 'no input was received for password',
+            });
+        }
+
+        if (validator.isEmpty(password)) {
+          return res.status(406)
+            .json({
+              message: 'password cannot be empty',
+            });
+        }
+
+        password = validator.trim(password);
+        req.body.username = username;
+        req.body.password = password;
+
+        next();
+      })//End username then
+      .catch((err) => {
+        res.status(500);
+      });
+
+  }//End signinInput
 
 }
 export default userValidator;

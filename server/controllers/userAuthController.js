@@ -50,7 +50,7 @@ class UserAuthHandler {
         }
         res.status(404)
           .json({
-            message: 'Incorrect username or password'
+            message: 'Incorrect password'
           })
       })
       .catch((error) => {
