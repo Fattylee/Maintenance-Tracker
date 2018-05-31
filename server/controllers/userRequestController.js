@@ -7,7 +7,76 @@ dotenv.config();
 
 
 class UserRequestHandler {
-  
+
+  static adminResolve(req, res){
+    jwt.verify(req.token, 'secreteKey', (err, authData) => {
+
+      if (err) {
+        res.status(403)
+          .json({
+            message: 'invalid token'
+          });
+      }
+      else {
+
+        const role = authData.user[0].role;
+        if(role !== 'admin'){
+          return res.status(406)
+          .json({
+            message: 'you are not an admin'
+          });
+        }
+
+        const Pool = pg.Pool;
+        const pool = new Pool();
+
+        let sql = 'select * from requests where request_id = $1';
+        let params = [req.params.requestId];
+
+        pool.query(sql, params)
+          .then((result) => {
+            if (!result.rows.length) {
+              return res.status(404)
+                .json({
+                  message: 'invalid requestID'
+                });
+            }
+            if (result.rows[0].status === 'disapproved') {
+              return res.status(406)
+                .json({
+                  message: 'can not resolve a disapproved request'
+                });
+            }
+           
+            sql = 'update requests set status = $1 where request_id = $2';
+            params = ['resolved', req.params.requestId];
+            pool.query(sql, params)
+              .then((success) => {
+
+                res.status(200)
+                  .json({
+                    message: 'request resloved!'
+                  });
+              })
+              .catch((error) => {
+                res.status(500)
+                  .json({
+                    message: error.message
+                  });
+              });//End inner Then
+          })//End first Then
+          .catch((error) => {
+            res.status(500)
+              .json({
+                message: error.message
+              });
+          });//End outter Then
+      }//End else
+    }); //End verify   
+
+  }//End adminResolve
+
+
   static adminDisapprove(req, res){
     jwt.verify(req.token, 'secreteKey', (err, authData) => {
 

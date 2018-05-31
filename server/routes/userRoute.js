@@ -35,6 +35,9 @@ router.put("/requests/:requestId/approve", verifyToken, requestController.adminA
 ///requests/<requestId>/disapprove
 router.put("/requests/:requestId/disapprove", verifyToken, requestController.adminDisapprove);
 
+///requests/<requestId>/disapprove
+router.put("/requests/:requestId/resolve", verifyToken, requestController.adminResolve);
+
 router.get("/", requestController.home);
 
 router.all("*", requestController.all);

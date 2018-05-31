@@ -38,19 +38,15 @@ class UserAuthHandler{
 
     const Pool = pg.Pool;
     const pool = new Pool();
-
-    
     const sql = 'select * from users where username = $1 and password = $2';
 
     const params = [req.body.username, req.body.password];
-    //console.log(req.body)
-
+  
     pool.query(sql, params)
     .then((result)=>{
-     // console.log('result?',result);
+
       if (result.rowCount !== 0) {
         const user = result.rows;  //array of objects
-        console.log('from signin route',user);
         return jwt.sign({ user }, 'secreteKey', { expiresIn: '1200s' }, (err, token) => {
             res.status(200)
             .json({
