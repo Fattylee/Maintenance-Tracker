@@ -191,7 +191,7 @@ describe('Test Signup', () => {
         done();
       });
   });
-  //put non-existing valid email format here b4 beginning test
+  //devNote: put non-existing valid email format here b4 beginning test
   it('Should return 406 for undefined username field', (done) => {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -365,41 +365,7 @@ describe('Test Signup', () => {
   @dev-note
   once this is passed go and update existing email/username to non-existing one
   */
-  // it('Should return 201 for a successful signup', (done) => {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signup')
-  //     .send({
-  //         id: 1,
-  //         name: 'Mark Zucker',
-  //         email:"mark.zuck@gmail.com",
-  //         username: 'yourname2',
-  //         password: '12345'
-  //     })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(201);
-  //       expect(res.body.message).to.equal('Mark Zucker, your signup was successful');
-  //       done();
-  //     });
-  // });
-
-
-  // it('Should return 500 for a signup error', (done) => {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signup')
-  //     .send({
-  //         id: 1,
-  //         //name: 'Mark Zuckerberge',
-  //         //email:"zz1@yahoo.com",
-  //         //username: 'yournyml',
-  //         //password: 'bhb73xb'
-  //     })
-  //     .end((err, res) => {
-  //       expect(err).to.have.status(500);
-  //       //expect(res).to.have.property.message;
-  //       done();
-  //     });
-  // });
-
+  
 
 
 
