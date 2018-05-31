@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 
 //userValidator.signupInput,
-router.post("/auth/signin", auth.signinUser);
+router.post("/auth/login", auth.signinUser);
 
 //protected route
 router.get("/users/requests", verifyToken, requestController.getAllRequest);

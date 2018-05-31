@@ -304,7 +304,7 @@ class UserRequestHandler {
         const params = [authData.user[0].user_id]
         pool.query(sql, params)
           .then((result) => {
-            //console.log(result);
+            
             const userRequests = result.rows;
             res.status(200)
               .json({
