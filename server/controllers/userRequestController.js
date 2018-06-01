@@ -197,6 +197,12 @@ class UserRequestHandler {
                   message: 'invalid requestID'
                 });
             }
+            if (result.rows[0].status === 'resolved') {
+              return res.status(406)
+                .json({
+                  message: 'request already resolved!'
+                });
+            }
             sql = 'update requests set status = $1 where request_id = $2';
             params = ['approved', req.params.requestId];
             pool.query(sql, params)
