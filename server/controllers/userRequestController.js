@@ -86,7 +86,7 @@ class UserRequestHandler {
 
         const role = authData.user[0].role;
         if(role !== 'admin'){
-          return res.status(406)
+          return res.status(403)
           .json({
             message: 'you are not an admin'
           });
@@ -153,7 +153,7 @@ class UserRequestHandler {
 
         const role = authData.user[0].role;
         if(role !== 'admin'){
-          return res.status(406)
+          return res.status(403)
           .json({
             message: 'you are not an admin'
           });
@@ -210,7 +210,7 @@ class UserRequestHandler {
       else {
         const role = authData.user[0].role;
         if(role !== 'admin'){
-          return res.status(406)
+          return res.status(403)
           .json({
             message: 'you are not an admin'
           });
@@ -301,7 +301,7 @@ class UserRequestHandler {
       }
       else {
 
-        const sql = 'select * from requests where owner_id = $1';
+        const sql = 'select * from requests where owner_id = $1 order by request_id desc';
         const params = [authData.user[0].user_id]
         pool.query(sql, params)
           .then((result) => {
@@ -309,7 +309,7 @@ class UserRequestHandler {
             const userRequests = result.rows;
             res.status(200)
               .json({
-                userRequests: userRequests.length? userRequests: 'your request list is empty, create one',
+                userRequests: userRequests.length? userRequests: 'your request list is empty, create a request',
                 message: 'all requests successfully served'
               });
           })
