@@ -5,6 +5,7 @@ class requestValidator{
   static modifyRequest(req, res, next){
     
     let { requestType, description } = req.body;
+    
     if (requestType === undefined ){
       return res.status(404)
       .json({

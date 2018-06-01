@@ -463,8 +463,7 @@ class UserRequestHandler {
   static home(req, res, next) {
     res.status(200)
       .json({
-        status: 'success',
-        message: 'Welcome to fattylee Maintenance Tracker App. Have Fun!',
+        message: `Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.. Have Fun!`,
       });
   }//End home
 
