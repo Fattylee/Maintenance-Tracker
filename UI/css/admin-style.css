@@ -19,14 +19,13 @@ header{
     height: 60px;
     background: black;
     color:white;
+    padding: 0 30px;
 }
 header .brand{
     float: left;
     line-height: 60px;
     font-size: 1.5em;
     letter-spacing: 5px;
-    border-radius: 50%;
-    background: #444444;
     padding: 10px;
 }
 .brand a{
@@ -187,7 +186,7 @@ section{
 
         header .brand{
             line-height: 60px;
-            font-size: 0.5em;
+            font-size: 0.8em;
             letter-spacing: 2px;
             padding: 5px;
         }

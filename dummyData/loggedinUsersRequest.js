@@ -1,19 +1,22 @@
 export default [
   {
     id: 1,
-    username: 'yourname1',
+    name: 'yourname1',
+    email:"abcs@yahoo.com",
     requestType: 'repair',
     description: 'fix problem1'
   },
   {
     id: 2,
-    username: 'yourname2',
+    name: 'yourname2',
+    email:"abc@gmail.com",
     requestType: 'maintenance',
     description: 'fix problem2'
   },
   {
     id: 3,
-    username: 'yourname3',
+    name: 'yourname3',
+    email:"abcds@yahoo.com",
     requestType: 'repair',
     description: 'fix problem3'
   }
