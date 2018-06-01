@@ -648,41 +648,7 @@
 <a name='L600'></a><a href='#L600'>600</a>
 <a name='L601'></a><a href='#L601'>601</a>
 <a name='L602'></a><a href='#L602'>602</a>
-<a name='L603'></a><a href='#L603'>603</a>
-<a name='L604'></a><a href='#L604'>604</a>
-<a name='L605'></a><a href='#L605'>605</a>
-<a name='L606'></a><a href='#L606'>606</a>
-<a name='L607'></a><a href='#L607'>607</a>
-<a name='L608'></a><a href='#L608'>608</a>
-<a name='L609'></a><a href='#L609'>609</a>
-<a name='L610'></a><a href='#L610'>610</a>
-<a name='L611'></a><a href='#L611'>611</a>
-<a name='L612'></a><a href='#L612'>612</a>
-<a name='L613'></a><a href='#L613'>613</a>
-<a name='L614'></a><a href='#L614'>614</a>
-<a name='L615'></a><a href='#L615'>615</a>
-<a name='L616'></a><a href='#L616'>616</a>
-<a name='L617'></a><a href='#L617'>617</a>
-<a name='L618'></a><a href='#L618'>618</a>
-<a name='L619'></a><a href='#L619'>619</a>
-<a name='L620'></a><a href='#L620'>620</a>
-<a name='L621'></a><a href='#L621'>621</a>
-<a name='L622'></a><a href='#L622'>622</a>
-<a name='L623'></a><a href='#L623'>623</a>
-<a name='L624'></a><a href='#L624'>624</a>
-<a name='L625'></a><a href='#L625'>625</a>
-<a name='L626'></a><a href='#L626'>626</a>
-<a name='L627'></a><a href='#L627'>627</a>
-<a name='L628'></a><a href='#L628'>628</a>
-<a name='L629'></a><a href='#L629'>629</a>
-<a name='L630'></a><a href='#L630'>630</a>
-<a name='L631'></a><a href='#L631'>631</a>
-<a name='L632'></a><a href='#L632'>632</a>
-<a name='L633'></a><a href='#L633'>633</a>
-<a name='L634'></a><a href='#L634'>634</a>
-<a name='L635'></a><a href='#L635'>635</a>
-<a name='L636'></a><a href='#L636'>636</a>
-<a name='L637'></a><a href='#L637'>637</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L603'></a><a href='#L603'>603</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1041,40 +1007,6 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1333,7 +1265,7 @@ describe('Test API', () =&gt; {
       .get('/')
       .end((err, res) =&gt; {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal('Welcome to fattylee Maintenance Tracker App. Have Fun!');
+        expect(res.body.message).to.equal(`Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.. Have Fun!`);
         done();
       });
   });
@@ -1501,7 +1433,7 @@ describe('Test Signup', () =&gt; {
       .send({
         id: 1,
         name: 'Fatai Balogun',
-        email: "fatai4humility@yahoo.com",
+        email: "fattylee.remod@gmail.com",
         username: 'yourname1',
         password: '1234'
       })
@@ -1511,7 +1443,7 @@ describe('Test Signup', () =&gt; {
         done();
       });
   });
-  //put non-existing valid email format here b4 beginning test
+  //devNote: put non-existing valid email format here b4 beginning test
   it('Should return 406 for undefined username field', (done) =&gt; {
     chai.request(app)
       .post('/api/v1/auth/signup')
@@ -1603,7 +1535,7 @@ describe('Test Signup', () =&gt; {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname1',
+        username: 'admin',
         password: '1234'
       })
       .end((err, res) =&gt; {
@@ -1620,7 +1552,7 @@ describe('Test Signup', () =&gt; {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
       })
       .end((err, res) =&gt; {
         expect(res).to.have.status(406);
@@ -1636,7 +1568,7 @@ describe('Test Signup', () =&gt; {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: ''
       })
       .end((err, res) =&gt; {
@@ -1653,7 +1585,7 @@ describe('Test Signup', () =&gt; {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: 'bf'
       })
       .end((err, res) =&gt; {
@@ -1670,7 +1602,7 @@ describe('Test Signup', () =&gt; {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: 'bhb bjb'
       })
       .end((err, res) =&gt; {
@@ -1685,41 +1617,7 @@ describe('Test Signup', () =&gt; {
   @dev-note
   once this is passed go and update existing email/username to non-existing one
   */
-  // it('Should return 201 for a successful signup', (done) =&gt; {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signup')
-  //     .send({
-  //         id: 1,
-  //         name: 'Mark Zucker',
-  //         email:"mark.zuck@gmail.com",
-  //         username: 'yourname2',
-  //         password: '12345'
-  //     })
-  //     .end((err, res) =&gt; {
-  //       expect(res).to.have.status(201);
-  //       expect(res.body.message).to.equal('Mark Zucker, your signup was successful');
-  //       done();
-  //     });
-  // });
-&nbsp;
-&nbsp;
-  // it('Should return 500 for a signup error', (done) =&gt; {
-  //   chai.request(app)
-  //     .post('/api/v1/auth/signup')
-  //     .send({
-  //         id: 1,
-  //         //name: 'Mark Zuckerberge',
-  //         //email:"zz1@yahoo.com",
-  //         //username: 'yournyml',
-  //         //password: 'bhb73xb'
-  //     })
-  //     .end((err, res) =&gt; {
-  //       expect(err).to.have.status(500);
-  //       //expect(res).to.have.property.message;
-  //       done();
-  //     });
-  // });
-&nbsp;
+  
 &nbsp;
 &nbsp;
 &nbsp;
@@ -1960,7 +1858,7 @@ describe('MODIFY GET request', () =&gt; {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 31 2018 11:46:15 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jun 01 2018 06:18:35 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>

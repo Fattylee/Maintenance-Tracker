@@ -13,7 +13,7 @@ describe('Test API', () => {
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(200);
-        expect(res.body.message).to.equal('Welcome to fattylee Maintenance Tracker App. Have Fun!');
+        expect(res.body.message).to.equal(`Maintenance Tracker App is an application that provides users with the ability to reach out to operations or repairs department regarding repair or maintenance requests and monitor the status of their request.. Have Fun!`);
         done();
       });
   });
@@ -181,7 +181,7 @@ describe('Test Signup', () => {
       .send({
         id: 1,
         name: 'Fatai Balogun',
-        email: "fatai4humility@yahoo.com",
+        email: "fattylee.remod@gmail.com",
         username: 'yourname1',
         password: '1234'
       })
@@ -283,7 +283,7 @@ describe('Test Signup', () => {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname1',
+        username: 'admin',
         password: '1234'
       })
       .end((err, res) => {
@@ -300,7 +300,7 @@ describe('Test Signup', () => {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
@@ -316,7 +316,7 @@ describe('Test Signup', () => {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: ''
       })
       .end((err, res) => {
@@ -333,7 +333,7 @@ describe('Test Signup', () => {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: 'bf'
       })
       .end((err, res) => {
@@ -350,7 +350,7 @@ describe('Test Signup', () => {
         id: 1,
         name: 'Fatai Balogun',
         email: "nonexisting@g.com",
-        username: 'yourname3',
+        username: 'newuser',
         password: 'bhb bjb'
       })
       .end((err, res) => {

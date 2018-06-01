@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.18% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/22</span>
+        <span class='fraction'>2/16</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.18% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/22</span>
+        <span class='fraction'>2/16</span>
       </div>
     </div>
     <p class="quiet">
@@ -112,17 +112,7 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,9 +122,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,8 +144,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -192,76 +178,69 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import pg from 'pg';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import jwt from 'jsonwebtoken';
+import pool from './db';
 &nbsp;
-dotenv.config();
-&nbsp;
-class UserAuthHandler{
+class UserAuthHandler {
 &nbsp;
   static signupUser(req, res) {
 &nbsp;
-  const Pool = <span class="cstat-no" title="statement not covered" >pg.Pool;</span>
-  const pool = <span class="cstat-no" title="statement not covered" >new Pool();</span>
-&nbsp;
-  const sql = <span class="cstat-no" title="statement not covered" >'insert into users (name, email, username, password) values ($1, $2, $3, $4)';</span>
+    const sql = <span class="cstat-no" title="statement not covered" >'insert into users (name, email, username, password) values ($1, $2, $3, $4)';</span>
     const params = <span class="cstat-no" title="statement not covered" >[</span>
       req.body.name,
-      req.body.email, 
+      req.body.email,
       req.body.username,
       req.body.password
     ];
-<span class="cstat-no" title="statement not covered" >  pool.query(sql, params)</span>
-  .then(<span class="fstat-no" title="function not covered" >(</span>result)=&gt;{
-<span class="cstat-no" title="statement not covered" >    res.status(201)</span>
-    .json({
-      message: `${req.body.name}, your signup was successful`
-    });
-  })
-  .catch(<span class="fstat-no" title="function not covered" >(</span>error)=&gt;{
-<span class="cstat-no" title="statement not covered" >    res.json({</span>
-      error,
-      message: 'something went wrong'
-    });
-  });
+<span class="cstat-no" title="statement not covered" >    pool.query(sql, params)</span>
+      .then(<span class="fstat-no" title="function not covered" >(</span>result) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.status(201)</span>
+          .json({
+            message: `${req.body.name}, your signup was successful`
+          });
+      })
+      .catch(<span class="fstat-no" title="function not covered" >(</span>error) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.json({</span>
+          error,
+          message: 'something went wrong'
+        });
+      });
 &nbsp;
   }//End signupUser
 &nbsp;
   static signinUser(req, res) {
 &nbsp;
-    const Pool = <span class="cstat-no" title="statement not covered" >pg.Pool;</span>
-    const pool = <span class="cstat-no" title="statement not covered" >new Pool();</span>
+&nbsp;
     const sql = <span class="cstat-no" title="statement not covered" >'select * from users where username = $1 and password = $2';</span>
 &nbsp;
     const params = <span class="cstat-no" title="statement not covered" >[req.body.username, req.body.password];</span>
-  
-<span class="cstat-no" title="statement not covered" >    pool.query(sql, params)</span>
-    .then(<span class="fstat-no" title="function not covered" >(</span>result)=&gt;{
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (result.rowCount !== 0) {</span>
-        const user = <span class="cstat-no" title="statement not covered" >result.rows;  //array of objects</span>
-<span class="cstat-no" title="statement not covered" >        return jwt.sign({ user }, 'secreteKey', { expiresIn: '1200s' }, <span class="fstat-no" title="function not covered" >(</span>err, token) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    pool.query(sql, params)</span>
+      .then(<span class="fstat-no" title="function not covered" >(</span>result) =&gt; {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (result.rowCount !== 0) {</span>
+          const user = <span class="cstat-no" title="statement not covered" >result.rows;  //array of objects</span>
+<span class="cstat-no" title="statement not covered" >          return jwt.sign({ user }, 'secreteKey', { expiresIn: '1200s' }, <span class="fstat-no" title="function not covered" >(</span>err, token) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >            res.status(200)</span>
-            .json({
-              message: `Hello ${req.body.username}, your signin was successful`,
-              token
+              .json({
+                message: `Hello ${req.body.username}, your signin was successful`,
+                token
+              });
           });
-        });
-      }
-<span class="cstat-no" title="statement not covered" >      res.status(404)</span>
-      .json({
-        message: 'Incorrect username or password'
+        }
+<span class="cstat-no" title="statement not covered" >        res.status(404)</span>
+          .json({
+            message: 'Incorrect password'
+          })
       })
-    })
-    .catch(<span class="fstat-no" title="function not covered" >(</span>error)=&gt;{
-<span class="cstat-no" title="statement not covered" >      res.json({</span>
-        message: error.message
+      .catch(<span class="fstat-no" title="function not covered" >(</span>error) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.json({</span>
+          message: error.message
+        });
       });
-    });
-    
+&nbsp;
   }//End signinUser
- 
+&nbsp;
 }
 &nbsp;
 export default UserAuthHandler;
@@ -271,7 +250,7 @@ export default UserAuthHandler;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 31 2018 11:46:15 GMT+0100 (W. Central Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jun 01 2018 06:18:35 GMT+0100 (W. Central Africa Standard Time)
 </div>
 </div>
 <script src="..\..\..\prettify.js"></script>
