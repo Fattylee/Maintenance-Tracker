@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import pool from './db';
 import table from './createTable';
+import { request } from 'http';
 
 
 
@@ -23,6 +24,15 @@ class UserRequestHandler {
           return res.status(406)
           .json({
             message: 'you are not an admin'
+          });
+        }
+
+        const  requestId = Number(req.params.requestId);
+
+        if(!requestId){
+          return res.status(403)
+          .json({
+            message: 'not a valid requestID number format'
           });
         }
 
@@ -91,6 +101,15 @@ class UserRequestHandler {
             message: 'you are not an admin'
           });
         }
+
+        const  requestId = Number(req.params.requestId);
+
+        if(!requestId){
+          return res.status(403)
+          .json({
+            message: 'not a valid requestID number format'
+          });
+        }
         
         let sql = 'select * from requests where request_id = $1';
         let params = [req.params.requestId];
@@ -156,6 +175,14 @@ class UserRequestHandler {
           return res.status(403)
           .json({
             message: 'you are not an admin'
+          });
+        }
+        const  requestId = Number(req.params.requestId);
+
+        if(!requestId){
+          return res.status(403)
+          .json({
+            message: 'not a valid requestID number format'
           });
         }
 

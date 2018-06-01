@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken';
 import pool from './../controllers/db';
 
 class userValidator {
-
   static signupInput(req, res, next) {
     let { name, email, username, password } = req.body;
 
