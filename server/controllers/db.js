@@ -1,5 +1,5 @@
 import pg from 'pg';
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 
 
 const Pool = pg.Pool;

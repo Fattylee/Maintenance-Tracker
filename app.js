@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from './server/routes/userRoute';
-import webpages from './server/routes/pagesRoute';
+// import webpages from './server/routes/pagesRoute';
 import path from 'path';
 
 
@@ -15,8 +15,11 @@ app.use((req, res, next)=>{
   next();
 });
 
-app.use(express.static(path.join(__dirname, './ui/')));
-app.use('/', webpages);
+// app.use(express.static(path.join(__dirname, './ui/')));
+app.use(express.static(path.join(process.cwd(), './ui/')));
+// app.use('/', express.static('ui'));
+
+// app.use('/', webpages);
 app.use('/api/v1', router);
 app.use('/others', router);
 
