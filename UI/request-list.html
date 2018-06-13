@@ -25,6 +25,7 @@
 
     <div class="container">
         <h1>Maintenance / Repair Details</h1>
+        <button id='get'>get request</button>
         <div class="repair-log">
             <ul>
                 <li><span>Request/Repair:</span> repair</li>
@@ -51,4 +52,30 @@
                 </div>
       
 </body>
+
+<script>
+    const getRequest = (eventObj) => {
+        eventObj.preventDefault();
+            
+            console.log("from onsubmit");
+           
+           let  token = localStorage.getItem('token');
+
+            fetch('/api/v1/users/requests', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json',
+                    'Authorization': token
+                }
+            })
+            .then((res) => res.json())
+            .then((data) => console.log( data))
+            .catch(err => {
+                console.log('from catch', err);
+            });
+        }
+
+        document.getElementById('get').addEventListener('click', getRequest);
+</script>
 </html>

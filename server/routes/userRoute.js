@@ -7,8 +7,13 @@ import verifyToken from './../middlewares/verification';
 // import jwt from 'jsonwebtoken';
 
 const router = express.Router();
+router.post('/pama', (req, res)=>{
+  res.status(200).json({message: 'nice work!'});
+});
 
-
+router.get('/giveme', (req, res)=>{
+  res.send('nice work again !');
+});
 router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 
 //userValidator.signupInput,

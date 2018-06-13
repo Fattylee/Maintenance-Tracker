@@ -8,6 +8,12 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use((req, res, next)=>{
+  res.append('Access-Control-Allow-Origin', ['*']);
+  next();
+});
+
 app.use('/', express.static(path.resolve(__dirname, './ui/')));
 app.use('/api/v1', router);
 app.use(router);
