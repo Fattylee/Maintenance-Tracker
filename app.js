@@ -15,10 +15,10 @@ app.use((req, res, next)=>{
   next();
 });
 
-app.use(express.static(path.resolve(__dirname, './ui/')));
+app.use(express.static(path.join(__dirname, './ui/')));
 app.use('/', webpages);
 app.use('/api/v1', router);
-app.use(router);
+app.use('/others', router);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
