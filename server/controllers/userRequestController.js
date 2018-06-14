@@ -297,36 +297,20 @@ class UserRequestHandler {
         ];
 
         pool.query(sql, params)
-          .then((result) => {
+          .then((postResult) => {
            
-            const sql = 'select * from requests where owner_id = $1';
-            const params = [authData.user[0].user_id]
-            pool.query(sql, params)
+            const sql = 'select * from requests order by request_id desc limit 1';
+            const params = [1]
+            pool.query(sql)
               .then((result) => {
-                const userRequests = result.rows;
-    
-                const requestId = req.params.id;
-                const request = userRequests.find(request => request.request_id === parseInt(requestId));
-                if (request) {
-
-                  res.status(200)
-                    .json({
-                      request,
-                      message: 'request successfully served'
-                    });
-                    res.status(201)
+               const request = result.rows[0];
+              return res.status(201)
               .json({
-                result,
-                message: `${req.body.name}, your request was successful!`,
+                request,
+                message: `${request.name}, your request was successful!`,
               });
-                }
-                else {
-                  res.status(404)
-                    .json({
-                      message: 'invalid request ID'
-                    });
-                }
-              })
+                
+              })//End get result Den
               .catch((error) => {
                 res.status(500)
                   .json({
@@ -334,9 +318,7 @@ class UserRequestHandler {
                   });
               });
 
-            
-
-          })
+          })//End postResult Then
           .catch((err) => {
             res.status(500)
               .json({

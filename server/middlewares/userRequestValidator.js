@@ -54,8 +54,8 @@ class requestValidator{
         message: 'No input was received for requestType',
       });
     }
-      
-    if (requestType.toLowerCase() !== "maintenance" && requestType.toLowerCase() !== "repair") {
+    requestType = requestType.trim().toLowerCase();
+    if (requestType !== "maintenance" && requestType.toLowerCase() !== "repair") {
       return res.status(400)
         .json({
           message: 'requestType can only be maintenance / repair',
@@ -82,6 +82,8 @@ class requestValidator{
           message: 'description should be 10 to 50 characters long',
         });
     }
+    req.body.description = description;
+    req.body.requestType = requestType;
     next();
   }//End postARequest
 
