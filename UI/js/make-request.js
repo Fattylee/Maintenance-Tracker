@@ -8,11 +8,6 @@ const makeRequest = (eventObj) => {
   const requestType = document.getElementById('request-type').value,
   description = document.getElementById('description').value.trim();
 
-
-      console.log(requestType);
-     
-
-     
      let  token = localStorage.getItem('token');
 
       fetch('/api/v1/users/requests', {
@@ -27,7 +22,6 @@ const makeRequest = (eventObj) => {
       .then((res) => res.json())
       .then((data) => {
 
-        console.log('from server', data);
         let message = '';
 
         message = 'No input was received for requestType';
@@ -68,12 +62,15 @@ const makeRequest = (eventObj) => {
         message = `${data.request.name}, your request was successful!`;
         if(data.message === message){
           UI.showAlert(data.message, 'green');
+
+          //increase request-counter
+          const requestCounter = document.querySelector('.request-counter');
+          requestCounter.innerHTML = parseInt(requestCounter.innerHTML) + 1;
           return;
         }
       })
       .catch(err => {
-
-          console.log('from catch', err);
+          console.log('Error', err.message);
       });
   }
 
