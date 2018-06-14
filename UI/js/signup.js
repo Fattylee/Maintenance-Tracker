@@ -1,7 +1,6 @@
 const signUp = (eventObj) => {
   eventObj.preventDefault();
 
-  console.log("from onsubmit");
   let name = document.getElementById('name').value.trim(),
     email = document.getElementById('email').value.trim().toLowerCase(),
     username = document.getElementById('username').value.trim().toLowerCase(),
@@ -17,7 +16,6 @@ const signUp = (eventObj) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log('from signup', data);
       let message = '';
 
       message = 'No input was received for name';
@@ -127,7 +125,14 @@ const signUp = (eventObj) => {
       
       message = `${name}, your signup was successful`;
       if (data.message === message ) {
-        UI.showAlert(data.message,'green');
+        UI.showAlert(data.message+ '. You can signin','green');
+        UI.clearField();
+
+        setTimeout(()=>{
+          signin.click();
+
+        }, 2000);
+
       } 
     })
     .catch(err => {

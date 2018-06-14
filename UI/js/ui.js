@@ -15,4 +15,12 @@ class UI{
     }, 3000);
 
   }//End showAlert
+
+  static clearField(){
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+  }//End clearFied
+  
 }//End UI

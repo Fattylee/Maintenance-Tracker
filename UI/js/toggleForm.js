@@ -1,10 +1,11 @@
+let signin = '';
 window. addEventListener("load", function(){
 
 //display sign up form on page load
 const dataForm =document. querySelectorAll(".data-form");
 dataForm[0]. style. display ='block' ;
 
-const signup = document. getElementById("sign-up"),
+const signup = document. getElementById("sign-up");
 signin = document. getElementById("sign-in");
  
 signup.addEventListener("click", toggleForm);
