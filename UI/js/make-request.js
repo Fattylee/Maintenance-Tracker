@@ -5,9 +5,7 @@
 const makeRequest = (eventObj) => {
   eventObj.preventDefault();
       
-  const name = document.getElementById('name').value.trim().toLowerCase(),
-  email = document.getElementById('email').value.trim(),
-  requestType = document.getElementById('request-type').value.trim(),
+  const requestType = document.getElementById('request-type').value,
   description = document.getElementById('description').value.trim();
 
 
@@ -67,7 +65,7 @@ const makeRequest = (eventObj) => {
           UI.showAlert('please login to your account', 'red');
           return;
         }
-        message = `${name}, your request was successful!`;
+        message = `${data.request.name}, your request was successful!`;
         if(data.message === message){
           UI.showAlert(data.message, 'green');
           return;

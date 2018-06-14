@@ -300,7 +300,6 @@ class UserRequestHandler {
           .then((postResult) => {
            
             const sql = 'select * from requests order by request_id desc limit 1';
-            const params = [1]
             pool.query(sql)
               .then((result) => {
                const request = result.rows[0];
