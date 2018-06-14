@@ -16,8 +16,8 @@ app.use((req, res, next)=>{
 });
 
 // app.use(express.static(path.join(__dirname, './ui/')));
-app.use(express.static(path.join(process.cwd(), './ui/')));
-// app.use('/', express.static('ui'));
+//app.use(express.static(path.join(process.cwd(), './ui/')));
+app.use( express.static(__dirname + '/ui'));
 
 // app.use('/', webpages);
 app.use('/api/v1', router);
