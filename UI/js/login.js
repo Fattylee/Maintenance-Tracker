@@ -49,10 +49,13 @@ const userLogin = (eventObj) => {
           }
           message = `Hello ${username}, your signin was successful`;
           if(data.message === message){
-            UI.showAlert(data.message, 'green', true);
+            UI.showAlert(data.message+ '. Redirecting...', 'green', true);
             
             localStorage.setItem('token', data.token);
-            ;
+            
+            setTimeout(()=>{
+            location.assign("request.html");
+            }, 2000);
           }
           
       })
