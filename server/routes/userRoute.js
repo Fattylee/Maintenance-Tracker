@@ -4,7 +4,7 @@ import auth from './../controllers/userAuthController';
 import userValidator from './../middlewares/userValidator';
 import requestValidator from './../middlewares/userRequestValidator';
 import verifyToken from './../middlewares/verification';
-// import jwt from 'jsonwebtoken';
+
 
 const router = express.Router();
 router.post('/pama', (req, res)=>{
@@ -34,13 +34,13 @@ router.put("/users/requests/:id",requestValidator.modifyRequest, verifyToken, re
 //admin fetch all users 
 router.get("/requests", verifyToken, requestController.getAllRequestAdmin);
 
-///requests/<requestId>/approve
+//requests/<requestId>/approve
 router.put("/requests/:requestId/approve", verifyToken, requestController.adminApprove);
 
-///requests/<requestId>/disapprove
+//requests/<requestId>/disapprove
 router.put("/requests/:requestId/disapprove", verifyToken, requestController.adminDisapprove);
 
-///requests/<requestId>/resolve
+//requests/<requestId>/resolve
 router.put("/requests/:requestId/resolve", verifyToken, requestController.adminResolve);
 
 router.get('/createtable',requestController.createTable);
