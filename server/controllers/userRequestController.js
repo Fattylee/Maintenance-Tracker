@@ -298,10 +298,43 @@ class UserRequestHandler {
 
         pool.query(sql, params)
           .then((result) => {
-            res.status(201)
+           
+            const sql = 'select * from requests where owner_id = $1';
+            const params = [authData.user[0].user_id]
+            pool.query(sql, params)
+              .then((result) => {
+                const userRequests = result.rows;
+    
+                const requestId = req.params.id;
+                const request = userRequests.find(request => request.request_id === parseInt(requestId));
+                if (request) {
+
+                  res.status(200)
+                    .json({
+                      request,
+                      message: 'request successfully served'
+                    });
+                    res.status(201)
               .json({
+                result,
                 message: `${req.body.name}, your request was successful!`,
               });
+                }
+                else {
+                  res.status(404)
+                    .json({
+                      message: 'invalid request ID'
+                    });
+                }
+              })
+              .catch((error) => {
+                res.status(500)
+                  .json({
+                    message: error.message
+                  });
+              });
+
+            
 
           })
           .catch((err) => {
