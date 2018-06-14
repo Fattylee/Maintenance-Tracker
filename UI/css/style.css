@@ -82,6 +82,9 @@ a:hover{
     box-sizing: border-box;
     display:none ;
 }
+.data-form.request-form{
+    display: block;
+}
 .data-form h2{
 text-align :center;
 }
