@@ -121,7 +121,7 @@ form input[type="submit"],
 }
 .alertBox{
     width: 100%;
-    display: none;
+    display: block;
 }
 form input[type="submit"]:hover{
     color: green;

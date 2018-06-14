@@ -1,7 +1,7 @@
 class UI{
  
-  static showAlert(message, bgColor){
-    const alertBox = document.querySelector('.alertBox');
+  static showAlert(message, bgColor, loginIndex){
+    const alertBox = document.querySelectorAll('.alertBox')[loginIndex ? 1 : 0];
     //hide existing message
     alertBox.style.display = 'none';
 
