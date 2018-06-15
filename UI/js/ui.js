@@ -23,4 +23,8 @@ class UI{
     document.getElementById('password').value = '';
   }//End clearFied
   
+  static resetRequest(){
+    document.getElementById('request-type').value = '';
+    document.getElementById('description').value = '';
+  }
 }//End UI

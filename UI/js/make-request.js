@@ -4,7 +4,7 @@
 
 const makeRequest = (eventObj) => {
   eventObj.preventDefault();
-      
+     
   const requestType = document.getElementById('request-type').value,
   description = document.getElementById('description').value.trim();
 
