@@ -1,7 +1,5 @@
 //alert('b4 page load');
 const validateToken = () => {
-  const requestType='maintenance',
-        description = 'heloo there';
 
   let  token = localStorage.getItem('token');
 
@@ -15,7 +13,6 @@ const validateToken = () => {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log('from validate.js',data);
         let message = '';
 
         message = 'invalid token';
@@ -27,6 +24,6 @@ const validateToken = () => {
       .catch(err => {
           console.log('Error', err.message);
       });
-  }
+  };
 
 validateToken();

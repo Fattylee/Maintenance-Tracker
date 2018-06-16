@@ -52,7 +52,9 @@ const makeRequest = (eventObj) => {
         }
         message = 'invalid token';
         if(data.message === message){
-          UI.showAlert('please login to your account', 'red');
+          UI.showAlert('Expired session, Plase login to make a request', 'red');
+
+          setTimeout(()=> location.assign('../index.html'), 1500);
           return;
         }
         message = `${data.request.name}, your request was successful!`;
