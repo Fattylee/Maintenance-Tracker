@@ -1,3 +1,31 @@
+const getRequest = (eventObj) => {
+  eventObj.preventDefault();
+     
+     let  token = localStorage.getItem('token');
+
+      fetch('/api/v1/users/requests', {
+          method: 'GET',
+          headers: {
+              'Accept': 'application/json, text/plain, */*',
+              'Content-type': 'application/json',
+              'Authorization': token
+          }
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log( data.userRequests.length);
+          //set request-counter
+          const requestCounter = document.querySelector('.request-counter');
+          requestCounter.innerHTML = data.userRequests.length;
+
+      })
+      .catch(err => {
+          console.log('from catch', err);
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', getRequest);
+
 const makeRequest = (eventObj) => {
   eventObj.preventDefault();
      

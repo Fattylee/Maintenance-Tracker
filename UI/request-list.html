@@ -7,7 +7,7 @@
     <title>MT user request list</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
+<script src="js/validate-token.js"></script>
 <body>
 
  
@@ -25,57 +25,8 @@
 
     <div class="container">
         <h1>Maintenance / Repair Details</h1>
-        <button id='get'>get request</button>
-        <div class="repair-log">
-            <ul>
-                <li><span>Request/Repair:</span> repair</li>
-                <li><span>Description:</span> A broken computer screen</li>
-                <li><span>Date:</span> 19/09/2017</li>
-                <li><span>Status:</span> <span class="success">done</span></li>
-            </ul>
-        </div>
-        <div class="repair-log">
-                <ul>
-                    <li><span>Request/Repair:</span> maintenance</li>
-                    <li><span>Description:</span> very slow pc</li>
-                    <li><span>Date:</span> 21/06/2018</li>
-                    <li><span>Status:</span> <span class="pending">pending</span></li>
-                </ul>
-            </div>
-            <div class="repair-log">
-                    <ul>
-                        <li><span>Request/Repair:</span> repair</li>
-                        <li><span>Description:</span> A broken internet-cable</li>
-                        <li><span>Date:</span> 7/09/2017</li>
-                        <li><span>Status:</span> <span class="critical">critical</span></li>
-                    </ul>
-                </div>
-      
+        <div class="all-request"></div>      
 </body>
 
-<script>
-    const getRequest = (eventObj) => {
-        eventObj.preventDefault();
-            
-            console.log("from onsubmit");
-           
-           let  token = localStorage.getItem('token');
-
-            fetch('/api/v1/users/requests', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json',
-                    'Authorization': token
-                }
-            })
-            .then((res) => res.json())
-            .then((data) => console.log( data))
-            .catch(err => {
-                console.log('from catch', err);
-            });
-        }
-
-        document.getElementById('get').addEventListener('click', getRequest);
-</script>
+<script src="js/get-all-request.js"></script>
 </html>
