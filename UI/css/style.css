@@ -171,15 +171,41 @@ form input[type="submit"]:hover{
     margin-bottom: 10px;
 }
 .repair-log li{
-    padding: 10px;
+    padding: 5px;
 }
 .repair-log li span{
     width: 150px;
     display: inline-block;
 }
-.success{
-    color: greenyellow;
+.repair-log li span.no-width{
+    display: inline;
 }
+.request-btn{
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.request-btn-delete{
+    border: 1px solid red;
+    background: red;
+    color: white;
+}
+.request-btn-delete:hover{
+    border: 1px solid red;
+    background: white;
+    color: red;
+}
+.request-btn-pending{
+    border: 1px solid orange;
+    background: orange;
+    color: white;
+}
+.request-btn-pending:hover{
+    border: 1px solid orange;
+    background: white;
+    color: orange;
+}
+.success{color: green;}
 .pending{color:orange;}
 .critical{color:red;}
 

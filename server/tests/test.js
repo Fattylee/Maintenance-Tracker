@@ -451,7 +451,7 @@ describe('POST request', () => {
       })
       .end((err, res) => {
         expect(res).to.have.status(406);
-        expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+        expect(res.body.message).to.equal('description should be 10 to 150 characters long');
         done();
       });
   });
@@ -472,23 +472,6 @@ describe('POST request', () => {
         done();
       });
   });
-
-  // it('Should return 403 for invalid token', (done) => {
-  //   chai.request(app)
-  //     .post('/api/v1/users/requests')
-  //     .send({
-  //       id: 1,
-  //       name: 'Balogun Fatai',
-  //       email: 'abcd@gmail.com',
-  //       requestType: 'repair',
-  //       description: 'please fix my bugs'
-  //     })
-  //     .end((err, res) => {
-  //       expect(res).to.have.status(201);
-  //       //expect(res.message).to.equal('invalid token');
-  //       done();
-  //     });
-  // });
 
 
 });//End POST request

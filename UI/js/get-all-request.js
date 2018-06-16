@@ -13,7 +13,6 @@ const getRequest = (eventObj) => {
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log( data);
           let markup = '';
   
           data.userRequests.forEach(request => {
@@ -27,8 +26,12 @@ const getRequest = (eventObj) => {
             <ul>
                 <li><span>Title:</span> ${request.requesttype}</li>
                 <li><span>Description:</span> ${request.description}</li>
+                <li><span>Request ID:</span> ${request.request_id}</li>
                 <li><span>Date:</span> ${date}</li>
-                <li><span>Status:</span> <span class="success">${request.status}</span></li>
+                <li><span>Status:</span> <span class="pending no-width">${request.status}</span>
+                ${request.status === 'pending' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest()> delete </button> <button class='request-btn request-btn-pending' onclick = updateRequest()>update</button>` : ''}
+                
+                </li>
             </ul>
             </div>
             `;
@@ -43,3 +46,14 @@ const getRequest = (eventObj) => {
     }
   
     document.addEventListener('DOMContentLoaded', getRequest);
+
+    const deleteRequest = () =>{
+
+        console.log("deleted!");
+        
+    };
+
+    const updateRequest = () =>{
+
+        console.log("updated!");
+    };

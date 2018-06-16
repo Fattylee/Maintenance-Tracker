@@ -68,7 +68,7 @@ const makeRequest = (eventObj) => {
           UI.showAlert(data.message, 'red');
           return;
         }
-        message = 'description should be 10 to 50 characters long';
+        message = 'description should be 10 to 150 characters long';
         if(data.message === message){
           UI.showAlert(data.message, 'red');
           return;
