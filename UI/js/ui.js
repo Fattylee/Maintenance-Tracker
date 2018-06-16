@@ -24,7 +24,7 @@ class UI{
   }//End clearFied
   
   static resetRequest(){
-    document.getElementById('request-type').value = '';
+    document.getElementById('request-type').options[0].setAttribute('selected','selected');
     document.getElementById('description').value = '';
   }
 }//End UI

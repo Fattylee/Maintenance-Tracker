@@ -63,6 +63,9 @@ const makeRequest = (eventObj) => {
         if(data.message === message){
           UI.showAlert(data.message, 'green');
 
+          //reset make request form
+          UI.resetRequest();
+
           //increase request-counter
           const requestCounter = document.querySelector('.request-counter');
           requestCounter.innerHTML = parseInt(requestCounter.innerHTML) + 1;
