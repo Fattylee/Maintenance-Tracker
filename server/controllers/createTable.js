@@ -23,6 +23,7 @@ const admin = `insert into users (name, email, username, password, role) values 
 
 const users = 'select * from users';
 const requests = 'select * from requests';
+const dateColumn = 'ALTER TABLE requests ADD date TIMESTAMP NOT NULL DEFAULT (NOW())';
 
 
 const tablesql = {
@@ -30,7 +31,8 @@ const tablesql = {
 	usersTable,
 	admin,
 	users,
-	requests
+	requests,
+	dateColumn
 
 };
 

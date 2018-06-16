@@ -487,13 +487,13 @@ class UserRequestHandler {
   }//End modifyRequest
 
   static createTable(req, res) {
-    pool.query(table.requests)
+    pool.query(table.dateColumn)
     .then((result)=>{
       
       return res.status(201)
       .json({
         result,
-        message: 'all users!'
+        message: 'date column added!'
       })
 
     })
