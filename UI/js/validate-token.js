@@ -1,6 +1,4 @@
-//alert('b4 page load');
 const validateToken = () => {
-
   let  token = localStorage.getItem('token');
 
       fetch('/api/v1/token', {
