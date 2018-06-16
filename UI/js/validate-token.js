@@ -20,9 +20,7 @@ const validateToken = () => {
 
         message = 'invalid token';
         if(data.message === message){
-          location.assign('index.html');
-          //document.getElementById('sign-in').click();
-          //alert('please login to your account', 'red');
+          location.assign('../unauthorized.html');
           return;
         }
       })
