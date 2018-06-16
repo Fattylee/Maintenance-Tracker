@@ -11,7 +11,7 @@ signin = document. getElementById("sign-in");
 signup.addEventListener("click", toggleForm);
 signin. addEventListener("click", toggleForm);
 
-//click events handler for sign-in and sign-up button
+//click event handler for sign-in and sign-up button
 function toggleForm(event){
 
 if(event. target. id ==="sign-in"){

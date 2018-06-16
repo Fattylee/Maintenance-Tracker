@@ -1,7 +1,3 @@
-// window. addEventListener("load", function(){
-// console.log("working ");
-// });
-
 const makeRequest = (eventObj) => {
   eventObj.preventDefault();
      
