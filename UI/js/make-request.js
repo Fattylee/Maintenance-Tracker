@@ -1,7 +1,3 @@
-// window. addEventListener("load", function(){
-// console.log("working ");
-// });
-
 const makeRequest = (eventObj) => {
   eventObj.preventDefault();
      
@@ -56,12 +52,17 @@ const makeRequest = (eventObj) => {
         }
         message = 'invalid token';
         if(data.message === message){
-          UI.showAlert('please login to your account', 'red');
+          UI.showAlert('Expired session, Plase login to make a request', 'red');
+
+          setTimeout(()=> location.assign('../index.html'), 1500);
           return;
         }
         message = `${data.request.name}, your request was successful!`;
         if(data.message === message){
           UI.showAlert(data.message, 'green');
+
+          //reset make request form
+          UI.resetRequest();
 
           //increase request-counter
           const requestCounter = document.querySelector('.request-counter');

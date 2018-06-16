@@ -520,6 +520,19 @@ class UserRequestHandler {
       .send("<h1>Oops!, The page you're looking for doesn't exist</h1>");
   }//End all
 
+  static validateToken(req, res) {
+
+    jwt.verify(req.token, 'secreteKey', (err, authData) => {
+
+      if (err) {
+        res.status(403)
+          .json({
+            message: 'invalid token'
+          });
+      }
+    });
+  }//End validateToken
+
 
 }//UserRequestHandler
 

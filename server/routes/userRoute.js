@@ -20,6 +20,8 @@ router.post("/auth/signup", userValidator.signupInput, auth.signupUser);
 router.post("/auth/login", userValidator.signinInput,  auth.signinUser);
 
 //protected route
+router.get("/token", verifyToken, requestController.validateToken);
+//protected route
 router.get("/users/requests", verifyToken, requestController.getAllRequest);
 
 //, requestValidator.getARequest //protected route
