@@ -50,18 +50,14 @@ const getRequest = (eventObj) => {
 
     const deleteRequest = (eventObj) =>{
         
-        const answer = confirm('Are you sure that you want to detele this request');
-        if(answer){
-            eventObj.target.parentElement.parentElement.parentElement.remove();
-        }
+        const [a, b, id] = eventObj.target.parentElement.previousElementSibling.previousElementSibling.textContent.split(' ');
 
-        
+        const answer = confirm('Are you sure that you want to delete this request with ID: '+ id+' ?');
+        if(!answer) return; //abort delete
 
+        //delete from DOM
+        eventObj.target.parentElement.parentElement.parentElement.remove();
         const token = localStorage.getItem('token');
-        const id = 9;
-
-        return;
-        console.log('not reachable');
 
         fetch('/api/v1/users/requests/'+ id, {
             method: 'DELETE',
@@ -74,7 +70,6 @@ const getRequest = (eventObj) => {
         })
         .then( res => res.json())
         .then( data => {
-            console.log('data', data);
 
             let message = '';
 
