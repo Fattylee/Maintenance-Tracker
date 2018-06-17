@@ -76,10 +76,10 @@ class requestValidator{
     }
      description = validator.trim(description);
 
-    if (!validator.isLength(description,{ min: 10, max: 50 })) {
+    if (!validator.isLength(description,{ min: 10, max: 150 })) {
       return res.status(406)
         .json({
-          message: 'description should be 10 to 50 characters long',
+          message: 'description should be 10 to 150 characters long',
         });
     }
     req.body.description = description;

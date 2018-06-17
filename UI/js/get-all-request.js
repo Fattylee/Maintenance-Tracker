@@ -29,7 +29,7 @@ const getRequest = (eventObj) => {
                 <li><span>Request ID:</span> ${request.request_id}</li>
                 <li><span>Date:</span> ${date}</li>
                 <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
-                ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest()> delete </button>` : ''}
+                ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
                 ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest()>update</button>` : ''}
                 
                 </li>
@@ -48,9 +48,51 @@ const getRequest = (eventObj) => {
   
     document.addEventListener('DOMContentLoaded', getRequest);
 
-    const deleteRequest = () =>{
+    const deleteRequest = (eventObj) =>{
 
-        console.log("deleted!");
+        console.log(eventObj.target);
+
+        const token = localStorage.getItem('token');
+        const id = 9;
+
+        return;
+        console.log('not reachable');
+
+        fetch('/api/v1/users/requests/'+ id, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Authorization': token,
+                'Content-type': 'application/json'
+            }
+
+        })
+        .then( res => res.json())
+        .then( data => {
+            console.log('data', data);
+
+            let message = '';
+
+            message = 'invalid token';
+            if(data.message === message){
+            UI.showAlert('Expired session, Plase login to make a request', 'red');
+
+            setTimeout(()=> location.assign('../index.html'), 1500);
+            return;
+            }
+
+            message = 'invalid request ID';
+            if(data.message === message){
+                UI.showAlert(data.message, 'red');
+            }
+
+            message = 'request deleted successfully';
+            if(data.message === message){
+                UI.showAlert(data.message, 'green');
+            }
+
+        })
+        .catch( err => console.log('Error', err.message));
         
     };
 

@@ -554,7 +554,7 @@ describe('MODIFY GET request', () => {
           })
           .end((err, res) => {
             expect(res).to.have.status(406);
-            expect(res.body.message).to.equal('description should be 10 to 50 characters long');
+            expect(res.body.message).to.equal('description should be 10 to 150 characters long');
             done();
           });
       });
