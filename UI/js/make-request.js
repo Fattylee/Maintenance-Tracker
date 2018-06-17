@@ -13,7 +13,7 @@ const getRequest = (eventObj) => {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log( data.userRequests.length);
+        
           //set request-counter
           const requestCounter = document.querySelector('.request-counter');
           requestCounter.innerHTML = data.userRequests.length;
