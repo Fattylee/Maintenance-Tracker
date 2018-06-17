@@ -97,8 +97,13 @@ const getRequest = (eventObj) => {
     };
 
     const updateRequest = (eventObj) =>{
-        eventObj.preventDefault();
+        
+        //display modify-form
+        const modifyRequest = document.querySelector('.modify-request');
+        modifyRequest.style.display = 'block';
 
+        document.querySelector('#modify-request').addEventListener('submit',(eventObj) =>{
+        eventObj.preventDefault();
         console.log("updated!");
 
         const token = localStorage.getItem('token'),
@@ -143,7 +148,7 @@ const getRequest = (eventObj) => {
         }
         message = 'invalid token';
         if(data.message === message){
-          UI.showAlert('Expired session, Plase login to make a request', 'red');
+          UI.showAlert('Expired session, Plase login to make a UPDATE request', 'yellow');
 
           setTimeout(()=> location.assign('../index.html'), 1500);
           return;
@@ -157,4 +162,7 @@ const getRequest = (eventObj) => {
             
         })
         .catch( err => console.log('Error', err.message));
+    });//End on submit form
+
     };
+

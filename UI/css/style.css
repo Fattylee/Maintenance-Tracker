@@ -91,6 +91,9 @@ a:hover{
 .data-form.request-form{
     display: block;
 }
+.data-form.request-form.modify-request{
+    display: none;
+}
 .data-form h2{
 text-align :center;
 }
@@ -123,7 +126,7 @@ form input[type="submit"],
     padding: 10px 20px;
     background: green;
     color: white;
-    border: none;
+    border: 1px solid green;
     outline: none;
     border-radius: 5px;
     cursor: pointer;
@@ -208,6 +211,7 @@ form input[type="submit"]:hover{
 .success{color: greenyellow;}
 .pending{color:orange;}
 .critical{color:red;}
+
 
 @media only  screen and (max-width:420px) {
     
