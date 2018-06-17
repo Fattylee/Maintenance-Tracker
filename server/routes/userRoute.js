@@ -33,6 +33,9 @@ router.post("/users/requests", requestValidator.postARequest, verifyToken, reque
 //protected route  , requestValidator.modifyRequest
 router.put("/users/requests/:id",requestValidator.modifyRequest, verifyToken, requestController.modifyRequest);
 
+//protected route  , new feature
+router.delete("/users/requests/:id", verifyToken, requestController.deleteRequest);
+
 //admin fetch all users 
 router.get("/requests", verifyToken, requestController.getAllRequestAdmin);
 

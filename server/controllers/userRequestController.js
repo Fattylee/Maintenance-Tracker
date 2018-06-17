@@ -332,6 +332,72 @@ class UserRequestHandler {
 
   }//End postARequest
 
+  static deleteRequest(req, res) {
+    jwt.verify(req.token, 'secreteKey', (err, authData) => {
+
+      if (err) {
+        res.status(403)
+          .json({
+            message: 'invalid token'
+          });
+      }
+      else {
+
+        const sql = 'select * from requests where owner_id = $1';
+        const params = [authData.user[0].user_id]
+        pool.query(sql, params)
+          .then((result) => {
+            const userRequests = result.rows;
+
+            const requestId = req.params.id;
+            const request = userRequests.find(request => request.request_id === parseInt(requestId));
+            if (request) {
+
+              if(request.status === 'approved'){
+                return res.status(400)
+                .json({
+                  message: `can't delete approved request`
+                })
+              }
+              
+
+              pool.query('delete from requests where request_id = '+ requestId)
+              .then( deleteReq => {
+
+                return res.status(200)
+                .json({
+                  request,
+                  message: 'request deleted successfully'
+                });
+
+              })
+              .catch(error =>{
+                return res.status(500)
+                .json({
+                message: error.message
+              });
+              });
+              
+            }
+            else {
+              res.status(404)
+                .json({
+                  message: 'invalid request ID'
+                });
+            }
+          })
+          .catch((error) => {
+            res.status(500)
+              .json({
+                message: error.message
+              });
+          });
+      }//end else
+
+    });//End jwt verify
+
+  }//End deleteRequest
+
 
 
 
