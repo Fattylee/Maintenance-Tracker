@@ -108,7 +108,7 @@ textarea,
     box-sizing:border-box ;
 }
 form textarea{
-min-height: 200px;
+min-height: 100px;
 }
 form input:focus,
 form textarea:focus{

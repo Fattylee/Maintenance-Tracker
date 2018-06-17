@@ -30,7 +30,7 @@ const getRequest = (eventObj) => {
                 <li><span>Date:</span> ${date}</li>
                 <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
                 ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest()>update</button>` : ''}
+                ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
                 
                 </li>
             </ul>
@@ -44,7 +44,7 @@ const getRequest = (eventObj) => {
         .catch(err => {
             console.log('from catch', err);
         });
-    }
+    };
   
     document.addEventListener('DOMContentLoaded', getRequest);
 
@@ -75,7 +75,7 @@ const getRequest = (eventObj) => {
 
             message = 'invalid token';
             if(data.message === message){
-            UI.showAlert('Expired session, Plase login to make a request', 'red');
+            UI.showAlert('Expired session, Plase login to make a request', 'red', true);
 
             setTimeout(()=> location.assign('../index.html'), 1500);
             return;
@@ -83,12 +83,12 @@ const getRequest = (eventObj) => {
 
             message = 'invalid request ID';
             if(data.message === message){
-                UI.showAlert(data.message, 'red');
+                UI.showAlert(data.message, 'red', true);
             }
 
             message = 'request deleted successfully';
             if(data.message === message){
-                UI.showAlert(data.message, 'green');
+                UI.showAlert(data.message, 'green', true);
             }
 
         })
@@ -96,7 +96,65 @@ const getRequest = (eventObj) => {
         
     };
 
-    const updateRequest = () =>{
+    const updateRequest = (eventObj) =>{
+        eventObj.preventDefault();
 
         console.log("updated!");
+
+        const token = localStorage.getItem('token'),
+              id = 110,
+              requestType = document.getElementById('request-type').value,
+              description = document.getElementById('description').value.trim();
+
+        fetch('/api/v1/users/requests/'+id,{
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json, plain/text, */*',
+                'Content-type': 'application/json',
+                'Authorization': token
+            },
+            body: JSON.stringify({requestType, description})
+
+        })
+        .then( res => res.json())
+        .then( data => {
+            console.log('data', data);
+
+            message = 'requestType can only be maintenance / repair';
+        if(data.message === message){
+          UI.showAlert(data.message, 'red');
+          return;
+        }
+        
+        message = 'description cannot be empty';
+        if(data.message === message){
+          UI.showAlert(data.message, 'red');
+          return;
+        }
+        message = 'description should be 10 to 150 characters long';
+        if(data.message === message){
+          UI.showAlert(data.message, 'red');
+          return;
+        }
+        message = 'no token recieved, please supply a token';
+        if(data.message === message){
+          UI.showAlert(data.message, 'red');
+          return;
+        }
+        message = 'invalid token';
+        if(data.message === message){
+          UI.showAlert('Expired session, Plase login to make a request', 'red');
+
+          setTimeout(()=> location.assign('../index.html'), 1500);
+          return;
+        }
+        message = `${data.request.name}, your request was successful!`;
+        if(data.message === message){
+          UI.showAlert(data.message, 'green');
+        }
+
+
+            
+        })
+        .catch( err => console.log('Error', err.message));
     };

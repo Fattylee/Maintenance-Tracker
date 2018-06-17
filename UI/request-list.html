@@ -24,6 +24,24 @@
     </header>
 
     <div class="container">
+            <div class="data-form request-form">
+                    <h2>Update request</h2>
+                    <div class="alertBox"></div>
+                <form id='make-request' method="POST" action="#">
+                    
+                   <select  name="request-type" id="request-type">
+                       <option value="Resquest Type" disabled selected>Request Type</option>
+                       <option value="maintenance">Maintenance</option>
+                       <option value="repair">Repair</option>
+                   </select>
+        
+                    <label for="description">Description</label><br>
+                    <textarea required name="description" id="description" placeholder="Describe your request type"></textarea>
+        
+                    <input type="submit" value="Update Request">
+        
+                </form>
+            </div>
         <h1>Maintenance / Repair Details</h1>
         <div class="alertBox"></div>
         <div class="all-request"></div>      
