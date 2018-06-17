@@ -49,8 +49,13 @@ const getRequest = (eventObj) => {
     document.addEventListener('DOMContentLoaded', getRequest);
 
     const deleteRequest = (eventObj) =>{
+        
+        const answer = confirm('Are you sure that you want to detele this request');
+        if(answer){
+            eventObj.target.parentElement.parentElement.parentElement.remove();
+        }
 
-        console.log(eventObj.target);
+        
 
         const token = localStorage.getItem('token');
         const id = 9;
