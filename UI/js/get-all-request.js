@@ -28,8 +28,9 @@ const getRequest = (eventObj) => {
                 <li><span>Description:</span> ${request.description}</li>
                 <li><span>Request ID:</span> ${request.request_id}</li>
                 <li><span>Date:</span> ${date}</li>
-                <li><span>Status:</span> <span class="pending no-width">${request.status}</span>
-                ${request.status === 'pending' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest()> delete </button> <button class='request-btn request-btn-pending' onclick = updateRequest()>update</button>` : ''}
+                <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
+                ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest()> delete </button>` : ''}
+                ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest()>update</button>` : ''}
                 
                 </li>
             </ul>
