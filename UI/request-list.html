@@ -24,8 +24,10 @@
     </header>
 
     <div class="container">
+
+            <div class="overlay"></div>
             <div class="data-form request-form modify-request">
-                    <h2>Update request</h2>
+                    <h2 class='pending'>Update request</h2>
                     <div class="alertBox"></div>
                 <form id='modify-request' method="POST" action="#">
                     
@@ -36,14 +38,15 @@
                    </select>
         
                     <label for="description">Description</label><br>
-                    <textarea required name="description" id="description" placeholder="Describe your request type"></textarea>
-        
+                    <textarea required name="description" id="description" placeholder="Describe your request "></textarea>
+
                     <input type="submit" value="Update Request">
+                    <input class ='cancel-request' type="button" value="Cancel">
         
                 </form>
             </div>
         <h1>Maintenance / Repair Details</h1>
-        <div class="alertBox"></div>
+        <div class="alertBox alert-position"></div>
         <div class="all-request"></div>      
 </body>
 

@@ -49,7 +49,6 @@ const getRequest = (eventObj) => {
     document.addEventListener('DOMContentLoaded', getRequest);
 
     const deleteRequest = (eventObj) =>{
-        
         const [a, b, id] = eventObj.target.parentElement.previousElementSibling.previousElementSibling.textContent.split(' ');
 
         const answer = confirm('Are you sure that you want to delete this request with ID: '+ id+' ?');
@@ -70,7 +69,6 @@ const getRequest = (eventObj) => {
         })
         .then( res => res.json())
         .then( data => {
-
             let message = '';
 
             message = 'invalid token';
@@ -101,16 +99,28 @@ const getRequest = (eventObj) => {
         //display modify-form
         const modifyRequest = document.querySelector('.modify-request');
         modifyRequest.style.display = 'block';
+        const overlay = document.querySelector('.overlay');
+        overlay.style.display = 'block';
 
+        //cancel modify request form
+        document.querySelector('.cancel-request').addEventListener('click', () =>{
+            modifyRequest.style.display = 'none';
+            overlay.style.display = 'none';
+            
+            UI.resetRequest();
+
+        });
+
+        const [a, b, id] = eventObj.target.parentElement.previousElementSibling.previousElementSibling.textContent.split(' ');
+
+        //on submit modify-request
         document.querySelector('#modify-request').addEventListener('submit',(eventObj) =>{
         eventObj.preventDefault();
-        console.log("updated!");
-
         const token = localStorage.getItem('token'),
-              id = 110,
               requestType = document.getElementById('request-type').value,
               description = document.getElementById('description').value.trim();
 
+        
         fetch('/api/v1/users/requests/'+id,{
             method: 'PUT',
             headers: {
@@ -123,9 +133,8 @@ const getRequest = (eventObj) => {
         })
         .then( res => res.json())
         .then( data => {
-            console.log('data', data);
-
-            message = 'requestType can only be maintenance / repair';
+            
+        let message = 'requestType can only be maintenance / repair';
         if(data.message === message){
           UI.showAlert(data.message, 'red');
           return;
@@ -153,16 +162,17 @@ const getRequest = (eventObj) => {
           setTimeout(()=> location.assign('../index.html'), 1500);
           return;
         }
-        message = `${data.request.name}, your request was successful!`;
+        message = `${data.request.name}, your request was successfully modified!`;
         if(data.message === message){
-          UI.showAlert(data.message, 'green');
+          UI.showAlert(`${data.request.name}, your request(#${id}) was successfully modified!`, 'green');
+
+          //remove overlay
+          setTimeout(()=>{ location.reload(); }, 1500);
         }
-
-
-            
+  
         })
         .catch( err => console.log('Error', err.message));
     });//End on submit form
 
-    };
+};//End updateRequest
 

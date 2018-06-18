@@ -518,9 +518,10 @@ class UserRequestHandler {
               ];
 
               pool.query(sql, params)
-                .then((result) => {
+                .then((modifyResult) => {
                   res.status(201)
                     .json({
+                      request,
                       message: `${req.body.name}, your request was successfully modified!`
                     });
 
