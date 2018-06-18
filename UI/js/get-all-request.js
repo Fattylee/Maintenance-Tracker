@@ -13,6 +13,15 @@ const getRequest = (eventObj) => {
         })
         .then((res) => res.json())
         .then((data) => {
+           
+            const message = 'your request list is empty, create a request';
+            if(data.message === message){
+                UI.showAlert(data.message, 'red', true);
+                
+                //redirect to create request
+                setTimeout(()=>{document.getElementById('request-list').click()}, 1500);
+                return;
+            }
           let markup = '';
   
           data.userRequests.forEach(request => {
@@ -157,7 +166,7 @@ const getRequest = (eventObj) => {
         }
         message = 'invalid token';
         if(data.message === message){
-          UI.showAlert('Expired session, Plase login to make a UPDATE request', 'yellow');
+          UI.showAlert('Expired session, Plase login to make a UPDATE request', 'orange');
 
           setTimeout(()=> location.assign('../index.html'), 1500);
           return;

@@ -13,7 +13,12 @@ const getRequest = (eventObj) => {
       })
       .then((res) => res.json())
       .then((data) => {
-        
+
+        const message = 'your request list is empty, create a request';
+            if(data.message === message){
+                UI.showAlert(data.message, 'orange');
+                return;
+            }
           //set request-counter
           const requestCounter = document.querySelector('.request-counter');
           requestCounter.innerHTML = data.userRequests.length;

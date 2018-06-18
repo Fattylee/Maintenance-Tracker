@@ -407,7 +407,7 @@ class UserRequestHandler {
     jwt.verify(req.token, 'secreteKey', (err, authData) => {
 
       if (err) {
-        res.status(403)
+        return res.status(403)
           .json({
             message: 'invalid token'
           });
@@ -420,9 +420,16 @@ class UserRequestHandler {
           .then((result) => {
             
             const userRequests = result.rows;
+            if(!userRequests.length){
+          
+            return res.status(200)
+              .json({
+                message: 'your request list is empty, create a request'
+              });
+            }
             res.status(200)
               .json({
-                userRequests: userRequests.length? userRequests: 'your request list is empty, create a request',
+                userRequests: userRequests,
                 message: 'all requests successfully served'
               });
           })
