@@ -15,7 +15,7 @@
         <div class="brand"><a href="admin-index.html">MTAdmin</a></div>
         <nav>
            <ul>
-               <li><input type="text" name="search" id="search" placeholder="search request                                        ?"></li>
+               <li><input type="text" name="search" id="search" class="search hide-nav" placeholder="search request"></li>
                <li><a href="index.html" id="sign-out">Sign out</a></li>
             </ul>
         </nav>
@@ -23,12 +23,16 @@
     </div>
 
     <div class="container">
-
-        <h1>hello </h1>
-        <div class="repair-log">
-                <ul>
-                    <li><span>Title:</span> ${request.requesttype}</li>
-                    <li><span>Description:</span> ${request.description}</li>
+         <h1>All Request</h1>
+         <li><input type="text" name="search" id="search" class="search hide-body" placeholder="search request"></li>
+        <div class="all-request">
+                <ul class='request'>
+                    <li><span class="">Title:</span> ${request.requesttype}</li>
+                    <li><span>Description:</span> ${request.description}
+                        ${request.description}
+                        ${request.description}
+                        ${request.description}
+                    </li>
                     <li><span>Request ID:</span> ${request.request_id}</li>
                     <li><span>Date:</span> ${date}</li>
                     <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
@@ -37,6 +41,51 @@
                     
                     </li>
                 </ul>
+                <ul class='request'>
+                        <li><span class="">Title:</span> ${request.requesttype}</li>
+                        <li><span>Description:</span> ${request.description}
+                            ${request.description}
+                            ${request.description}
+                            ${request.description}
+                        </li>
+                        <li><span>Request ID:</span> ${request.request_id}</li>
+                        <li><span>Date:</span> ${date}</li>
+                        <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
+                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
+                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
+                        
+                        </li>
+                </ul>
+                <ul class='request'>
+                        <li><span class="">Title:</span> ${request.requesttype}</li>
+                        <li><span>Description:</span> ${request.description}
+                            ${request.description}
+                            ${request.description}
+                            ${request.description}
+                        </li>
+                        <li><span>Request ID:</span> ${request.request_id}</li>
+                        <li><span>Date:</span> ${date}</li>
+                        <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
+                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
+                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
+                        
+                        </li>
+                    </ul>
+                    <ul class='request'>
+                            <li><span class="">Title:</span> ${request.requesttype}</li>
+                            <li><span>Description:</span> ${request.description}
+                                ${request.description}
+                                ${request.description}
+                                ${request.description}
+                            </li>
+                            <li><span>Request ID:</span> ${request.request_id}</li>
+                            <li><span>Date:</span> ${date}</li>
+                            <li><span>Status:</span> <span class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}</span>
+                            ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
+                            ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
+                            
+                            </li>
+                    </ul>
         </div>
     <!-- <div class="side-nav">
         <section>

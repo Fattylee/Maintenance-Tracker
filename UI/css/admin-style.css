@@ -3,7 +3,6 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 17px;
-    background: #444444;
 }
 /* global */
 
@@ -26,7 +25,6 @@ header .brand{
     line-height: 60px;
     font-size: 1.5em;
     letter-spacing: 5px;
-    padding: 10px;
 }
 .brand a{
     text-decoration: none;
@@ -39,19 +37,27 @@ header nav{
 ul{
     list-style: none;
     padding: 0;
+    margin: 0;
 }
+li{
+    list-style-type: none;
+}
+
 nav li{
     float: left;
 }
-nav li input{
+input.search{
     padding: 10px;
-    border: none;
-    width: auto;
+    border: 2px solid black;
     margin-top:10px;
     border-radius: 5px;
 }
-nav li input:focus{
-    border: 2px solid teal;
+input.search.hide-body{
+    display: none;
+}
+input.search:focus{
+    border: 2px solid grey;
+    outline: none;
 }
 nav a{
     color: white;
@@ -66,66 +72,59 @@ a:hover{
 }
 /*End navigation bar */
 
-/* side-nav bar */
-.side-nav{
-    position: absolute;
-    width: 30%;
-    top:0px;
-    left:0;
-    background: cadetblue;
-    height: 700px;
-    padding-left: 10px;
-}
-ul{
-    margin: 0;
-}
-section{
-    border-bottom: 3px solid white;
-    padding: 10px 0;
-}
-.side-nav h3{
-    padding: 0;
-    margin: 0;
-    margin-bottom: 10px;
-}
 
-.side-nav li a{
-    color: white;
-    margin-bottom: 10px;
-    display: inline-block;
-    text-decoration: none;
-}
-.content-area{
-    float: right;
-    background:white;
-    width: 70%;
-    padding: 30px 20px;
-    box-sizing: border-box;
-}
-.title{
-    margin: 0;
-    padding-left: 10px;
-    color: teal;
-}
-.service{
+/* each request style */
+.container h1{
     text-align: center;
-    margin: 4%;
-    padding: 20px;
-    width: 40%;
-    box-sizing: border-box;
+    color: grey;
+}
+.request{
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5),3px -3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    border: 2px solid  steelblue;
+    padding: 10px;
+    width: 48%; 
+    margin-right: 3%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    float: left;  
+}
+.request:nth-child(even){
+    margin-right: 0;
+}
+.all-request{
+    overflow: hidden;
+}
+.request li{
+    margin-bottom: 5px;
+}
+.request li span{
+    background:gray;
+    color: white;
+    padding: 2px 5px;
     display: inline-block;
 }
-.service a{
-    color: steelblue;
-    text-decoration: none;
-}
-.service:hover{
-    background: steelblue;
-}
-.service:hover a{
-    color: white;
-}
-/*End side-nav bar */
+/* end each request style */
 
+/*mobile devices */
+@media only screen and (max-width:520px){
+    input.search{
+        display: none;
+    }
+    input.search.hide-body{
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+
+    }
+    .request{
+        float: none;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 10px;
+        box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+    }
+    .request:nth-child(even){
+        margin-right: auto;
+    }
+    
+}
