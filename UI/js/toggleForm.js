@@ -26,11 +26,5 @@ dataForm[0]. style. display = "block" ;
 }
 }//End toggleForm 
 
-//direct to admin sign in page
-document.getElementById("signin-admin").
-addEventListener("click",function()
-{
-this.parentNode.action = ("admin-index.html");
-});
 
 });//End window load

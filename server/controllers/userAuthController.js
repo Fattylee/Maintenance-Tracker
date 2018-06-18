@@ -43,6 +43,7 @@ class UserAuthHandler {
           return jwt.sign({ user }, 'secreteKey', { expiresIn: '1200s' }, (err, token) => {
             res.status(200)
               .json({
+                role: result.rows[0].role,
                 message: `Hello ${req.body.username}, your signin was successful`,
                 token
               });

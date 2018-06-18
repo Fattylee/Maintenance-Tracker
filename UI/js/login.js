@@ -13,7 +13,7 @@ const userLogin = (eventObj) => {
       })
       .then((res) => res.json())
       .then((data) => {
-
+        
           let message = '';
 
           message = 'no input was received for username';
@@ -52,6 +52,12 @@ const userLogin = (eventObj) => {
             UI.showAlert(data.message+ '. Redirecting...', 'green', true);
             
             localStorage.setItem('token', data.token);
+            if(data.role === 'admin'){
+              setTimeout(()=>{
+                location.assign("admin-all-request.html");
+                }, 2000);
+                return;
+            }
             
             setTimeout(()=>{
             location.assign("request.html");
