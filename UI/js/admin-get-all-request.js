@@ -119,7 +119,54 @@ const getRequest = (eventObj) => {
       })
       .catch( err => console.log('Error', err.message));
       
-  };
+  };//End approveRequest
+
+
+  const disapproveRequest = (eventObj) =>{
+    const [a, b, id] = eventObj.target.parentElement.previousElementSibling.previousElementSibling.textContent.split(' ');
+
+    const answer = confirm('Are you sure that you want to disapprove this request with ID: '+ id+' ?');
+    if(!answer) return; //abort disapprove
+
+    //change status, delete approve and disapprove button from DOM
+    eventObj.target.previousElementSibling.remove();
+    eventObj.target.previousElementSibling.className = 'critical';
+    eventObj.target.previousElementSibling.innerHTML = 'disapproved';
+    eventObj.target.remove();
+    
+
+    const token = localStorage.getItem('token');
+
+    fetch('/api/v1/requests/'+ id +'/disapprove', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Authorization': token,
+            'Content-type': 'application/json'
+        }
+
+    })
+    .then( res => res.json())
+    .then( data => {
+        let message = '';
+
+        message = 'invalid token';
+        if(data.message === message){
+        UI.showAlert('Expired session, Plase login to disapprove request', 'red');
+
+        setTimeout(()=> location.assign('../index.html'), 1500);
+        return;
+        }
+
+        message = 'request disapproved!';
+        if(data.message === message){
+            UI.showAlert(data.message, 'green');
+        }
+
+    })
+    .catch( err => console.log('Error', err.message));
+    
+};//End disapproveRequest
 
 //   const updateRequest = (eventObj) =>{
       
