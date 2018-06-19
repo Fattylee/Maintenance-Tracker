@@ -15,7 +15,6 @@ const userLogin = (eventObj) => {
       .then((data) => {
         
           let message = '';
-
           message = 'no input was received for username';
           if(data.message === message){
             UI.showAlert(data.message, 'red', true);

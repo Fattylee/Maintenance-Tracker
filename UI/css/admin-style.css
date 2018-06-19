@@ -72,6 +72,31 @@ a:hover{
 }
 /*End navigation bar */
 
+/* alertBox style */
+
+.alertBox{
+    display: none;
+    width: 100%;
+    padding: 10px 20px;
+    background: green;
+    color: white;
+    border: 1px solid green;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing:border-box ;
+}
+
+.alertBox.alert-position{
+    position: fixed;
+    top: 0%;
+    left:50%;
+    transform: translateX(-50%);
+    max-width: 540px;
+    margin: auto;
+
+}
+/* End alertBox style */
 
 /* each request style */
 .container h1{
@@ -97,12 +122,56 @@ a:hover{
 .request li{
     margin-bottom: 5px;
 }
-.request li span{
+.request li span:first-child{
     background:gray;
     color: white;
     padding: 2px 5px;
     display: inline-block;
+    font-size: 80%;
 }
+
+.admin-btn{
+    background: green;
+    border: 1px solid green;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+.admin-btn.admin-btn-approve:hover{
+    border: 1px solid green;
+    background: white;
+    color: green;
+}
+.admin-btn.admin-btn-disapprove{
+    border: 1px solid red;
+    background: red;
+}
+.admin-btn.admin-btn-disapprove:hover{
+    border: 1px solid red;
+    background: white;
+    color: red;
+}
+
+.success{color: green;}
+.pending{color:orange;}
+.critical{color:red;}
+/* .request-btn{
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.request-btn-delete{
+    border: 1px solid red;
+    background: red;
+    color: white;
+}
+.request-btn-delete:hover{
+    border: 1px solid red;
+    background: white;
+    color: red;
+} */
+
 /* end each request style */
 
 /*mobile devices */

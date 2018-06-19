@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin/all request</title>
     <link rel="stylesheet" href="css/admin-style.css">
+    <script src="js/validate-token.js"></script>
 </head>
 
 <body>
@@ -25,115 +26,12 @@
     <div class="container">
          <h1>All Request</h1>
          <li><input type="text" name="search" id="search" class="search hide-body" placeholder="search request"></li>
-        <div class="all-request">
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-                <ul class='request'>
-                        <li><span>Title</span> ${request.requesttype}</li>
-                        <li><span>Description</span> ${request.description}
-                            ${request.description}
-                            ${request.description}
-                            ${request.description}
-                        </li>
-                        <li><span>Request ID</span> ${request.request_id}</li>
-                        <li><span>Date</span> ${date}</li>
-                        <li><span>Status</span> class="${request.status === 'pending' ? 'pending': request.status === 'disapproved' ? 'critical': 'success'} no-width">${request.status}
-                        ${request.status !== 'approved' ? `<button class='request-btn request-btn-delete' onclick = deleteRequest(event)> delete </button>` : ''}
-                        ${ request.status === 'pending' ? `<button class='request-btn request-btn-pending' onclick = updateRequest(event)>update</button>` : ''}
-                        
-                        </li>
-                </ul>
-        </div>
+         <div class="alertBox alert-position"></div>
+         <div class="all-request"></div>
     </div><!--End container div-->
+    <script src="js/ui.js"></script>
     <script src="js/admin-get-all-request.js"></script>
+    <script src="js/signout.js"></script>
 
     <!-- <script src="js/admin-request.js"></script> -->
     
