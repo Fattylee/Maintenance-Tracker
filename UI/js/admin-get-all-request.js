@@ -168,3 +168,47 @@ const getRequest = (eventObj) => {
     
 };//End disapproveRequest
 
+const resolveRequest = (eventObj) =>{
+    const [a, b, id] = eventObj.target.parentElement.previousElementSibling.previousElementSibling.textContent.split(' ');
+
+    const answer = confirm('Are you sure that you want to resolve this request with ID: '+ id+' ?');
+    if(!answer) return; //abort resolve
+
+    //change status, delete resolve button from DOM
+    eventObj.target.previousElementSibling.innerHTML = 'resolved';
+    eventObj.target.remove();
+
+    
+    const token = localStorage.getItem('token');
+
+    fetch('/api/v1/requests/'+ id +'/resolve', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Authorization': token,
+            'Content-type': 'application/json'
+        }
+
+    })
+    .then( res => res.json())
+    .then( data => {
+        let message = '';
+
+        message = 'invalid token';
+        if(data.message === message){
+        UI.showAlert('Expired session, Plase login to resolve request', 'red');
+
+        setTimeout(()=> location.assign('../index.html'), 1500);
+        return;
+        }
+
+        message = 'request resolved!';
+        if(data.message === message){
+            UI.showAlert(data.message, 'green');
+        }
+
+    })
+    .catch( err => console.log('Error', err.message));
+    
+};//End resolveRequest
+
