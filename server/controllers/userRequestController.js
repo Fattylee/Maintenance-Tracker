@@ -248,10 +248,18 @@ class UserRequestHandler {
             message: 'you are not an admin'
           });
         }
-        const sql = 'select * from requests ';
+        const sql = 'select * from requests order by request_id desc';
         pool.query(sql)
           .then((result) => {
             const userRequests = result.rows;
+
+            if(!userRequests.length){
+          
+            return res.status(200)
+              .json({
+                message: 'no request yet'
+              });
+            }
             res.status(200)
               .json({
                 userRequests,
