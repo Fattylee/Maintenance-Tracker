@@ -36,7 +36,6 @@
     "supertest": "^3.1.0"
   },
   "scripts": {
-    "babel-node": "babel-node --presets=es2015",
     "start": "nodemon --exec babel-node -- ./app.js",
     "test": "nyc --reporter=html --reporter=text mocha server/tests/test.js --exit --compilers js:babel-core/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
