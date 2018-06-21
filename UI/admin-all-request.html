@@ -16,7 +16,19 @@
         <div class="brand"><a href="admin-index.html">MTAdmin</a></div>
         <nav>
            <ul>
-               <li><input type="text" name="search" id="search" class="search hide-nav" placeholder="search request"></li>
+                <li><div class="search-div hide-body-1">
+                        <input type="text" name="search" id="search" class="search" placeholder="search request by">
+                       <select class="search-type">
+                           <option value="title">Title</option>
+                           <option value="name">Name</option>
+                           <option value="email">Email</option>
+                           <option value="description">Description</option>
+                           <option value="requestid">Request ID</option>
+                           <option value="date">Date</option>
+                           <option value="status">Status</option>
+                           
+                       </select>
+                   </div></li>
                <li><a href="index.html" id="sign-out">Sign out</a></li>
             </ul>
         </nav>
@@ -24,8 +36,19 @@
     </div>
 
     <div class="container">
-         <h1>All Request</h1>
-         <li><input type="text" name="search" id="search" class="search hide-body" placeholder="search request"></li>
+         <h1>All Request <span id='counter'></span></h1>
+         <li><div class="search-div hide-body-2">
+             <input type="text" name="search" id="search" class="search" placeholder="search request by">
+            <select class="search-type">
+                    <option value="title">Title</option>
+                    <option value="name">Name</option>
+                    <option value="email">Email</option>
+                    <option value="description">Description</option>
+                    <option value="requestid">Request ID</option>
+                    <option value="date">Date</option>
+                    <option value="status">Status</option>
+            </select>
+        </div></li>
          <div class="alertBox alert-position"></div>
          <div class="all-request"></div>
     </div><!--End container div-->
@@ -34,6 +57,7 @@
     <script src="js/ui.js"></script>
     <script src="js/admin-get-all-request.js"></script>
     <script src="js/signout.js"></script>
+    <script src="js/admin-filter.js"></script>
     
 </body>
 </html>

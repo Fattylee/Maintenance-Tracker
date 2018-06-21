@@ -11,6 +11,7 @@ body{
     margin: 0 auto;
     position: relative;
 }
+
 /*End global */
 
 /* Navigation bar */
@@ -25,6 +26,8 @@ header .brand{
     line-height: 60px;
     font-size: 1.5em;
     letter-spacing: 5px;
+    margin-right: 20px;
+ 
 }
 .brand a{
     text-decoration: none;
@@ -32,7 +35,10 @@ header .brand{
 }
 header nav{
     overflow: hidden; 
-    float: right;
+    float: left;
+    display: block;
+    width: calc(100% - 163px);
+
 }
 ul{
     list-style: none;
@@ -45,19 +51,49 @@ li{
 
 nav li{
     float: left;
+    width: calc(100% - 80px);
 }
-input.search{
+nav li:nth-child(even){
+    width: 80px;
+    float: right;
+}
+::placeholder{
+    color: white;
+}
+input.search,
+.search-type{
     padding: 10px;
+    width: 122px;
+    box-sizing: border-box;
     border: 2px solid black;
     margin-top:10px;
     border-radius: 5px;
 }
-input.search.hide-body{
-    display: none;
+input.search{
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    width: calc(98% - 122px);
+    background: grey;
+    color: white;
+    margin-left: 1.5%;
+}
+.search-div.hide-body-1{
+    width: 100%;
+    
+}
+.search-div.hide-body-2{
+    display:none;
 }
 input.search:focus{
     border: 2px solid grey;
     outline: none;
+}
+.search-type{
+    margin-left: -2%;
+    border-left: none;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-width: 1px;
 }
 nav a{
     color: white;
@@ -158,34 +194,20 @@ a:hover{
 .success{color: green;}
 .pending{color:orange;}
 .critical{color:red;}
-/* .request-btn{
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.request-btn-delete{
-    border: 1px solid red;
-    background: red;
-    color: white;
-}
-.request-btn-delete:hover{
-    border: 1px solid red;
-    background: white;
-    color: red;
-} */
+
 
 /* end each request style */
 
 /*mobile devices */
 @media only screen and (max-width:520px){
-    input.search{
+    .search-div.hide-body-1{
         display: none;
     }
-    input.search.hide-body{
-        display: block;
-        width: 80%;
-        margin: 10px auto;
-
+    .search-div.hide-body-2{
+        display:block;
+        width: 94%;
+        margin: auto;
+        margin-bottom: 20px;
     }
     .request{
         float: none;
