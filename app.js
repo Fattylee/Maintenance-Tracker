@@ -8,7 +8,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use( express.static(path.join(__dirname, 'UI')));
+app.use(express.static(path.join(__dirname, 'UI')));
 app.use('/api/v1', router);
 
 const port = process.env.PORT || 3000;

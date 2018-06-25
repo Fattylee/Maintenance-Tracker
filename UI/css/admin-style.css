@@ -17,9 +17,16 @@ body{
 /* Navigation bar */
 header{
     height: 60px;
-    background: black;
-    color:white;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
     padding: 0 30px;
+    position: fixed;
+    width: 100%;
+    max-width: 889px;
+    left: 49.4%;
+    top: 0;
+    transform: translateX(-49.5%);
+    z-index: 1;
 }
 header .brand{
     float: left;
@@ -76,13 +83,16 @@ input.search{
     background: grey;
     color: white;
     margin-left: 1.5%;
+    background: rgba(128, 128, 128, 0.8);
 }
 .search-div.hide-body-1{
     width: 100%;
+    position: relative;
     
 }
 .search-div.hide-body-2{
     display:none;
+    position: relative;
 }
 input.search:focus{
     border: 2px solid grey;
@@ -138,6 +148,7 @@ a:hover{
 .container h1{
     text-align: center;
     color: grey;
+    margin-top: 80px;
 }
 .request{
     box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
@@ -190,7 +201,15 @@ a:hover{
     background: white;
     color: red;
 }
-
+.counter{
+    position: absolute;
+    right: 12px;
+    top:8px;
+    font-size: 12px;
+    padding: 2px;
+    
+    color: black;
+}
 .success{color: green;}
 .pending{color:orange;}
 .critical{color:red;}
@@ -200,6 +219,15 @@ a:hover{
 
 /*mobile devices */
 @media only screen and (max-width:520px){
+    header{
+        background: black;
+    }
+    .container h1{
+        margin-top: 120px; 
+    }
+    .search-type{
+        background: rgba(255,255,255,0);
+    }
     .search-div.hide-body-1{
         display: none;
     }
@@ -208,6 +236,10 @@ a:hover{
         width: 94%;
         margin: auto;
         margin-bottom: 20px;
+        position: fixed;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
     }
     .request{
         float: none;
