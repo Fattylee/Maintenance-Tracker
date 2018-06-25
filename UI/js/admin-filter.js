@@ -57,6 +57,8 @@ function newFunction(eventObj, searchBy, ul, counter) {
 document.querySelectorAll('.search-type').forEach( selectElem => {
   selectElem.addEventListener('change', (eventObj)=>{
     eventObj.target.previousElementSibling.value = '';
+    
+    document.querySelectorAll('.request').forEach(ul => ul.style.display = 'block');
 
     document.querySelectorAll('.counter').forEach( counterSpan => counterSpan.innerHTML =  '');
   });
