@@ -172,7 +172,7 @@ class userValidator {
   static signinInput(req, res, next){
     let { username, password } = req.body;
     if (username === undefined) {
-      return res.status(406)
+      return res.status(404)
         .json({
           message: 'no input was received for username',
         });
@@ -188,7 +188,7 @@ class userValidator {
     username = username.toLowerCase();
 
     
-    pool.query('select username from users where username = $1', [username.toLowerCase()])
+    pool.query('select username from users where username = $1', [username])
       .then((result) => {
         if (result.rowCount === 0) {
           return res.status(404)

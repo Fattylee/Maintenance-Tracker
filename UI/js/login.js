@@ -48,7 +48,7 @@ const userLogin = (eventObj) => {
           }
           message = `Hello ${username}, your signin was successful`;
           if(data.message === message){
-            UI.showAlert(data.message+ '. Redirecting...', 'green', true);
+            UI.showAlert(`Hello ${username.replace(username.slice(0,1), username.slice(0,1).toLocaleUpperCase())}, your signin was successful`+ '. Redirecting...', 'green', true);
             
             localStorage.setItem('token', data.token);
             if(data.role === 'admin'){

@@ -113,7 +113,6 @@ nav a{
     display: inline-block;
 }
 a:hover{
-    text-decoration: underlineh;
     border-bottom: 1px solid white;
 }
 /*End navigation bar */
