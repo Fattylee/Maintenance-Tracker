@@ -243,12 +243,23 @@ a:hover{
 
 /*mobile devices */
 @media only screen and (max-width:530px){
+    body{
+        font-size: 15px;
+    }
+    .load-content{
+        width: 200px;
+        padding: 10px;
+        font-size: 18px;
+    }
     header{
         background: black;
     }
     header .brand{
         margin-left: 4%; 
+        letter-spacing: 2px;
+        font-size: 1em;
     }
+   
     header nav{
         margin-right: 4%;
     }
