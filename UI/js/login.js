@@ -3,6 +3,9 @@ const userLogin = (eventObj) => {
          const username = document.getElementById('username1').value.trim().toLowerCase(),
              password = document.getElementById('password1').value.trim();
 
+          const signinBtn = document.querySelector('#signin-user');
+          signinBtn.style.visibility = 'hidden';
+
       fetch('/api/v1/auth/login', {
           method: 'POST',
           headers: {
@@ -13,6 +16,8 @@ const userLogin = (eventObj) => {
       })
       .then((res) => res.json())
       .then((data) => {
+
+          signinBtn.style.visibility = 'visible';
         
           let message = '';
           message = 'no input was received for username';
@@ -49,6 +54,8 @@ const userLogin = (eventObj) => {
           message = `Hello ${username}, your signin was successful`;
           if(data.message === message){
             UI.showAlert(`Hello ${username.replace(username.slice(0,1), username.slice(0,1).toLocaleUpperCase())}, your signin was successful`+ '. Redirecting...', 'green', true);
+
+            UI.clearLogin();
             
             localStorage.setItem('token', data.token);
             if(data.role === 'admin'){

@@ -1,5 +1,6 @@
 let signin = '';
 window. addEventListener("load", function(){
+
   const signup = document. getElementById("sign-up");
   signin = document. getElementById("sign-in");
 

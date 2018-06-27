@@ -8,7 +8,7 @@ const adminFilter =  (eventObj)=>{
     document.querySelectorAll('.search-type').forEach( selectElement => {
       
       selectElem = selectElement.value;
-      if(window.innerWidth >= 520){
+      if(window.innerWidth >= 530){
         selectElem = document.querySelectorAll('.search-type')[0].value;
       }
     });
@@ -45,7 +45,7 @@ function newFunction(eventObj, searchBy, ul, counter) {
   const searchQuery = eventObj.target.value.toLowerCase();
   const found = searchBy.toLowerCase().startsWith(searchQuery);
   if (found) {
-    ul.style.display = 'block';
+    ul.style.display = 'inline-block';
     counter++;
   }
   else {
@@ -58,7 +58,7 @@ document.querySelectorAll('.search-type').forEach( selectElem => {
   selectElem.addEventListener('change', (eventObj)=>{
     eventObj.target.previousElementSibling.value = '';
     
-    document.querySelectorAll('.request').forEach(ul => ul.style.display = 'block');
+    document.querySelectorAll('.request').forEach(ul => ul.style.display = 'inline-block');
 
     document.querySelectorAll('.counter').forEach( counterSpan => counterSpan.innerHTML =  '');
   });

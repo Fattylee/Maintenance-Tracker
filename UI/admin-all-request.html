@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin/all request</title>
     <link rel="stylesheet" href="css/admin-style.css">
+    <script src='js/loader.js'></script>
     <script src="js/validate-token.js"></script>
 </head>
 
 <body>
-
+    <div class="load-screen">
+            <div class="load-content">Page Loading...</div>
+    </div>
     <div class="container">
-    <header>
-        <div class="brand"><a href="admin-all-request.html">MTAdmin</a></div>
-        <nav>
-           <ul>
-                <li><div class="search-div hide-body-1">
-                        <span class='counter'></span>
-                        <input type="text" name="search" id="search" class="search" placeholder="search request by">
-                       <select class="search-type">
-                           <option value="title">Title</option>
-                           <option value="name">Name</option>
-                           <option value="email">Email</option>
-                           <option value="description">Description</option>
-                           <option value="requestid">Request ID</option>
-                           <option value="date">Date</option>
-                           <option value="status">Status</option>
-                           
-                       </select>
-                   </div></li>
-               <li><a href="index.html" id="sign-out">Sign out</a></li>
-            </ul>
-        </nav>
-    </header>
+        <header>
+            <div class="brand">
+                <a href="admin-all-request.html">MTAdmin</a>
+            </div>
+            <nav>
+                <ul>
+                    <li class="hide-body-1">
+                        <div class="search-div">
+                            <span class='counter'></span>
+                            <input type="text" name="search" id="search" class="search" placeholder="search request by">
+                            <select class="search-type">
+                                <option value="title">Title</option>
+                                <option value="name">Name</option>
+                                <option value="email">Email</option>
+                                <option value="description">Description</option>
+                                <option value="requestid">Request ID</option>
+                                <option value="date">Date</option>
+                                <option value="status">Status</option>
+
+                            </select>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html" id="sign-out">Sign out</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
     </div>
 
     <div class="container">
-         <h1>All Request</h1>
-         <li><div class="search-div hide-body-2">
+        <h1>All Request</h1>
+        <li>
+            <div class="search-div hide-body-2">
                 <span class='counter'></span>
-             <input type="text" name="search" id="search" class="search" placeholder="search request by">
-            <select class="search-type">
+                <input type="text" name="search" id="search" class="search" placeholder="search request by">
+                <select class="search-type">
                     <option value="title">Title</option>
                     <option value="name">Name</option>
                     <option value="email">Email</option>
@@ -49,24 +60,20 @@
                     <option value="requestid">Request ID</option>
                     <option value="date">Date</option>
                     <option value="status">Status</option>
-            </select>
-        </div></li>
-         <div class="alertBox alert-position"></div>
-         <div class="all-request"></div>
-    </div><!--End container div-->
+                </select>
+            </div>
+        </li>
+        <div class="alertBox alert-position"></div>
+        <div class="all-request"></div>
+    </div>
+    <!--End container div-->
 
-    
+
     <script src="js/ui.js"></script>
     <script src="js/admin-get-all-request.js"></script>
     <script src="js/signout.js"></script>
     <script src="js/admin-filter.js"></script>
 
-    <!-- <script>
-    const str = 'hello baby';
-    const strArr = str.split('');
-    const newStr = str.replace(str.slice(0,1), str.slice(0,1).toLocaleUpperCase());
-    console.log(newStr);
-    </script> -->
-    
 </body>
+
 </html>
